@@ -1,0 +1,34 @@
+{
+    "name": "sunnysideup/cms-niceties",
+    "description": "adds a bit of formatting and a few CMS Field tricks to the CMS",
+    "type": "silverstripe-vendormodule",
+    "keywords": [
+        "Silverstripe-CMS",
+        "CMS",
+        "Silverstripe",
+        "CMS Tricks",
+        "CMS Design",
+        "CMS Formatting",
+        "CMS Menus",
+        "GridField"
+    ],
+    "require": {
+        "silverstripe/cms": "4.*",
+        "ryanpotter/silverstripe-cms-theme": "^3.4"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Nicolaas Francken",
+            "email": "modules@sunnysideup.co.nz",
+            "role": "lead developer"
+        }
+    ],
+    "extra": {
+        "expose": [
+            "client/dist/",
+        ],
+    }
+}

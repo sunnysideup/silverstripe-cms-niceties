@@ -1,0 +1,109 @@
+
+/*
+hide image options so that they can't have captions,
+can only be left aligned and the dimensions can't be changed.
+
+#Form_fileInsertForm #Form_fileInsertForm_Caption_Holder,
+#Form_fileInsertForm #Form_fileInsertForm_Alignment_Holder,
+#Form_fileInsertForm #Form_fileInsertForm_Dimensions_Holder
+*/
+
+.popover-option-set {
+    min-width: 600px!important;
+}
+
+
+
+.jstree-apple .jstree-clicked {
+    background-color: rgba(180,204,255, 0.67)!important;
+}
+.jstree-apple .jstree-hovered {
+    background-color: rgba(180,204,255, 0.33)!important;
+}
+
+@media only screen and (min-width: 1100px)  {
+
+    /* hack to make sure model admins can be viewed */
+    /* for some the cms-content-header is 100% height, meaning the gridfield can not be viewed.
+       I have discoverd that this is only required when source_file_comments is turned on. */
+    .cms-content-header.north,
+    .cms-content-header-info {
+        height: 53px!important;
+    }
+
+    fieldset.grid-field.ss-gridfield
+    {
+        border-radius: 0.4rem;
+        border: 1px solid rgba(219, 224,233, 1);
+        background-color: #f1f3f6!important;
+        padding: 10px!important;
+    }
+
+    fieldset.grid-field.ss-gridfield .toolbar--content {
+        margin-top: 0!important;
+        margin-left: 0;
+        background-color:rgba(219, 224,233, 0.3)!important;
+        margin-right: 0;
+    }
+    fieldset.grid-field.ss-gridfield .toolbar--content::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    fieldset.grid-field.ss-gridfield h2 {
+        padding-top: 1.5rem!important;
+        text-align: center!important;
+        color: rgb(86, 107, 141)!important;
+    }
+
+    fieldset.grid-field.ss-gridfield .grid-field__title-row .pull-xs-right .pagination-records-number {
+        display: none;
+    }
+
+    fieldset.grid-field.ss-gridfield table
+    {
+        min-width: 100%!important;
+        margin-left: 0!important;
+        margin-right: 0!important;
+
+    }
+
+
+    fieldset.grid-field.ss-gridfield .sortablerowsheading {
+        border-top: 1px solid #fff!important;
+        padding-top: 0.4rem!important;
+        padding-bottom: 0.4rem!important;
+    }
+
+    fieldset.grid-field.ss-gridfield tfoot td {
+        line-height: 1!important;
+        padding-top: 1rem!important;
+        padding-bottom: 0!important;
+    }
+
+
+    fieldset.grid-field.ss-gridfield .sortable-header th,
+    fieldset.grid-field.ss-gridfield .sortablerowsheading {
+        background-color: rgba(219, 224,233, 0.7);
+        line-height: 1!important;
+        padding-top: 1rem!important;
+        padding-bottom: 1rem!important;
+    }
+    fieldset.grid-field.ss-gridfield .sortablerowsheading {
+        background-color:rgba(219, 224,233, 0.3)!important;
+        padding-top: 0.5rem!important;
+        padding-bottom: 0.5rem!important;
+    }
+    fieldset.grid-field.ss-gridfield .sortablerowsheading * {
+        color: rgb(86, 107, 141)!important;
+    }
+}
+
+.CompositeField .form-group.optionset.checkboxset > label{
+    font-style: italic;
+    font-weight: bold;
+    color: #43536d;
+}
+.CompositeField .form-group.optionset.checkboxset > label:before {
+    content: '*** '
+}

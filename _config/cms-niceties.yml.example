@@ -1,0 +1,29 @@
+---
+Name: cms-niceties-custom
+---
+
+SilverStripe\UserForms\Model\UserDefinedForm:
+    icon: 'themes/foo-bar-theme/images/tree-icons/UserDefinedForm.png'
+
+SilverStripe\Taxonomy\MyFooBarAdmin:
+    menu_title: FooBar
+
+SilverStripe\Admin\LeftAndMain:
+    # cms_background: '#303e5c'
+    # cms_active_background: '#9AD4D4' #F67A44F67A44
+    # cms_border_color: '#98a4bd'
+    # cms_color: '#98a4bd'
+    # cms_hover_color: white
+    # cms_active_background: pink
+    # cms_active_color: '#C15F35'
+    # cms_drawer_background: '#445782'
+    # cms_drawer_color: '#acb8d0'
+    # cms_icon_color: '#acb8d0'
+
+menu_groups:
+  Content:
+    priority: -10
+    items:
+      - SilverStripe-CMS-Controllers-CMSPagesController
+      - SilverStripe-AssetAdmin-Controller-AssetAdmin
+      - SilverStripe-SiteConfig-SiteConfigLeftAndMain
