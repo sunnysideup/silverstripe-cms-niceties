@@ -7,13 +7,4 @@ Name: cms-niceties
 
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
-    - resources/vendor/cms-niceties/client/css/cms/LeftAndMain.css
-
-
-menu_groups:
-  Content:
-    priority: -10
-    items:
-      - SilverStripe-CMS-Controllers-CMSPagesController
-      - SilverStripe-AssetAdmin-Controller-AssetAdmin
-      - SilverStripe-SiteConfig-SiteConfigLeftAndMain
+    - resources/vendor/sunnysideup/cms-niceties/client/dist/css/cms/LeftAndMain.css

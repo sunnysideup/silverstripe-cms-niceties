@@ -20,10 +20,10 @@ SilverStripe\Admin\LeftAndMain:
     # cms_drawer_color: '#acb8d0'
     # cms_icon_color: '#acb8d0'
 
-menu_groups:
-  Content:
-    priority: -10
-    items:
-      - SilverStripe-CMS-Controllers-CMSPagesController
-      - SilverStripe-AssetAdmin-Controller-AssetAdmin
-      - SilverStripe-SiteConfig-SiteConfigLeftAndMain
+    menu_groups:
+      Content:
+        priority: -10
+        items:
+          - SilverStripe-CMS-Controllers-CMSPagesController
+          - SilverStripe-AssetAdmin-Controller-AssetAdmin
+          - SilverStripe-SiteConfig-SiteConfigLeftAndMain
