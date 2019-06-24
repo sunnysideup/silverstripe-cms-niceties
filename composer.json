@@ -30,5 +30,10 @@
         "expose": [
             "client/dist/"
         ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Sunnysideup\\CMSNiceties\\": "src/"
+        }
     }
 }
