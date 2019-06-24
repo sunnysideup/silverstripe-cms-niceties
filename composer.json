@@ -29,6 +29,6 @@
     "extra": {
         "expose": [
             "client/dist/"
-        ],
+        ]
     }
 }
