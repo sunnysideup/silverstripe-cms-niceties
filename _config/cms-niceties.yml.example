@@ -9,19 +9,20 @@ SilverStripe\Taxonomy\MyFooBarAdmin:
     menu_title: FooBar
 
 SilverStripe\Admin\LeftAndMain:
-    # cms_border_color: '#333333'
-    #
-    # cms_background: '#111111'
-    # cms_drawer_background: '#777777'
-    # cms_active_background: '#555555'
-    #
-    # cms_color: '#999999'
-    # cms_hover_color: '#CCCCCC'
-    #
-    # cms_drawer_color: '#222222'
-    # cms_active_color: '#EEEEEE'
-    #
-    # cms_icon_color: '#555555'
+
+    cms_border_color: '#333333'
+
+    cms_background: '#111111'
+    cms_drawer_background: '#666666'
+    cms_active_background: '#0071c4' #'#008aab'
+
+    cms_color: '#999999'
+    cms_hover_color: '#CCCCCC'
+
+    cms_drawer_color: '#AAAAAA'
+    cms_active_color: '#EEEEEE'
+
+    cms_icon_color: '#999999'
 
     menu_groups:
       Content:
