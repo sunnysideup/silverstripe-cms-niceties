@@ -14,7 +14,7 @@
     ],
     "require": {
         "silverstripe/cms": "4.*",
-        "ryanpotter/silverstripe-cms-theme": "^3.4"
+        "ryanpotter/silverstripe-cms-theme": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
