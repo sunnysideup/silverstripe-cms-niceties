@@ -37,8 +37,8 @@ trait CMSNicetiesTraitForValidation
                     $id = (empty($this->ID) ? 0 : $this->ID);
                     $value = $this->$field;
                     $count = self::get()
-                        ->filter(array($field => $value))
-                        ->exclude(array('ID' => $id))
+                        ->filter([$field => $value])
+                        ->exclude(['ID' => $id])
                         ->count();
                     if ($count > 0) {
                         $myName = $fieldLabels[$field];
