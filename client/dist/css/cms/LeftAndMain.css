@@ -33,7 +33,7 @@ can only be left aligned and the dimensions can't be changed.
 
     fieldset.grid-field.ss-gridfield
     {
-        border-radius: 0.4rem;
+        border-radius: 0.2rem;
         border: 1px solid rgba(219, 224,233, 1);
         background-color: #f1f3f6!important;
         padding: 10px!important;
@@ -53,7 +53,10 @@ can only be left aligned and the dimensions can't be changed.
     fieldset.grid-field.ss-gridfield h2 {
         padding-top: 1.5rem!important;
         text-align: center!important;
-        color: rgb(86, 107, 141)!important;
+        float: left;
+        font-weight: bold;
+        color: #0071c4!important;
+        font-size: 1.67rem;
     }
 
     fieldset.grid-field.ss-gridfield .grid-field__title-row .pull-xs-right .pagination-records-number {
