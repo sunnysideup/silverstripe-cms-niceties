@@ -16,6 +16,9 @@
         "silverstripe/cms": "4.*",
         "ryanpotter/silverstripe-cms-theme": "*"
     },
+    "suggested": [
+        "symbiote/silverstripe-grouped-cms-menu"
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "license": "BSD-3-Clause",
