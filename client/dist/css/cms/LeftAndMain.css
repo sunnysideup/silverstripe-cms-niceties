@@ -21,15 +21,21 @@ can only be left aligned and the dimensions can't be changed.
     background-color: rgba(180,204,255, 0.33)!important;
 }
 
-@media only screen and (min-width: 1100px)  {
+/* improve CMS header for when there are too many tabs */
+.cms-content-header-tabs {
+  width: calc(100% - 250px);
+}
 
-    /* hack to make sure model admins can be viewed */
-    /* for some the cms-content-header is 100% height, meaning the gridfield can not be viewed.
-       I have discoverd that this is only required when source_file_comments is turned on. */
-    .cms-content-header.north,
-    .cms-content-header-info {
-        height: 53px!important;
-    }
+.ui-tabs .ui-tabs-nav li {
+  margin-left: 0.6154rem;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+  border-bottom: .15385rem solid transparent;
+}
+
+
+@media only screen and (min-width: 1100px)  {
 
     fieldset.grid-field.ss-gridfield
     {
