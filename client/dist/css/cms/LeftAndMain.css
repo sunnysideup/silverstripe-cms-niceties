@@ -26,6 +26,10 @@ can only be left aligned and the dimensions can't be changed.
   width: calc(100% - 250px);
 }
 
+.cms-content-header-tabs .ui-tabs .ui-tabs-nav.cms-tabset-nav-primary {
+    float: right;
+}
+
 .ui-tabs .ui-tabs-nav li {
   margin-left: 0.6154rem;
 }
