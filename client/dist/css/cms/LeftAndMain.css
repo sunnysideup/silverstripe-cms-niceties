@@ -30,11 +30,11 @@ can only be left aligned and the dimensions can't be changed.
     float: right;
 }
 
-.ui-tabs .ui-tabs-nav li {
+.cms-content-header-tabs .ui-tabs .ui-tabs-nav.cms-tabset-nav-primary  li {
   margin-left: 0.6154rem;
 }
 
-.ui-tabs .ui-tabs-nav li a {
+.cms-content-header-tabs .ui-tabs .ui-tabs-nav.cms-tabset-nav-primary li a {
   border-bottom: .15385rem solid transparent;
 }
 
