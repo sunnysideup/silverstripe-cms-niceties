@@ -26,15 +26,15 @@ can only be left aligned and the dimensions can't be changed.
   width: calc(100% - 250px);
 }
 
-.cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary {
+.cms-content-header-tabs .cms-tabset-nav-primary {
     float: right;
 }
 
-.cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary  li {
+.cms-content-header-tabs .cms-tabset-nav-primary  li {
   margin-left: 0.6154rem;
 }
 
-.cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li a {
+.cms-content-header-tabs .cms-tabset-nav-primary li a {
   border-bottom: .15385rem solid transparent;
 }
 
