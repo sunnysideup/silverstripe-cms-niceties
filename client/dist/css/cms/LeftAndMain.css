@@ -23,7 +23,7 @@ can only be left aligned and the dimensions can't be changed.
 
 /* improve CMS header for when there are too many tabs */
 .cms-content-header-tabs {
-  width: calc(100% - 250px);
+  max-width: calc(100% - 250px);
 }
 
 .cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary {
