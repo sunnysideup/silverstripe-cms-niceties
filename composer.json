@@ -14,10 +14,9 @@
     ],
     "require": {
         "silverstripe/cms": "4.*",
-        "ryanpotter/silverstripe-cms-theme": "*"
+        "symbiote/silverstripe-grouped-cms-menu": "*"
     },
     "suggested": [
-        "symbiote/silverstripe-grouped-cms-menu"
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
