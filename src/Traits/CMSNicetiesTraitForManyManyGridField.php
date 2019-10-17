@@ -112,7 +112,7 @@ trait CMSNicetiesTraitForManyManyGridField
         } else {
             return [
                 HeaderField::create($title.'Header', $title),
-                $gridField
+                $gridField,
             ];
         }
     }
@@ -127,7 +127,7 @@ trait CMSNicetiesTraitForManyManyGridField
         foreach ([
             $hasMany,
             $manyMany,
-            $belongsManyMany
+            $belongsManyMany,
         ] as $types) {
             if (isset($types[$relationName])) {
                 $type = $types[$relationName];

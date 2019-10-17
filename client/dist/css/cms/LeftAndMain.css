@@ -21,19 +21,29 @@ can only be left aligned and the dimensions can't be changed.
     background-color: rgba(180,204,255, 0.33)!important;
 }
 
-@media only screen and (min-width: 1100px)  {
+/* improve CMS header for when there are too many tabs */
+.cms-content-header-tabs {
+  max-width: calc(100% - 250px);
+}
 
-    /* hack to make sure model admins can be viewed */
-    /* for some the cms-content-header is 100% height, meaning the gridfield can not be viewed.
-       I have discoverd that this is only required when source_file_comments is turned on. */
-    .cms-content-header.north,
-    .cms-content-header-info {
-        height: 53px!important;
-    }
+.cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary {
+    float: right;
+}
+
+.cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary  li {
+  margin-left: 0.6154rem;
+}
+
+.cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li a {
+  border-bottom: .15385rem solid transparent;
+}
+
+
+@media only screen and (min-width: 1100px)  {
 
     fieldset.grid-field.ss-gridfield
     {
-        border-radius: 0.4rem;
+        border-radius: 0.2rem;
         border: 1px solid rgba(219, 224,233, 1);
         background-color: #f1f3f6!important;
         padding: 10px!important;
@@ -53,7 +63,10 @@ can only be left aligned and the dimensions can't be changed.
     fieldset.grid-field.ss-gridfield h2 {
         padding-top: 1.5rem!important;
         text-align: center!important;
-        color: rgb(86, 107, 141)!important;
+        float: left;
+        font-weight: bold;
+        color: #0071c4!important;
+        font-size: 1.67rem;
     }
 
     fieldset.grid-field.ss-gridfield .grid-field__title-row .pull-xs-right .pagination-records-number {
