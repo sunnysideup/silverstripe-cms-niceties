@@ -10,6 +10,9 @@ can only be left aligned and the dimensions can't be changed.
 .field.numeric.text {
     max-width: 12rem;  
 }
+.field.text.datetime {
+    max-width: 16rem;
+}
 .popover-option-set {
     min-width: 600px!important;
 }
