@@ -7,7 +7,9 @@ can only be left aligned and the dimensions can't be changed.
 #Form_fileInsertForm #Form_fileInsertForm_Alignment_Holder,
 #Form_fileInsertForm #Form_fileInsertForm_Dimensions_Holder
 */
-
+.field.numeric.text {
+    max-width: 12rem;  
+}
 .popover-option-set {
     min-width: 600px!important;
 }
