@@ -97,7 +97,9 @@ can only be left aligned and the dimensions can't be changed.
         line-height: 1!important;
         padding-top: 1rem!important;
         padding-bottom: 0!important;
-    }
+    }.CompositeField .form-group.optionset.checkboxset > label:before {
+    content: '*** '
+}
 
 
     fieldset.grid-field.ss-gridfield .sortable-header th,
@@ -122,6 +124,8 @@ can only be left aligned and the dimensions can't be changed.
     font-weight: bold;
     color: #43536d;
 }
+/*
 .CompositeField .form-group.optionset.checkboxset > label:before {
     content: '*** '
 }
+*/
