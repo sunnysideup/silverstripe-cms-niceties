@@ -43,6 +43,11 @@ can only be left aligned and the dimensions can't be changed.
   border-bottom: .15385rem solid transparent;
 }
 
+.CompositeField .form-group.optionset.checkboxset > label{
+    font-style: italic;
+    font-weight: bold;
+    color: #43536d;
+}
 
 @media only screen and (min-width: 1100px)  {
 
@@ -97,9 +102,7 @@ can only be left aligned and the dimensions can't be changed.
         line-height: 1!important;
         padding-top: 1rem!important;
         padding-bottom: 0!important;
-    }.CompositeField .form-group.optionset.checkboxset > label:before {
-    content: '*** '
-}
+    }
 
 
     fieldset.grid-field.ss-gridfield .sortable-header th,
@@ -114,16 +117,13 @@ can only be left aligned and the dimensions can't be changed.
         padding-top: 0.5rem!important;
         padding-bottom: 0.5rem!important;
     }
+    
     fieldset.grid-field.ss-gridfield .sortablerowsheading * {
         color: rgb(86, 107, 141)!important;
     }
 }
 
-.CompositeField .form-group.optionset.checkboxset > label{
-    font-style: italic;
-    font-weight: bold;
-    color: #43536d;
-}
+
 /*
 .CompositeField .form-group.optionset.checkboxset > label:before {
     content: '*** '
