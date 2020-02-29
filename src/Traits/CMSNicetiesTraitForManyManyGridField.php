@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Sunnysideup\CMSNiceties\Traits;
+namespace SenateSHJ\App\Traits;
 
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Versioned\Versioned;
@@ -19,9 +19,10 @@ use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\CMS\Model\SiteTree;
-// use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
-// TODO: use undefinedoffset/sortablegridfield
-//
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+
+
 trait CMSNicetiesTraitForManyManyGridField
 {
 
@@ -63,10 +64,14 @@ trait CMSNicetiesTraitForManyManyGridField
             $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
         }
         if ($sortField) {
-            //todo: add undefinedoffset/sortablegridfield
-            // $config->addComponent($sorter = new GridFieldOrderableRows($sortField));
-            //may need some help finding relation!
-            // $sorter->setCustomRelationName($relationName);
+            if(class_exists(GridFieldOrderableRows::class)) {
+                //todo: add undefinedoffset/sortablegridfield
+                $config->addComponent($sorter = new GridFieldOrderableRows($sortField));
+                //may need some help finding relation!
+            } elseif(class_exists(GridFieldSortableRows::class)) {
+                $config->addComponent($sorter = new GridFieldSortableRows($sortField));
+                $sorter->setCustomRelationName($relationName);
+            }
         }
 
 
@@ -173,7 +178,6 @@ trait CMSNicetiesTraitForManyManyGridField
                 }
             }
         }
-        return null;
 
         return $sortField;
     }
