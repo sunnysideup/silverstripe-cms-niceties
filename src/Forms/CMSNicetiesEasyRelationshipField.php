@@ -1,0 +1,533 @@
+<?php
+
+namespace Sunnysideup\CMSNiceties\Forms;
+
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\CheckboxSetField;
+use SilverStripe\Forms\CompositeField;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridField_ActionMenu;
+use SilverStripe\Forms\GridField\GridFieldConfig;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\Forms\GridField\GridFieldDataColumns;
+use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
+use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\HeaderField;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Versioned\GridFieldArchiveAction;
+use SilverStripe\Versioned\VersionedGridFieldDetailForm;
+use SilverStripe\Versioned\Versioned;
+
+// use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+// TODO: use undefinedoffset/sortablegridfield
+
+
+/**
+ * usage:
+ *      $fields->addFieldToTab(
+ *          'root.RelationFoo',
+ *          CMSNicetiesManyManyGridField::create($this, 'RelationFoo')
+ *              ->setSortField('SortOrder')
+ *              ->setLabelForField('Check this Out')
+ *              ->setHasEditRelation(true)
+ *              ->setHasUnlink(true)
+ *              ->setHasDelete(true)
+ *              ->setHasAdd(true)
+ *              ->setHasAddExisting(true)
+ *              ->setMaxItemsForCheckBoxSet(150)
+ *              ->setDataColumns(['Title' => 'My Title'])
+ *      );
+ */
+
+class CMSNicetiesEasyRelationshipField extends CompositeField
+{
+    /**
+     * the object calling this class, aka the class where we add the fields
+     * @var object
+     */
+    protected $callingObject = null;
+
+    /**
+     * name of the relations e.g. Members as defined in has_many or many_many
+     * @var string
+     */
+    protected $relationName = '';
+
+    /**
+     * name of the class that we are linking to
+     * @var string
+     */
+    protected $relationClassName = '';
+
+    /**
+     * name of the sort field used
+     * works with:
+     *  - UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows
+     * @var string
+     */
+    protected $sortField = '';
+
+    /**
+     * heading above field
+     * @var string
+     */
+    protected $labelForField = '';
+
+    /**
+     * name for Add - e.g. My Product resulting in a button "Add My Product"
+     * @var string
+     */
+    protected $addLabel = '';
+
+    /**
+     * should the relationship be editable in the form?
+     * @var bool
+     */
+    protected $hasEditRelation = true;
+
+    /**
+     * can the link be removed?
+     * @var bool
+     */
+    protected $hasUnlink = true;
+
+    /**
+     * can the linked item be deleted?
+     * @var bool
+     */
+    protected $hasDelete = true;
+
+
+    /**
+     * can new items be added?
+     * @var bool
+     */
+    protected $hasAdd = true;
+
+
+    /**
+     * can existing items be linked?
+     * @var bool
+     */
+    protected $hasAddExisting = true;
+
+    /**
+    *
+    * @var int
+    */
+    protected $maxItemsForCheckBoxSet = 150;
+
+    /**
+     * data columns
+     * @var array
+     */
+    protected $dataColumns = [];
+
+    /**
+     * data columns
+     * @var array
+     */
+    protected $searchFields = [];
+
+    /**
+     * data columns
+     * @var string
+     */
+    protected $searchOutputFormat = '';
+
+    /**
+     * @var GridFieldConfig|null
+     */
+    private $gridFieldConfig = null;
+
+    /**
+     * @var GridField|null
+     */
+    private $gridField = null;
+
+    /**
+     * @var CheckboxSetField|null
+     */
+    private $checkboxSetField = null;
+
+
+    /**
+     * provides a generic Grid Field for Many Many relations
+     * @param  DataObject  $callingObject   Name of the Relationship - e.g. MyWidgets
+     * @param  string      $relationName  Name of the Relationship - e.g. MyWidgets
+     *
+     * @return array
+     */
+    public function __construct($callingObject, $relationName)
+    {
+        $this->callingObject = $callingObject;
+        $this->relationName = $relationName;
+
+        parent::__construct();
+    }
+
+    public function doBuild($force = false)
+    {
+        if ($this->listIsEmpty() || $force) {
+            $this->getChildren();
+        }
+    }
+
+    protected function listIsEmpty() : bool
+    {
+        if( empty($this->children) ) {
+            if ($this->children instanceof FieldList && $this->children->count() === 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function setSortField(string $sortField)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->sortField = $sortField;
+
+        return $this;
+    }
+
+    public function setLabelForField(string $labelForField)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->labelForField = $labelForField;
+
+        return $this;
+    }
+
+    public function setAddLabel(string $addLabel)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->addLabel = $addLabel;
+
+        return $this;
+    }
+
+    public function setHasEditRelation(bool $hasEditRelation)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->hasEditRelation = $hasEditRelation;
+
+        return $this;
+    }
+
+    public function setHasUnlink(bool $hasUnlink)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->hasUnlink = $hasUnlink;
+
+        return $this;
+    }
+
+    public function setHasDelete(bool $hasDelete)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->hasDelete = $hasDelete;
+
+        return $this;
+    }
+
+    public function setHasAdd(bool $hasAdd)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->hasAdd = $hasAdd;
+
+        return $this;
+    }
+
+    public function setHasAddExisting(bool $hasAddExisting)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->hasAddExisting = $hasAddExisting;
+
+        return $this;
+    }
+
+    public function setMaxItemsForCheckBoxSet(int $maxItemsForCheckBoxSet)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->maxItemsForCheckBoxSet = $maxItemsForCheckBoxSet;
+
+        return $this;
+    }
+
+    public function setDataColumns(array $dataColumns)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->dataColumns = $dataColumns;
+
+        return $this;
+    }
+
+    public function setSearchFields(array $searchFields)
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->searchFields = $searchFields;
+
+        return $this;
+    }
+
+    protected function checkIfFieldsHaveBeenBuilt()
+    {
+        if($this->listIsEmpty() === false) {
+            user_error('There is an error in the sequence of your logic. The fields have already been built!');
+        }
+    }
+
+    public function setSearchOutputFormat(string $searchOutputFormat)
+    {
+        $this->searchOutputFormat = $searchOutputFormat;
+
+        return $this;
+    }
+
+    public function getDetailedFields()
+    {
+        $this->doBuild();
+        $type = $this->getRelationClassName();
+        $obj = $type::create();
+        $defaultFields = $obj->getCMSFields();
+
+        $this->setDetaildFields($defaultFields);
+
+        return $defaultFields;
+    }
+
+    public function setDetaildFields(FieldList $fields)
+    {
+        $this->doBuild();
+        $this->getDetailedForm()->setFields($fields);
+    }
+
+    /**
+     * @return GridFieldDetailForm|VersionedGridFieldDetailForm
+     */
+    protected function getDetailedForm()
+    {
+        $this->doBuild();
+        $this->getGridFieldConfig = $this->getGridFieldConfig();
+        $detailedForm = $this->getGridFieldConfig->getComponentByType(GridFieldDetailForm::class);
+
+        return $detailedForm;
+    }
+
+    /**
+     *
+     * @return FieldList
+     */
+    public function getChildren()
+    {
+        if ($this->listIsEmpty()) {
+            $isVersioned = $this->isVersioned();
+            $hasCheckboxSet = $this->hasCheckboxSet();
+            $this->sortField = $this->getSortField();
+            $this->relationClassName = $this->getRelationClassName();
+
+            if (! $this->labelForField) {
+                $fieldLabels = Config::inst()->get($this->callingObject->ClassName, 'field_labels');
+                $this->labelForField = isset($fieldLabels[$this->relationName]) ? $fieldLabels[$this->relationName] : '';
+            }
+            $safeLabel = preg_replace('/[^A-Za-z0-9 ]/', '', $this->labelForField);
+
+            $this->getGridFieldConfig = $this->getGridFieldConfig();
+
+            if ($hasCheckboxSet) {
+                $this->hasUnlink = false;
+                $this->hasAddExisting = false;
+            }
+
+            $this->gridField = null;
+            if ($this->hasGridField()) {
+                $this->getGridFieldConfig->removeComponentsByType(GridField_ActionMenu::class);
+                $this->gridField = GridField::create(
+                    $this->relationName . 'GridField',
+                    $this->labelForField,
+                    $this->callingObject->{$this->relationName}(),
+                    $this->getGridFieldConfig
+                );
+
+                //we remove both - just in case the type is unknown.
+                $this->getGridFieldConfig->removeComponentsByType(GridFieldArchiveAction::class);
+                $this->getGridFieldConfig->removeComponentsByType(GridFieldDeleteAction::class);
+
+                //deletes
+                if ($this->hasDelete) {
+                    if ($isVersioned) {
+                        // $this->getGridFieldConfig->addComponent(new GridFieldArchiveAction());
+                        // $this->getGridFieldConfig->addComponent(new GridFieldDeleteAction($unlink = false));
+                    } else {
+                        $this->getGridFieldConfig->addComponent(new GridFieldDeleteAction($unlink = false));
+                    }
+                } elseif ($this->hasUnlink) {
+                    $this->getGridFieldConfig->addComponent(new GridFieldDeleteAction($unlink = true));
+                }
+
+                if ($this->hasAdd) {
+                    if($this->addLabel) {
+                        $this->getGridFieldConfig->getComponentsByType(GridFieldAddNewButton::class)->first()->setButtonName('Add '.$this->addLabel);
+                    }
+                } else {
+                    $this->getGridFieldConfig->removeComponentsByType(GridFieldAddNewButton::class);
+                }
+
+                if (! $this->hasAddExisting) {
+                    $this->getGridFieldConfig->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
+                }
+                if ($hasCheckboxSet) {
+                    $this->gridField->setTitle('Added ' . $this->labelForField);
+                }
+                if ($this->sortField) {
+                    $classA = 'UndefinedOffset\\SortableGridField\\Forms\\GridFieldSortableRows';
+                    if (class_exists($classA)) {
+                        $this->getGridFieldConfig->addComponent(new $classA($this->sortField));
+                        $this->getGridFieldConfig->setCustomRelationName($this->relationName);
+                    }
+                }
+                if(count($this->dataColumns)) {
+                    $dataColumns = $this->getGridFieldConfig->getComponentByType(GridFieldDataColumns::class);
+                    $dataColumns->setDisplayFields($this->dataColumns);
+                }
+                if(count($this->searchFields)) {
+                    $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class)
+                        ->setSearchFields($this->searchFields);
+                }
+                if(count($this->searchOutputFormat)) {
+                    $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class)
+                        ->setResultsFormat($this->searchOutputFormat);
+                }
+            }
+
+            $this->checkboxSetField = null;
+            if ($hasCheckboxSet) {
+                $className = $this->relationClassName;
+                $this->checkboxSetField = CheckboxSetField::create(
+                    $this->relationName,
+                    'Add / Remove',
+                    $className::get()->map()
+                );
+            }
+
+            $fieldsArray = [
+                HeaderField::create($safeLabel . 'Header', $this->labelForField),
+            ];
+            if ($this->checkboxSetField) {
+                $fieldsArray[] = $this->checkboxSetField;
+            }
+            if ($this->gridField) {
+                $fieldsArray[] = $this->gridField;
+            }
+            $this->children = FieldList::create($fieldsArray);
+            //important - as setChildren does more than just setting variable...
+            $this->setChildren($this->children);
+        }
+        return $this->children;
+    }
+
+    public function getGridFieldConfig()
+    {
+        if (! $this->gridFieldConfig) {
+            $this->gridFieldConfig = GridFieldConfig_RelationEditor::create();
+        }
+
+        return $this->gridFieldConfig;
+    }
+
+    public function getGritField()
+    {
+        return $this->gridField;
+    }
+
+    public function getCheckboxSetField()
+    {
+        return $this->checkboxSetField;
+    }
+
+    private function getRelationClassName(): string
+    {
+        if ($this->relationClassName === '') {
+            $hasMany = Config::inst()->get($this->callingObject->ClassName, 'has_many');
+            $manyMany = Config::inst()->get($this->callingObject->ClassName, 'many_many');
+            $belongsManyMany = Config::inst()->get($this->callingObject->ClassName, 'belongs_many_many');
+            foreach ([
+                $hasMany,
+                $manyMany,
+                $belongsManyMany,
+            ] as $types) {
+                if (isset($types[$this->relationName])) {
+                    $typeOptions = $types[$this->relationName];
+                    $typeArray = explode('.', $typeOptions);
+                    $this->relationClassName = $typeArray[0];
+                    break;
+                }
+            }
+        }
+
+        return $this->relationClassName;
+    }
+
+    private function isVersioned(): bool
+    {
+        $this->relationClassName = $this->getRelationClassName();
+        if ($this->relationClassName && class_exists($this->relationClassName)) {
+            $foreignSingleton = Injector::inst()->get($this->relationClassName);
+
+            return $foreignSingleton->hasExtension(Versioned::class) ? true : false;
+        }
+
+        return false;
+    }
+
+    private function hasCheckboxSet(): bool
+    {
+        $this->relationClassName = $this->getRelationClassName();
+        if ($this->relationClassName && class_exists($this->relationClassName)) {
+            $className = $this->relationClassName;
+            return $className::get()->count() < $this->maxItemsForCheckBoxSet;
+        }
+
+        return false;
+    }
+
+    private function hasGridField(): bool
+    {
+        //do we need it to edit the relationship?
+        if ($this->hasEditRelation || $this->hasDelete || $this->hasAdd || $this->sortField) {
+            return true;
+        }
+
+        // do we need it because we do not have a checkboxset?
+        if ($this->hasCheckboxSet() === false) {
+            return true;
+        }
+
+        //we can go without!
+        return false;
+    }
+
+    private function getSortField(): string
+    {
+        //todo - add undefinedoffset/sortablegridfield
+        if (! $this->sortField) {
+            $manyManyExtras = Config::inst()->get($this->callingObject->ClassName, 'many_many_extraFields');
+            if (isset($manyManyExtras[$this->relationName])) {
+                foreach ($manyManyExtras[$this->relationName] as $field => $tempType) {
+                    if (strtolower($tempType) === 'int') {
+                        $this->sortField = $field;
+                    }
+                }
+            }
+        }
+
+        return $this->sortField;
+    }
+}
