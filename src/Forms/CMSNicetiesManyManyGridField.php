@@ -162,7 +162,7 @@ class CMSNicetiesManyManyGridField extends CompositeField
         }
 
         $gridField = null;
-        if($this->hasGridField()) {
+        if ($this->hasGridField()) {
             $config->removeComponentsByType(GridField_ActionMenu::class);
             $gridField = GridField::create(
                 $this->relationName . 'GridField',
@@ -194,7 +194,7 @@ class CMSNicetiesManyManyGridField extends CompositeField
             if (! $this->hasAddExisting) {
                 $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
             }
-            if($hasCheckboxSet) {
+            if ($hasCheckboxSet) {
                 $gridField->setTitle('Added ' . $this->labelForField);
             }
             if ($this->sortField) {
@@ -216,17 +216,16 @@ class CMSNicetiesManyManyGridField extends CompositeField
         }
 
         $return = [
-            HeaderField::create($safeLabel . 'Header', $this->labelForField)
+            HeaderField::create($safeLabel . 'Header', $this->labelForField),
         ];
-        if($checkboxSetField) {
+        if ($checkboxSetField) {
             $return[] = $checkboxSetField;
         }
-        if($gridField) {
+        if ($gridField) {
             $return[] = $gridField;
         }
 
         return $return;
-
     }
 
     private function getRelationClassName(): string
@@ -278,12 +277,12 @@ class CMSNicetiesManyManyGridField extends CompositeField
     private function hasGridField(): bool
     {
         //do we need it to edit the relationship?
-        if($this->hasEditRelation || $this->hasDelete || $this->hasAdd) {
+        if ($this->hasEditRelation || $this->hasDelete || $this->hasAdd) {
             return true;
         }
 
         // do we need it because we do not have a checkboxset?
-        if($this->hasCheckboxSet() === false) {
+        if ($this->hasCheckboxSet() === false) {
             return true;
         }
 
