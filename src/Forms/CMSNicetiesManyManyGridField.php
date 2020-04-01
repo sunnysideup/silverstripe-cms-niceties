@@ -16,6 +16,7 @@ use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Versioned\GridFieldArchiveAction;
 use SilverStripe\Versioned\Versioned;
+use SilverStripe\ORM\DataObject;
 
 // use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 // TODO: use undefinedoffset/sortablegridfield
@@ -41,9 +42,9 @@ class CMSNicetiesManyManyGridField extends CompositeField
 {
     /**
      * the object calling this class, aka the class where we add the fields
-     * @var string
+     * @var object
      */
-    protected $callingObject = '';
+    protected $callingObject = null;
 
     protected $relationName = '';
 
@@ -65,7 +66,8 @@ class CMSNicetiesManyManyGridField extends CompositeField
 
     /**
      * provides a generic Grid Field for Many Many relations
-     * @param  string  $callingObject->relationName   Name of the Relationship - e.g. MyWidgets
+     * @param  DataObject  $callingObject   Name of the Relationship - e.g. MyWidgets
+     * @param  string      $relationName  Name of the Relationship - e.g. MyWidgets
      *
      * @return array
      */
