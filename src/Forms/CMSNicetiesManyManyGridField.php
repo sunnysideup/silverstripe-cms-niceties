@@ -159,12 +159,6 @@ class CMSNicetiesManyManyGridField extends CompositeField
             $this->hasUnlink = false;
             $this->hasAddExisting = false;
         }
-        if ($this->sortField) {
-            //todo: add undefinedoffset/sortablegridfield
-            // $config->addComponent($sorter = new GridFieldOrderableRows($sortField));
-            //may need some help finding relation!
-            // $sorter->setCustomRelationName($this->relationName);
-        }
 
         $gridField = null;
         if($this->hasGridField()) {
@@ -201,6 +195,12 @@ class CMSNicetiesManyManyGridField extends CompositeField
             }
             if($hasCheckboxSet) {
                 $gridField->setTitle('Added ' . $this->labelForField);
+            }
+            if ($this->sortField) {
+                //todo: add undefinedoffset/sortablegridfield
+                // $config->addComponent($sorter = new GridFieldOrderableRows($sortField));
+                //may need some help finding relation!
+                // $sorter->setCustomRelationName($this->relationName);
             }
         }
 
