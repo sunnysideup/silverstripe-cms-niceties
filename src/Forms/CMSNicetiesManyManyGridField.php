@@ -47,11 +47,17 @@ class CMSNicetiesManyManyGridField extends CompositeField
 
     protected $relationName = '';
 
-    protected $type = '';
+    /**
+     * name of the class that we are linking to
+     * @var string
+     */
+    protected $relationClassName = '';
 
     protected $sortField = '';
 
     protected $labelForField = '';
+
+    protected $hasEditRelation = true;
 
     protected $hasUnlink = true;
 
@@ -61,7 +67,7 @@ class CMSNicetiesManyManyGridField extends CompositeField
 
     protected $hasAddExisting = true;
 
-    protected $maxItemsForCheckBoxSet = 100;
+    protected $maxItemsForCheckBoxSet = 150;
 
     /**
      * provides a generic Grid Field for Many Many relations
@@ -88,6 +94,13 @@ class CMSNicetiesManyManyGridField extends CompositeField
     public function setLabelForField(string $labelForField)
     {
         $this->labelForField = $labelForField;
+
+        return $this;
+    }
+
+    public function setHasEditRelation(bool $hasEditRelation)
+    {
+        $this->hasEditRelation = $hasEditRelation;
 
         return $this;
     }
@@ -132,7 +145,7 @@ class CMSNicetiesManyManyGridField extends CompositeField
         $isVersioned = $this->isVersioned();
         $hasCheckboxSet = $this->hasCheckboxSet();
         $this->sortField = $this->getSortField();
-        $this->type = $this->foreignType();
+        $this->relationClassName = $this->getRelationClassName();
 
         if (! $this->labelForField) {
             $fieldLabels = Config::inst()->get($this->callingObject->ClassName, 'field_labels');
@@ -144,7 +157,7 @@ class CMSNicetiesManyManyGridField extends CompositeField
 
         if ($hasCheckboxSet) {
             $this->hasUnlink = false;
-            $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
+            $this->hasAddExisting = false;
         }
         if ($this->sortField) {
             //todo: add undefinedoffset/sortablegridfield
@@ -153,56 +166,71 @@ class CMSNicetiesManyManyGridField extends CompositeField
             // $sorter->setCustomRelationName($this->relationName);
         }
 
-        $config->removeComponentsByType(GridField_ActionMenu::class);
-        $gridField = GridField::create(
-            $this->relationName . 'GridField',
-            $this->labelForField,
-            $this->callingObject->{$this->relationName}(),
-            $config
-        );
+        $gridField = null;
+        if($this->hasGridField()) {
+            $config->removeComponentsByType(GridField_ActionMenu::class);
+            $gridField = GridField::create(
+                $this->relationName . 'GridField',
+                $this->labelForField,
+                $this->callingObject->{$this->relationName}(),
+                $config
+            );
 
-        //we remove both - just in case the type is unknown.
-        $config->removeComponentsByType(GridFieldArchiveAction::class);
-        $config->removeComponentsByType(GridFieldDeleteAction::class);
+            //we remove both - just in case the type is unknown.
+            $config->removeComponentsByType(GridFieldArchiveAction::class);
+            $config->removeComponentsByType(GridFieldDeleteAction::class);
 
-        if ($this->hasDelete) {
-            if ($isVersioned) {
-                // $config->addComponent(new GridFieldArchiveAction());
-                // $config->addComponent(new GridFieldDeleteAction($unlink = false));
-            } else {
-                $config->addComponent(new GridFieldDeleteAction($unlink = false));
+            //deletes
+            if ($this->hasDelete) {
+                if ($isVersioned) {
+                    // $config->addComponent(new GridFieldArchiveAction());
+                    // $config->addComponent(new GridFieldDeleteAction($unlink = false));
+                } else {
+                    $config->addComponent(new GridFieldDeleteAction($unlink = false));
+                }
+            } elseif ($this->hasUnlink) {
+                $config->addComponent(new GridFieldDeleteAction($unlink = true));
             }
-        } elseif ($this->hasUnlink) {
-            $config->addComponent(new GridFieldDeleteAction($unlink = true));
-        }
-        if (! $this->hasAdd) {
-            $config->removeComponentsByType(GridFieldAddNewButton::class);
-        }
-        if (! $this->hasAddExisting) {
-            $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
+
+            if (! $this->hasAdd) {
+                $config->removeComponentsByType(GridFieldAddNewButton::class);
+            }
+
+            if (! $this->hasAddExisting) {
+                $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
+            }
+            if($hasCheckboxSet) {
+                $gridField->setTitle('Added ' . $this->labelForField);
+            }
         }
 
+        $checkboxSetField = null;
         if ($hasCheckboxSet) {
-            $className = $this->type;
-            return [
-                HeaderField::create($safeLabel . 'Header', $this->labelForField),
-                CheckboxSetField::create(
-                    $this->relationName,
-                    'Quick Add / Remove ',
-                    $className::get()->map()
-                ),
-                $gridField->setTitle('Added ' . $this->labelForField),
-            ];
+            $className = $this->relationClassName;
+            $checkboxSetField = CheckboxSetField::create(
+                $this->relationName,
+                'Quick Add / Remove ',
+                $className::get()->map()
+            );
         }
-        return [
-            HeaderField::create($safeLabel . 'Header', $this->labelForField),
-            $gridField,
+
+        $return = [
+            HeaderField::create($safeLabel . 'Header', $this->labelForField)
         ];
+        if($checkboxSetField) {
+            $return[] = $checkboxSetField;
+        }
+        if($gridField) {
+            $return[] = $gridField;
+        }
+
+        return $return;
+
     }
 
-    private function foreignType(): string
+    private function getRelationClassName(): string
     {
-        if ($this->type === '') {
+        if ($this->relationClassName === '') {
             $hasMany = Config::inst()->get($this->callingObject->ClassName, 'has_many');
             $manyMany = Config::inst()->get($this->callingObject->ClassName, 'many_many');
             $belongsManyMany = Config::inst()->get($this->callingObject->ClassName, 'belongs_many_many');
@@ -214,20 +242,20 @@ class CMSNicetiesManyManyGridField extends CompositeField
                 if (isset($types[$this->relationName])) {
                     $typeOptions = $types[$this->relationName];
                     $typeArray = explode('.', $typeOptions);
-                    $this->type = $typeArray[0];
+                    $this->relationClassName = $typeArray[0];
                     break;
                 }
             }
         }
 
-        return $this->type;
+        return $this->relationClassName;
     }
 
     private function isVersioned(): bool
     {
-        $this->type = $this->foreignType();
-        if ($this->type && class_exists($this->type)) {
-            $foreignSingleton = Injector::inst()->get($this->type);
+        $this->relationClassName = $this->getRelationClassName();
+        if ($this->relationClassName && class_exists($this->relationClassName)) {
+            $foreignSingleton = Injector::inst()->get($this->relationClassName);
 
             return $foreignSingleton->hasExtension(Versioned::class) ? true : false;
         }
@@ -237,12 +265,28 @@ class CMSNicetiesManyManyGridField extends CompositeField
 
     private function hasCheckboxSet(): bool
     {
-        $this->type = $this->foreignType();
-        if ($this->type && class_exists($this->type)) {
-            $className = $this->type;
+        $this->relationClassName = $this->getRelationClassName();
+        if ($this->relationClassName && class_exists($this->relationClassName)) {
+            $className = $this->relationClassName;
             return $className::get()->count() < $this->maxItemsForCheckBoxSet;
         }
 
+        return false;
+    }
+
+    private function hasGridField(): bool
+    {
+        //do we need it to edit the relationship?
+        if($this->hasEditRelation || $this->hasDelete || $this->hasAdd) {
+            return true;
+        }
+
+        // do we need it because we do not have a checkboxset?
+        if($this->hasCheckboxSet() === false) {
+            return true;
+        }
+
+        //we can go without!
         return false;
     }
 
