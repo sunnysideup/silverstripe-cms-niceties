@@ -6,22 +6,22 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\Forms\CompositeField;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridField_ActionMenu;
-use SilverStripe\Forms\GridField\GridFieldConfig;
-use SilverStripe\Forms\GridField\GridFieldDetailForm;
-use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
-
+use SilverStripe\Forms\GridField\GridFieldConfig;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+
+use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
-use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\GridFieldArchiveAction;
-use SilverStripe\Versioned\VersionedGridFieldDetailForm;
 use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\VersionedGridFieldDetailForm;
 
 // use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 // TODO: use undefinedoffset/sortablegridfield
@@ -102,13 +102,11 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
      */
     protected $hasDelete = true;
 
-
     /**
      * can new items be added?
      * @var bool
      */
     protected $hasAdd = true;
-
 
     /**
      * can existing items be linked?
@@ -117,9 +115,8 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     protected $hasAddExisting = true;
 
     /**
-    *
-    * @var int
-    */
+     * @var int
+     */
     protected $maxItemsForCheckBoxSet = 150;
 
     /**
@@ -155,7 +152,6 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
      */
     private $checkboxSetField = null;
 
-
     /**
      * provides a generic Grid Field for Many Many relations
      * @param  DataObject  $callingObject   Name of the Relationship - e.g. MyWidgets
@@ -176,17 +172,6 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         if ($this->listIsEmpty() || $force) {
             $this->getChildren();
         }
-    }
-
-    protected function listIsEmpty() : bool
-    {
-        if( empty($this->children) ) {
-            if ($this->children instanceof FieldList && $this->children->count() === 0) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     public function setSortField(string $sortField)
@@ -277,13 +262,6 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    protected function checkIfFieldsHaveBeenBuilt()
-    {
-        if($this->listIsEmpty() === false) {
-            user_error('There is an error in the sequence of your logic. The fields have already been built!');
-        }
-    }
-
     public function setSearchOutputFormat(string $searchOutputFormat)
     {
         $this->searchOutputFormat = $searchOutputFormat;
@@ -310,19 +288,6 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     }
 
     /**
-     * @return GridFieldDetailForm|VersionedGridFieldDetailForm
-     */
-    protected function getDetailedForm()
-    {
-        $this->doBuild();
-        $this->getGridFieldConfig = $this->getGridFieldConfig();
-        $detailedForm = $this->getGridFieldConfig->getComponentByType(GridFieldDetailForm::class);
-
-        return $detailedForm;
-    }
-
-    /**
-     *
      * @return FieldList
      */
     public function getChildren()
@@ -373,8 +338,8 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 }
 
                 if ($this->hasAdd) {
-                    if($this->addLabel) {
-                        $this->getGridFieldConfig->getComponentsByType(GridFieldAddNewButton::class)->first()->setButtonName('Add '.$this->addLabel);
+                    if ($this->addLabel) {
+                        $this->getGridFieldConfig->getComponentsByType(GridFieldAddNewButton::class)->first()->setButtonName('Add ' . $this->addLabel);
                     }
                 } else {
                     $this->getGridFieldConfig->removeComponentsByType(GridFieldAddNewButton::class);
@@ -393,15 +358,15 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                         $this->getGridFieldConfig->setCustomRelationName($this->relationName);
                     }
                 }
-                if(count($this->dataColumns)) {
+                if (count($this->dataColumns)) {
                     $dataColumns = $this->getGridFieldConfig->getComponentByType(GridFieldDataColumns::class);
                     $dataColumns->setDisplayFields($this->dataColumns);
                 }
-                if(count($this->searchFields)) {
+                if (count($this->searchFields)) {
                     $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class)
                         ->setSearchFields($this->searchFields);
                 }
-                if(count($this->searchOutputFormat)) {
+                if (count($this->searchOutputFormat)) {
                     $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class)
                         ->setResultsFormat($this->searchOutputFormat);
                 }
@@ -450,6 +415,34 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     public function getCheckboxSetField()
     {
         return $this->checkboxSetField;
+    }
+
+    protected function listIsEmpty(): bool
+    {
+        if (empty($this->children)) {
+            if ($this->children instanceof FieldList && $this->children->count() === 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    protected function checkIfFieldsHaveBeenBuilt()
+    {
+        if ($this->listIsEmpty() === false) {
+            user_error('There is an error in the sequence of your logic. The fields have already been built!');
+        }
+    }
+
+    /**
+     * @return GridFieldDetailForm|VersionedGridFieldDetailForm
+     */
+    protected function getDetailedForm()
+    {
+        $this->doBuild();
+        $this->getGridFieldConfig = $this->getGridFieldConfig();
+        return $this->getGridFieldConfig->getComponentByType(GridFieldDetailForm::class);
     }
 
     private function getRelationClassName(): string
