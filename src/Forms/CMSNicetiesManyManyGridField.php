@@ -14,9 +14,9 @@ use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\HeaderField;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\GridFieldArchiveAction;
 use SilverStripe\Versioned\Versioned;
-use SilverStripe\ORM\DataObject;
 
 // use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 // TODO: use undefinedoffset/sortablegridfield
@@ -34,7 +34,6 @@ use SilverStripe\ORM\DataObject;
  *              ->setHasAdd(true)
  *              ->setHasAddExisting(true)
  *              ->setMaxItemsForCheckBoxSet(50)
- *          )
  *      );
  */
 
