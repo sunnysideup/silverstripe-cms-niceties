@@ -29,11 +29,12 @@ use SilverStripe\Versioned\Versioned;
  *          CMSNicetiesManyManyGridField::create($this, 'RelationFoo')
  *              ->setSortField('SortOrder')
  *              ->setLabelForField('Check this Out')
+ *              ->setHasEditRelation(true)
  *              ->setHasUnlink(true)
  *              ->setHasDelete(true)
  *              ->setHasAdd(true)
  *              ->setHasAddExisting(true)
- *              ->setMaxItemsForCheckBoxSet(50)
+ *              ->setMaxItemsForCheckBoxSet(150)
  *      );
  */
 
