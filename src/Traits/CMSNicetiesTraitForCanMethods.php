@@ -1,15 +1,13 @@
 <?php
 
-
 namespace Sunnysideup\CMSNiceties\Traits;
 
-use SilverStripe\Security\Security;
-use SilverStripe\Security\Permission;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\Security;
 
 trait CMSNicetiesTraitForCanMethods
 {
-
     public function canCreate($member = null, $context = [])
     {
         if (! $member) {
@@ -27,9 +25,8 @@ trait CMSNicetiesTraitForCanMethods
                     }
                 }
                 return $outcome;
-            } else {
-                return $obj->canCreate($member, $context);
             }
+            return $obj->canCreate($member, $context);
         }
         if ($this->hasMethod('canEditingGroupsCodes')) {
             $groupCodes = $this->canEditingGroupsCodes();

@@ -1,25 +1,22 @@
 <?php
 
+namespace Sunnysideup\CMSNiceties\Forms;
 
-namespace Sunnysideup\CMSNiceties\Api;
-
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Config\Config;
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\Versioned\GridFieldArchiveAction;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\CheckboxSetField;
+use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Forms\GridField\GridFieldViewButton;
-use SilverStripe\Forms\GridField\GridFieldEditButton;
 use SilverStripe\Forms\GridField\GridField_ActionMenu;
-use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
-use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\HeaderField;
-use SilverStripe\Forms\CheckboxSetField;
-use SilverStripe\Forms\CompositeField;
-use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Versioned\GridFieldArchiveAction;
+use SilverStripe\Versioned\Versioned;
+
 // use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 // TODO: use undefinedoffset/sortablegridfield
 
@@ -42,9 +39,6 @@ use SilverStripe\CMS\Model\SiteTree;
 
 class CMSNicetiesManyManyGridField extends CompositeField
 {
-
-
-
     /**
      * the object calling this class, aka the class where we add the fields
      * @var string
@@ -57,72 +51,21 @@ class CMSNicetiesManyManyGridField extends CompositeField
 
     protected $sortField = '';
 
-    public function setSortField(string $sortField)
-    {
-        $this->sortField = $sortField;
-
-        return $this;
-    }
     protected $labelForField = '';
-
-    public function setLabelForField(string $labelForField)
-    {
-        $this->labelForField = $labelForField;
-
-        return $this;
-    }
 
     protected $hasUnlink = true;
 
-    public function setHasUnlink(bool $hasUnlink)
-    {
-        $this->hasUnlink = $hasUnlink;
-
-        return $this;
-    }
-
     protected $hasDelete = true;
-
-
-    public function setHasDelete(bool $hasDelete)
-    {
-        $this->hasDelete = $hasDelete;
-
-        return $this;
-    }
 
     protected $hasAdd = true;
 
-
-    public function setHasAdd(bool $hasAdd)
-    {
-        $this->hasAdd = $hasAdd;
-
-        return $this;
-    }
-
     protected $hasAddExisting = true;
-
-    public function setHasAddExisting(bool $hasAddExisting)
-    {
-        $this->hasAddExisting = $hasAddExisting;
-
-        return $this;
-    }
-
 
     protected $maxItemsForCheckBoxSet = 100;
 
-    public function setMaxItemsForCheckBoxSet(int $maxItemsForCheckBoxSet)
-    {
-        $this->maxItemsForCheckBoxSet = $maxItemsForCheckBoxSet;
-
-        return $this;
-    }
-
     /**
      * provides a generic Grid Field for Many Many relations
-     * @param  string  $this->relationName   Name of the Relationship - e.g. MyWidgets
+     * @param  string  $callingObject->relationName   Name of the Relationship - e.g. MyWidgets
      *
      * @return array
      */
@@ -134,7 +77,56 @@ class CMSNicetiesManyManyGridField extends CompositeField
         parent::__construct($this->getFieldCollection());
     }
 
-    public function getFieldCollection() : array
+    public function setSortField(string $sortField)
+    {
+        $this->sortField = $sortField;
+
+        return $this;
+    }
+
+    public function setLabelForField(string $labelForField)
+    {
+        $this->labelForField = $labelForField;
+
+        return $this;
+    }
+
+    public function setHasUnlink(bool $hasUnlink)
+    {
+        $this->hasUnlink = $hasUnlink;
+
+        return $this;
+    }
+
+    public function setHasDelete(bool $hasDelete)
+    {
+        $this->hasDelete = $hasDelete;
+
+        return $this;
+    }
+
+    public function setHasAdd(bool $hasAdd)
+    {
+        $this->hasAdd = $hasAdd;
+
+        return $this;
+    }
+
+    public function setHasAddExisting(bool $hasAddExisting)
+    {
+        $this->hasAddExisting = $hasAddExisting;
+
+        return $this;
+    }
+
+    public function setMaxItemsForCheckBoxSet(int $maxItemsForCheckBoxSet)
+    {
+        $this->maxItemsForCheckBoxSet = $maxItemsForCheckBoxSet;
+
+        return $this;
+    }
+
+    public function getFieldCollection(): array
     {
         $isVersioned = $this->isVersioned();
         $hasCheckboxSet = $this->hasCheckboxSet();
@@ -145,7 +137,7 @@ class CMSNicetiesManyManyGridField extends CompositeField
             $fieldLabels = Config::inst()->get($this->callingObject->ClassName, 'field_labels');
             $this->labelForField = isset($fieldLabels[$this->relationName]) ? $fieldLabels[$this->relationName] : '';
         }
-        $safeLabel = preg_replace("/[^A-Za-z0-9 ]/", '', $this->labelForField);
+        $safeLabel = preg_replace('/[^A-Za-z0-9 ]/', '', $this->labelForField);
 
         $config = GridFieldConfig_RelationEditor::create();
 
@@ -160,10 +152,9 @@ class CMSNicetiesManyManyGridField extends CompositeField
             // $sorter->setCustomRelationName($this->relationName);
         }
 
-
         $config->removeComponentsByType(GridField_ActionMenu::class);
         $gridField = GridField::create(
-            $this->relationName.'GridField',
+            $this->relationName . 'GridField',
             $this->labelForField,
             $this->callingObject->{$this->relationName}(),
             $config
@@ -193,26 +184,24 @@ class CMSNicetiesManyManyGridField extends CompositeField
         if ($hasCheckboxSet) {
             $className = $this->type;
             return [
-                HeaderField::create($safeLabel.'Header', $this->labelForField),
+                HeaderField::create($safeLabel . 'Header', $this->labelForField),
                 CheckboxSetField::create(
                     $this->relationName,
                     'Quick Add / Remove ',
                     $className::get()->map()
                 ),
-                $gridField->setTitle('Added '.$this->labelForField),
-            ];
-        } else {
-            return [
-                HeaderField::create($safeLabel.'Header', $this->labelForField),
-                $gridField,
+                $gridField->setTitle('Added ' . $this->labelForField),
             ];
         }
+        return [
+            HeaderField::create($safeLabel . 'Header', $this->labelForField),
+            $gridField,
+        ];
     }
 
-    private function foreignType() :string
+    private function foreignType(): string
     {
-        if($this->type === '') {
-
+        if ($this->type === '') {
             $hasMany = Config::inst()->get($this->callingObject->ClassName, 'has_many');
             $manyMany = Config::inst()->get($this->callingObject->ClassName, 'many_many');
             $belongsManyMany = Config::inst()->get($this->callingObject->ClassName, 'belongs_many_many');
@@ -233,7 +222,7 @@ class CMSNicetiesManyManyGridField extends CompositeField
         return $this->type;
     }
 
-    private function isVersioned() :bool
+    private function isVersioned(): bool
     {
         $this->type = $this->foreignType();
         if ($this->type && class_exists($this->type)) {
@@ -245,7 +234,7 @@ class CMSNicetiesManyManyGridField extends CompositeField
         return false;
     }
 
-    private function hasCheckboxSet() :bool
+    private function hasCheckboxSet(): bool
     {
         $this->type = $this->foreignType();
         if ($this->type && class_exists($this->type)) {
@@ -256,7 +245,7 @@ class CMSNicetiesManyManyGridField extends CompositeField
         return false;
     }
 
-    private function getSortField() :string
+    private function getSortField(): string
     {
         //todo - add undefinedoffset/sortablegridfield
         if (! $this->sortField) {

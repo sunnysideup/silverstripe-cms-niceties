@@ -1,37 +1,24 @@
 <?php
 
-
 namespace Sunnysideup\CMSNiceties\Traits;
 
-use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Forms\GridField\GridField_ActionMenu;
-use SilverStripe\Forms\GridField\GridFieldDeleteAction;
-use SilverStripe\Forms\GridField\GridFieldAddNewButton;
-// use SilverStripe\Forms\GridField\GridFieldArchiveAction;
-use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
-use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
-use SilverStripe\Forms\CheckboxSetField;
-use SilverStripe\Forms\CompositeField;
-use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Admin\ModelAdmin;
+// use SilverStripe\Forms\GridField\GridFieldArchiveAction;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Core\Injector\Injector;
 
 trait CMSNicetiesTraitForCMSLinks
 {
-
-
     public function CMSEditLink()
     {
         if ($this instanceof SiteTree) {
-            return 'admin/pages/edit/show/'.$this->ID.'/';
-        } else {
-            if ($cont = $this->myModelAdminController()) {
-                return $cont->Link().
-                    $this->sanitisedClassName().'/EditForm/field/'.
-                    $this->sanitisedClassName().'/item/'.$this->ID.
+            return 'admin/pages/edit/show/' . $this->ID . '/';
+        }
+        if ($cont = $this->myModelAdminController()) {
+            return $cont->Link() .
+                    $this->sanitisedClassName() . '/EditForm/field/' .
+                    $this->sanitisedClassName() . '/item/' . $this->ID .
                     '/edit';
-            }
         }
     }
 
@@ -39,9 +26,9 @@ trait CMSNicetiesTraitForCMSLinks
     {
         if (! $this instanceof SiteTree) {
             if ($cont = $this->myModelAdminController()) {
-                return $cont->Link().
-                    $this->sanitisedClassName().'/EditForm/field/'.
-                    $this->sanitisedClassName().'/item/new';
+                return $cont->Link() .
+                    $this->sanitisedClassName() . '/EditForm/field/' .
+                    $this->sanitisedClassName() . '/item/new';
             }
         }
     }
@@ -50,13 +37,12 @@ trait CMSNicetiesTraitForCMSLinks
     {
         if (! $this instanceof SiteTree) {
             if ($cont = $this->myModelAdminController()) {
-                return $cont->Link().$this->sanitisedClassName();
+                return $cont->Link() . $this->sanitisedClassName();
             }
         }
     }
 
     /**
-     *
      * @return ModelAdmin|null
      */
     protected function myModelAdminController()
