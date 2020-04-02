@@ -41,6 +41,8 @@ use SilverStripe\Versioned\VersionedGridFieldDetailForm;
  *              ->setHasAddExisting(true)
  *              ->setMaxItemsForCheckBoxSet(150)
  *              ->setDataColumns(['Title' => 'My Title'])
+ *              ->setSearchFields(['Title' => 'My Title'])
+ *              ->setSearchOutputFormat('')
  *      );
  */
 
@@ -491,6 +493,9 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
 
     private function hasCheckboxSet(): bool
     {
+        if (!$this->callingObject->canEdit()) {
+            return false;
+        }
         $this->relationClassName = $this->getRelationClassName();
         if ($this->relationClassName && class_exists($this->relationClassName)) {
             $className = $this->relationClassName;
