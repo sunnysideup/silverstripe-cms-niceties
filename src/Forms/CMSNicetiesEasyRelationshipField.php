@@ -361,7 +361,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 }
                 if (count($this->dataColumns)) {
                     $dataColumns = $this->getGridFieldConfig->getComponentByType(GridFieldDataColumns::class);
-                    if($dataColumns) {
+                    if ($dataColumns) {
                         $dataColumns->setDisplayFields($this->dataColumns);
                     }
                 }
@@ -373,7 +373,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 }
                 if ($this->searchOutputFormat) {
                     $autocompleter = $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class);
-                    if($autocompleter) {
+                    if ($autocompleter) {
                         $autocompleter->setResultsFormat($this->searchOutputFormat);
                     }
                 }
@@ -428,7 +428,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     {
         if (empty($this->children)) {
             return true;
-        } else if ($this->children instanceof FieldList && $this->children->count() === 0) {
+        } elseif ($this->children instanceof FieldList && $this->children->count() === 0) {
             return true;
         }
 
