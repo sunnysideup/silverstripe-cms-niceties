@@ -279,7 +279,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         $obj = $type::create();
         $defaultFields = $obj->getCMSFields();
 
-        $this->setDetaildFields($defaultFields);
+        $this->setDetailedFields($defaultFields);
 
         return $defaultFields;
     }
