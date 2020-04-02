@@ -165,6 +165,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         $this->relationName = $relationName;
 
         parent::__construct();
+        $this->checkIfFieldsHaveBeenBuilt();
     }
 
     public function doBuild($force = false)
@@ -281,7 +282,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $defaultFields;
     }
 
-    public function setDetaildFields(FieldList $fields)
+    public function setDetailedFields(FieldList $fields)
     {
         $this->doBuild();
         $this->getDetailedForm()->setFields($fields);
@@ -354,21 +355,27 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 if ($this->sortField) {
                     $classA = 'UndefinedOffset\\SortableGridField\\Forms\\GridFieldSortableRows';
                     if (class_exists($classA)) {
-                        $this->getGridFieldConfig->addComponent(new $classA($this->sortField));
-                        $this->getGridFieldConfig->setCustomRelationName($this->relationName);
+                        $this->getGridFieldConfig->addComponent($sorter = new $classA($this->sortField));
+                        $sorter->setCustomRelationName($this->relationName);
                     }
                 }
                 if (count($this->dataColumns)) {
                     $dataColumns = $this->getGridFieldConfig->getComponentByType(GridFieldDataColumns::class);
-                    $dataColumns->setDisplayFields($this->dataColumns);
+                    if($dataColumns) {
+                        $dataColumns->setDisplayFields($this->dataColumns);
+                    }
                 }
                 if (count($this->searchFields)) {
-                    $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class)
-                        ->setSearchFields($this->searchFields);
+                    $autocompleter = $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class);
+                    if ($autocompleter) {
+                        $autocompleter->setSearchFields($this->searchFields);
+                    }
                 }
-                if (count($this->searchOutputFormat)) {
-                    $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class)
-                        ->setResultsFormat($this->searchOutputFormat);
+                if ($this->searchOutputFormat) {
+                    $autocompleter = $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class);
+                    if($autocompleter) {
+                        $autocompleter->setResultsFormat($this->searchOutputFormat);
+                    }
                 }
             }
 
@@ -420,9 +427,9 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     protected function listIsEmpty(): bool
     {
         if (empty($this->children)) {
-            if ($this->children instanceof FieldList && $this->children->count() === 0) {
-                return true;
-            }
+            return true;
+        } else if ($this->children instanceof FieldList && $this->children->count() === 0) {
+            return true;
         }
 
         return false;
@@ -430,7 +437,9 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
 
     protected function checkIfFieldsHaveBeenBuilt()
     {
-        if ($this->listIsEmpty() === false) {
+        if ($this->listIsEmpty() === true) {
+            //all good
+        } else {
             user_error('There is an error in the sequence of your logic. The fields have already been built!');
         }
     }
