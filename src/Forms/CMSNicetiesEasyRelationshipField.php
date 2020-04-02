@@ -119,7 +119,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     /**
      * @var int
      */
-    protected $maxItemsForCheckBoxSet = 150;
+    protected $maxItemsForCheckBoxSet = 300;
 
     /**
      * data columns
@@ -384,21 +384,27 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             $this->checkboxSetField = null;
             if ($hasCheckboxSet) {
                 $className = $this->relationClassName;
+                $obj = Injector::inst()->get($className);
+                if($obj->hasMethod('getTitleForList')) {
+                    $list = $className::get()->map('ID', 'getTitleForList');
+                } else {
+                    $list = $className::get()->map('ID', 'Title');
+                }
                 $this->checkboxSetField = CheckboxSetField::create(
                     $this->relationName,
                     'Add / Remove',
-                    $className::get()->map()
+                    $list
                 );
             }
 
             $fieldsArray = [
-                HeaderField::create($safeLabel . 'Header', $this->labelForField),
+                HeaderField::create($safeLabel . 'Header', $this->labelForField, 1),
             ];
-            if ($this->checkboxSetField) {
-                $fieldsArray[] = $this->checkboxSetField;
-            }
             if ($this->gridField) {
                 $fieldsArray[] = $this->gridField;
+            }
+            if ($this->checkboxSetField) {
+                $fieldsArray[] = $this->checkboxSetField;
             }
             $this->children = FieldList::create($fieldsArray);
             //important - as setChildren does more than just setting variable...
@@ -475,30 +481,28 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 }
             }
         }
-
-        return $this->relationClassName;
+        if ($this->relationClassName && class_exists($this->relationClassName)) {
+            return $this->relationClassName;
+        } else {
+            user_error('Can not find related class: '.$this->relationClassName);
+        }
     }
 
     private function isVersioned(): bool
     {
         $this->relationClassName = $this->getRelationClassName();
-        if ($this->relationClassName && class_exists($this->relationClassName)) {
-            $foreignSingleton = Injector::inst()->get($this->relationClassName);
+        $foreignSingleton = Injector::inst()->get($this->relationClassName);
 
-            return $foreignSingleton->hasExtension(Versioned::class) ? true : false;
-        }
-
-        return false;
+        return $foreignSingleton->hasExtension(Versioned::class) ? true : false;
     }
 
     private function hasCheckboxSet(): bool
     {
         if ($this->callingObject->canEdit()) {
             $this->relationClassName = $this->getRelationClassName();
-            if ($this->relationClassName && class_exists($this->relationClassName)) {
-                $className = $this->relationClassName;
-                return $className::get()->count() < $this->maxItemsForCheckBoxSet;
-            }
+            $className = $this->relationClassName;
+
+            return $className::get()->count() < $this->maxItemsForCheckBoxSet;
         }
 
         return false;
