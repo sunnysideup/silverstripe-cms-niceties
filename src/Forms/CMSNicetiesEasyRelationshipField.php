@@ -493,13 +493,12 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
 
     private function hasCheckboxSet(): bool
     {
-        if (!$this->callingObject->canEdit()) {
-            return false;
-        }
-        $this->relationClassName = $this->getRelationClassName();
-        if ($this->relationClassName && class_exists($this->relationClassName)) {
-            $className = $this->relationClassName;
-            return $className::get()->count() < $this->maxItemsForCheckBoxSet;
+        if ($this->callingObject->canEdit()) {
+            $this->relationClassName = $this->getRelationClassName();
+            if ($this->relationClassName && class_exists($this->relationClassName)) {
+                $className = $this->relationClassName;
+                return $className::get()->count() < $this->maxItemsForCheckBoxSet;
+            }
         }
 
         return false;
