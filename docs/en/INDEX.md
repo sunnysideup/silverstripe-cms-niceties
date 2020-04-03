@@ -8,11 +8,12 @@ Add any of the Traits to any DataObject to add functionality.
 
 ### Basic usage
 
+```php
      $fields->addFieldToTab(
          'root.RelationFoo',
          CMSNicetiesManyManyGridField::create($this, 'RelationFoo')
      );
-
+```
 ### Full Usage
 
 ```php
