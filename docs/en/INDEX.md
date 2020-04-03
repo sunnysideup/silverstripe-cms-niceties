@@ -2,7 +2,18 @@
 
 Add any of the Traits to any DataObject to add functionality.
 
-# example usage:
+# CMSNicetiesEasyRelationshipField
+
+## example usage:
+
+### Basic usage
+
+     $fields->addFieldToTab(
+         'root.RelationFoo',
+         CMSNicetiesManyManyGridField::create($this, 'RelationFoo')
+     );
+
+### Full Usage
 
 ```php
 
@@ -18,8 +29,8 @@ Add any of the Traits to any DataObject to add functionality.
              ->setHasAdd(false) //defaults to TRUE
              ->setHasAddExisting(false) //defaults to TRUE
              ->setMaxItemsForCheckBoxSet(150) //defaults to 150
-             ->setDataColumns(['Title' => 'My Title']) //defaults to TRUE
-             ->setSearchFields(['Title', 'Header']) //defaults to TRUE
+             ->setDataColumns(['Title' => 'My Title']) 
+             ->setSearchFields(['Title', 'Header']) 
              ->setSearchOutputFormat('')
      );
      
