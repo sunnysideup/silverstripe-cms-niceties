@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Sunnysideup\CMSNiceties\Traits;
 
 use SilverStripe\Forms\Tab;
@@ -14,10 +13,10 @@ trait CMSNicetiesTraitForTabs
             $fields->insertAfter($tab, $after);
         } else {
             $fields->addFieldsToTab(
-                'Root.'.$name,
+                'Root.' . $name,
                 []
             );
-            $fields->fieldByName('Root.'.$name)->setTitle('|');
+            $fields->fieldByName('Root.' . $name)->setTitle('|');
         }
     }
 
@@ -26,7 +25,7 @@ trait CMSNicetiesTraitForTabs
         // add spaces between capitals
         $items = preg_split('/(?=[A-Z])/', $name);
         if (is_array($items)) {
-            $title =  trim(implode(' ', $items));
+            $title = trim(implode(' ', $items));
         } else {
             $title = $name;
         }
@@ -41,10 +40,10 @@ trait CMSNicetiesTraitForTabs
             }
         } else {
             $fields->addFieldsToTab(
-                'Root.'.$name,
+                'Root.' . $name,
                 []
             );
-            $fields->fieldByName('Root.'.$name)->setTitle($title);
+            $fields->fieldByName('Root.' . $name)->setTitle($title);
         }
     }
 }
