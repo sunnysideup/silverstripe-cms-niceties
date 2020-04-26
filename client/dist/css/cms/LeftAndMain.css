@@ -123,7 +123,7 @@ can only be left aligned and the dimensions can't be changed.
     }
 }
 
-p.alert {
+p#Form_ItemEditForm_error {
     border: 1px solid red;
     background-color: yellow;
 }
