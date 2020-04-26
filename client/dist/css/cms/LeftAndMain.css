@@ -8,7 +8,7 @@ can only be left aligned and the dimensions can't be changed.
 #Form_fileInsertForm #Form_fileInsertForm_Dimensions_Holder
 */
 .field.numeric.text input {
-    max-width: 12rem;  
+    max-width: 12rem;
 }
 .field.text.datetime input {
     max-width: 16rem;
@@ -117,12 +117,16 @@ can only be left aligned and the dimensions can't be changed.
         padding-top: 0.5rem!important;
         padding-bottom: 0.5rem!important;
     }
-    
+
     fieldset.grid-field.ss-gridfield .sortablerowsheading * {
         color: rgb(86, 107, 141)!important;
     }
 }
 
+p.alert {
+    border: 1px solid red;
+    background-color: yellow;
+}
 
 /*
 .CompositeField .form-group.optionset.checkboxset > label:before {
