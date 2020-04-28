@@ -123,10 +123,6 @@ can only be left aligned and the dimensions can't be changed.
     }
 }
 
-p#Form_ItemEditForm_error {
-    border: 1px solid red;
-    background-color: yellow;
-}
 
 /*
 .CompositeField .form-group.optionset.checkboxset > label:before {
