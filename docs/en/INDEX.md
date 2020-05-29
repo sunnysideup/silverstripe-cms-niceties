@@ -128,8 +128,6 @@ Adds basic validation to required and unique fields. In the example below, any v
 `MyUniuqeField` needs to be unique and the editor will be required to enter any value in
 the `MyOtherImportantField` field.
 
-For example:
-
 ```php
 MyDataObject extends DataObject
 {
