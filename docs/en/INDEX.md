@@ -80,3 +80,71 @@ MyDataObject extends DataObject
 
 }
 ```
+# CMSNicetiesTraitForRightTitles
+
+Adds a way to add right titles / descriptions to form fields in a simpler way using:
+`private static $field_labels_right`.
+
+For example:
+```php
+MyDataObject extends DataObject
+{
+    use Sunnysideup\CMSNiceties\Traits\CMSNicetiesTraitForRightTitles;
+
+    private static $field_labels_right = [
+        'Title' => 'A bit of extra info about title goes here...'
+    ];
+
+}
+```
+
+
+# CMSNicetiesTraitForTabs
+
+Adds separation between tabs or adds a tab to a specific spot
+
+For example:
+
+```php
+MyDataObject extends DataObject
+{
+    use Sunnysideup\CMSNiceties\Traits\CMSNicetiesTraitForTabs;
+
+    public function getCMSFields() {
+        $fields = parent::getCMSFields();
+
+        $this->addSeparator($fields, 'RandomName', 'Content');
+
+        $this->addTab($fields, 'More CMS Fields', 'RandomName');
+
+        return $fields;
+    }
+
+}
+```
+# CMSNicetiesTraitForValidation
+
+Adds basic validation to required and unique fields. In the example below, any value for
+`MyUniuqeField` needs to be unique and the editor will be required to enter any value in
+the `MyOtherImportantField` field.
+
+For example:
+
+```php
+MyDataObject extends DataObject
+{
+    use Sunnysideup\CMSNiceties\Traits\CMSNicetiesTraitForValidation;
+
+    private static $indexes = [
+        'MyUniuqeField' => [
+            'type' => 'unique'
+        ],
+    ];
+
+    private static $required_fields = [
+        'MyOtherImportantField',
+    ];
+
+
+}
+```

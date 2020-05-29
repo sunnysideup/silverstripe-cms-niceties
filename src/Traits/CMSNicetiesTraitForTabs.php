@@ -6,7 +6,7 @@ use SilverStripe\Forms\Tab;
 
 trait CMSNicetiesTraitForTabs
 {
-    public function addSeparator($fields, $name, $after = 'Main')
+    public function addSeparator($fields, string $name, ?string $after = 'Main')
     {
         if ($after !== false) {
             $tab = Tab::create($name, '|');
@@ -20,7 +20,7 @@ trait CMSNicetiesTraitForTabs
         }
     }
 
-    public function addTab($fields, $name, $after = 'Main')
+    public function addTab($fields, string $name, ?string $after = 'Main')
     {
         // add spaces between capitals
         $items = preg_split('/(?=[A-Z])/', $name);
