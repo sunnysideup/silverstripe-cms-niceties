@@ -9,19 +9,19 @@ Add any of the Traits to any DataObject to add functionality.
 ### Basic usage
 
 ```php
+
      $fields->addFieldToTab(
          'root.RelationFoo',
-         CMSNicetiesManyManyGridField::create($this, 'RelationFoo')
+         CMSNicetiesEasyRelationshipField::create($this, 'RelationFoo')
      );
 ```
 ### Full Usage
 
 ```php
 
-
      $fields->addFieldToTab(
          'root.RelationFoo',
-         CMSNicetiesManyManyGridField::create($this, 'RelationFoo')
+         CMSNicetiesEasyRelationshipField::create($this, 'RelationFoo')
              ->setSortField('SortOrder')
              ->setLabelForField('Check this Out')
              ->setHasEditRelation(false) //defaults to TRUE
@@ -30,9 +30,53 @@ Add any of the Traits to any DataObject to add functionality.
              ->setHasAdd(false) //defaults to TRUE
              ->setHasAddExisting(false) //defaults to TRUE
              ->setMaxItemsForCheckBoxSet(150) //defaults to 150
-             ->setDataColumns(['Title' => 'My Title']) 
-             ->setSearchFields(['Title', 'Header']) 
+             ->setDataColumns(['Title' => 'My Title'])
+             ->setSearchFields(['Title', 'Header'])
              ->setSearchOutputFormat('')
      );
-     
+
+```
+#CMSNicetiesTraitForCanMethods
+
+Simply way to manage canCreate, canEdit, canDelete, when the object is owned by
+another object (be it a parent or a child, or something else).
+
+For example:
+```php
+MyDataObject extends DataObject
+{
+    use Sunnysideup\CMSNiceties\Traits\CMSNicetiesTraitForCanMethods;
+
+    /**
+     *
+     * @return ArrayList|DataObject
+     */
+    public function canEditingOwnerObject()
+    {
+        // return $this->Children();
+        return $this->Parent();
+    }
+
+    public function canEditingGroupsCodes() : array
+    {
+        return [
+            'MyOTHERCMS_GROUP'
+        ];
+    }
+
+}
+```
+
+# CMSNicetiesTraitForCMSLinks
+Adds: `CMSEditLink`, `CMSAddLink`, and `CMSListLink` to your `DataObject`
+
+For example:
+```php
+MyDataObject extends DataObject
+{
+    use Sunnysideup\CMSNiceties\Traits\CMSNicetiesTraitForCMSLinks;
+
+
+
+}
 ```

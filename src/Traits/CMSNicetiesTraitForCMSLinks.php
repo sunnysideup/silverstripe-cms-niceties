@@ -9,37 +9,41 @@ use SilverStripe\Core\Injector\Injector;
 
 trait CMSNicetiesTraitForCMSLinks
 {
-    public function CMSEditLink()
+    public function CMSEditLink(): string
     {
         if ($this instanceof SiteTree) {
             return 'admin/pages/edit/show/' . $this->ID . '/';
-        }
-        if ($cont = $this->myModelAdminController()) {
+        } elseif ($cont = $this->myModelAdminController()) {
             return $cont->Link() .
                     $this->sanitisedClassName() . '/EditForm/field/' .
                     $this->sanitisedClassName() . '/item/' . $this->ID .
                     '/edit';
         }
+
+        return '404-cms-edit-link-not-found';
     }
 
-    public function CMSAddLink()
+    public function CMSAddLink(): string
     {
-        if (! $this instanceof SiteTree) {
-            if ($cont = $this->myModelAdminController()) {
-                return $cont->Link() .
-                    $this->sanitisedClassName() . '/EditForm/field/' .
-                    $this->sanitisedClassName() . '/item/new';
-            }
+        if ($this instanceof SiteTree) {
+            return parent::CMSListLink();
+        } elseif ($cont = $this->myModelAdminController()) {
+            return $cont->Link() .
+            $this->sanitisedClassName() . '/EditForm/field/' .
+            $this->sanitisedClassName() . '/item/new';
         }
+        return '404-cms-add-link-not-found';
     }
 
-    public function CMSListLink()
+    public function CMSListLink(): string
     {
-        if (! $this instanceof SiteTree) {
-            if ($cont = $this->myModelAdminController()) {
-                return $cont->Link() . $this->sanitisedClassName();
-            }
+        if ($this instanceof SiteTree) {
+            return parent::CMSListLink();
+        } elseif ($cont = $this->myModelAdminController()) {
+            return $cont->Link() . $this->sanitisedClassName();
         }
+
+        return '404-cms-list-link-not-found';
     }
 
     /**
@@ -59,7 +63,7 @@ trait CMSNicetiesTraitForCMSLinks
      * @param string $class
      * @return string
      */
-    protected function sanitisedClassName()
+    protected function sanitisedClassName(): string
     {
         return str_replace('\\', '-', $this->ClassName);
     }

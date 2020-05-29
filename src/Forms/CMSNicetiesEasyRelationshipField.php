@@ -385,7 +385,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             if ($hasCheckboxSet) {
                 $className = $this->relationClassName;
                 $obj = Injector::inst()->get($className);
-                if($obj->hasMethod('getTitleForList')) {
+                if ($obj->hasMethod('getTitleForList')) {
                     $list = $className::get()->map('ID', 'getTitleForList');
                 } else {
                     $list = $className::get()->map('ID', 'Title');
@@ -483,9 +483,8 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         }
         if ($this->relationClassName && class_exists($this->relationClassName)) {
             return $this->relationClassName;
-        } else {
-            user_error('Can not find related class: '.$this->relationClassName);
         }
+        user_error('Can not find related class: ' . $this->relationClassName);
     }
 
     private function isVersioned(): bool

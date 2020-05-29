@@ -24,7 +24,10 @@ trait CMSNicetiesTraitForCanMethods
                         break;
                     }
                 }
-                return $outcome;
+                if ($outcome) {
+                    return parent::canCreate($member, $context);
+                }
+                return false;
             }
             return $obj->canCreate($member, $context);
         }
