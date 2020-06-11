@@ -6,6 +6,7 @@ use SilverStripe\Admin\ModelAdmin;
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Control\Director;
 use SilverStripe\Forms\HTMLReadonlyField;
 
 trait CMSNicetiesTraitForCMSLinks
