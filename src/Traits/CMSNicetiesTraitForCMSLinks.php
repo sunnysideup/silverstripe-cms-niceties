@@ -27,9 +27,14 @@ trait CMSNicetiesTraitForCMSLinks
 
         return '404-cms-edit-link-not-found';
     }
-    public function CMSEditLinkField(string $name, string $relName): HTMLReadonlyField
+
+    public function CMSEditLinkField(string $relName, string $name = ''): HTMLReadonlyField
     {
         $obj = $this->{$relName}();
+        if(! $name) {
+            $nameOptions = $this->fieldLabels();
+            $name = $nameOptions[$relName] ??  $nameOptions[$relName.'ID'] ?? 'error';
+        }
         if($obj && $obj->exists()) {
             $value = '<a href="'.$obj->CMSEditLink().'">'.$obj->getTitle().'</a>';
         } else {
@@ -79,6 +84,7 @@ trait CMSNicetiesTraitForCMSLinks
     /**
      * Sanitise a model class' name for inclusion in a link
      *
+     * @param string $class
      * @return string
      */
     protected function sanitisedClassName(): string
@@ -89,5 +95,5 @@ trait CMSNicetiesTraitForCMSLinks
             $className = $this->ClassName;
         }
         return str_replace('\\', '-', $className);
-    }    
+    }
 }
