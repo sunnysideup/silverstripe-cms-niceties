@@ -12,15 +12,32 @@ trait CMSNicetiesTraitForCMSLinks
     public function CMSEditLink(): string
     {
         if ($this instanceof SiteTree) {
-            return 'admin/pages/edit/show/' . $this->ID . '/';
-        } elseif ($cont = $this->myModelAdminController()) {
-            return $cont->Link() .
-                    $this->sanitisedClassName() . '/EditForm/field/' .
-                    $this->sanitisedClassName() . '/item/' . $this->ID .
-                    '/edit';
+            return Director::absoluteBaseURL() . '/admin/pages/edit/show/' . $this->ID . '/';
+        } else {
+            $cont = $this->myModelAdminController();
+            if($cont) {
+                return $cont->Link() .
+                        $this->sanitisedClassName() . '/EditForm/field/' .
+                        $this->sanitisedClassName() . '/item/' . $this->ID .
+                        '/edit';
+            }
         }
 
         return '404-cms-edit-link-not-found';
+    }
+    public function CMSEditLinkField(string $name, string $relName): HTMLReadonlyField
+    {
+        $obj = $this->{$relName}();
+        if($obj && $obj->exists()) {
+            $value = '<a href="'.$obj->CMSEditLink().'">'.$obj->getTitle().'</a>';
+        } else {
+            $value = '<em>(none)</em>';
+        }
+        return HTMLReadonlyField::create(
+            $relName.'Link',
+            $name,
+            $value
+        );
     }
 
     public function CMSAddLink(): string
@@ -60,11 +77,15 @@ trait CMSNicetiesTraitForCMSLinks
     /**
      * Sanitise a model class' name for inclusion in a link
      *
-     * @param string $class
      * @return string
      */
     protected function sanitisedClassName(): string
     {
-        return str_replace('\\', '-', $this->ClassName);
-    }
+        if($this->hasMethod('classNameForModelAdmin')) {
+            $className =  $this->classNameForModelAdmin();
+        } else {
+            $className = $this->ClassName;
+        }
+        return str_replace('\\', '-', $className);
+    }    
 }
