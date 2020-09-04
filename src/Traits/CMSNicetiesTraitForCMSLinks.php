@@ -5,8 +5,8 @@ namespace Sunnysideup\CMSNiceties\Traits;
 use SilverStripe\Admin\ModelAdmin;
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Control\Director;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\HTMLReadonlyField;
 
 trait CMSNicetiesTraitForCMSLinks
@@ -15,15 +15,15 @@ trait CMSNicetiesTraitForCMSLinks
     {
         if ($this instanceof SiteTree) {
             return Director::absoluteBaseURL() . '/admin/pages/edit/show/' . $this->ID . '/';
-        } else {
-            $cont = $this->myModelAdminController();
-            if($cont) {
-                return $cont->Link() .
+        }
+        $cont = $this->myModelAdminController();
+        if ($cont) {
+            return $cont->Link() .
                         $this->sanitisedClassName() . '/EditForm/field/' .
                         $this->sanitisedClassName() . '/item/' . $this->ID .
                         '/edit';
-            }
         }
+
 
         return '404-cms-edit-link-not-found';
     }
@@ -31,17 +31,17 @@ trait CMSNicetiesTraitForCMSLinks
     public function CMSEditLinkField(string $relName, string $name = ''): HTMLReadonlyField
     {
         $obj = $this->{$relName}();
-        if(! $name) {
+        if (! $name) {
             $nameOptions = $this->fieldLabels();
-            $name = $nameOptions[$relName] ??  $nameOptions[$relName.'ID'] ?? 'error';
+            $name = $nameOptions[$relName] ?? $nameOptions[$relName . 'ID'] ?? 'error';
         }
-        if($obj && $obj->exists()) {
-            $value = '<a href="'.$obj->CMSEditLink().'">'.$obj->getTitle().'</a>';
+        if ($obj && $obj->exists()) {
+            $value = '<a href="' . $obj->CMSEditLink() . '">' . $obj->getTitle() . '</a>';
         } else {
             $value = '<em>(none)</em>';
         }
         return HTMLReadonlyField::create(
-            $relName.'Link',
+            $relName . 'Link',
             $name,
             $value
         );
@@ -89,8 +89,8 @@ trait CMSNicetiesTraitForCMSLinks
      */
     protected function sanitisedClassName(): string
     {
-        if($this->hasMethod('classNameForModelAdmin')) {
-            $className =  $this->classNameForModelAdmin();
+        if ($this->hasMethod('classNameForModelAdmin')) {
+            $className = $this->classNameForModelAdmin();
         } else {
             $className = $this->ClassName;
         }
