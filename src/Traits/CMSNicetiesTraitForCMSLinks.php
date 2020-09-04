@@ -24,7 +24,6 @@ trait CMSNicetiesTraitForCMSLinks
                         '/edit';
         }
 
-
         return '404-cms-edit-link-not-found';
     }
 
