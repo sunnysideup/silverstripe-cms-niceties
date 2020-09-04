@@ -4,6 +4,7 @@ namespace Sunnysideup\CMSNiceties\Forms;
 
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\View\ViewableData;
 
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
 
@@ -17,7 +18,7 @@ class CMSNicetiesLinkButton extends ReadonlyField
      * Creates a new field.
      *
      * @param string $name The internal field name, passed to forms.
-     * @param string|SilverStripe\View\ViewableData|null $label The human-readable field label.
+     * @param string|ViewableData|null $label The human-readable field label.
      * @param mixed $link The value of the field.
      */
     public function __construct($name, $label = null, $link = null)
