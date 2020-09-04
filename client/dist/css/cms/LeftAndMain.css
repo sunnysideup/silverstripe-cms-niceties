@@ -49,6 +49,13 @@ can only be left aligned and the dimensions can't be changed.
     color: #43536d;
 }
 
+.form__field-description, .form__field-extra-label {
+    display: block!important;
+}
+.form-group.field.dropdown{
+    overflow: visible!important;
+}
+
 @media only screen and (min-width: 1100px)  {
 
     fieldset.grid-field.ss-gridfield
