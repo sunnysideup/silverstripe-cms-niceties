@@ -64,6 +64,7 @@ can only be left aligned and the dimensions can't be changed.
         border: 1px solid rgba(219, 224,233, 1);
         background-color: #f1f3f6!important;
         padding: 10px!important;
+        margin-bottom: 2rem;
     }
 
     fieldset.grid-field.ss-gridfield .toolbar--content {
