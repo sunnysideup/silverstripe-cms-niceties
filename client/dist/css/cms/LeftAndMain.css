@@ -129,6 +129,21 @@ can only be left aligned and the dimensions can't be changed.
     fieldset.grid-field.ss-gridfield .sortablerowsheading * {
         color: rgb(86, 107, 141)!important;
     }
+
+    .search-form.collapse.show {
+        width: 70vw;
+        overflow: hidden;
+    }
+    .search-form.collapse.show {
+        width: 97%;
+        overflow: hidden;
+    }
+    .search-form.collapse.show .field.form-group {
+        max-width: 240px;
+        margin-right: 20px;
+        float: left;
+        min-height: 90px;
+    }
 }
 
 
