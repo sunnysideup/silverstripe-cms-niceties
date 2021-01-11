@@ -94,6 +94,15 @@ MyDataObject extends DataObject
     private static $field_labels_right = [
         'Title' => 'A bit of extra info about title goes here...'
     ];
+    
+    public function getCMSField()
+    {
+        $fields = parent::getCMSFields();
+        //...
+        $this->addRightTitles($fields);
+        
+        return $fields;
+     }
 
 }
 ```
