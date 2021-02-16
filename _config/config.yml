@@ -8,3 +8,18 @@ Name: cms-niceties
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
     - 'sunnysideup/cms-niceties: client/dist/css/cms/LeftAndMain.css'
+
+SilverStripe\Dev\TaskRunner:
+  css: 'nothinghere'
+
+---
+Name: cms-niceties-hack
+Only:
+    classexists:
+        - SilverStripe\Admin\LeftAndMain
+---
+
+
+SilverStripe\Dev\TaskRunner:
+  css:
+    0: 'sunnysideup/cms-niceties: client/dist/css/cms/task-runner.css'
