@@ -17,6 +17,7 @@ p.form__field-description.form-text {
     font-family: serif;
     font-size: 1rem;
 }
+.form-group.field.htmleditor p.form__field-description.form-text,
 .form-group.field.text p.form__field-description.form-text {
     text-align: right;
 }
