@@ -398,15 +398,13 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             if ($hasCheckboxSet) {
                 $className = $this->relationClassName;
                 $obj = Injector::inst()->get($className);
-                if($this->listForCheckboxes) {
-                    $$dataList = $this->dataListForCheckboxSetField;
-                } else {
-                    $dataList =  $className::get();
+                if($this->dataListForCheckboxSetField === null) {
+                    $this->dataListForCheckboxSetField =  $className::get();
                 }
                 if ($obj->hasMethod('getTitleForList')) {
-                    $list = $dataList->map('ID', 'getTitleForList');
+                    $list = $this->dataListForCheckboxSetField->map('ID', 'getTitleForList');
                 } else {
-                    $list = $dataList->map('ID', 'Title');
+                    $list = $this->dataListForCheckboxSetField->map('ID', 'Title');
                 }
                 $this->checkboxSetField = CheckboxSetField::create(
                     $this->relationName,
