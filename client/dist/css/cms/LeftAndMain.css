@@ -19,6 +19,9 @@ p.form__field-description.form-text {
 .form-group.field.text p.form__field-description.form-text {
     text-align: right;
 }
+.form-group.field.numeric p.form__field-description.form-text {
+    text-align: left;
+}
 /**
  * numeric field
  */
