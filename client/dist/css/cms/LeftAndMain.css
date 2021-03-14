@@ -17,7 +17,7 @@ p.form__field-description.form-text {
     font-family: serif;
 }
 .form-group.field.text p.form__field-description.form-text {
-    text-align: right
+    text-align: right;
 }
 /**
  * numeric field
