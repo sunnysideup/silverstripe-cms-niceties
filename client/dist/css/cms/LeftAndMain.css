@@ -15,9 +15,10 @@ can only be left aligned and the dimensions can't be changed.
 p.form__field-description.form-text {
     font-style: italic;
     font-family: serif;
-    text-align: right;
 }
-
+.form-group.field.text p.form__field-description.form-text {
+    text-align: right
+}
 /**
  * numeric field
  */
