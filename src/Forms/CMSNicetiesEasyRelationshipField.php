@@ -18,6 +18,7 @@ use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\HeaderField;
+use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\GridFieldArchiveAction;
 use SilverStripe\Versioned\Versioned;
@@ -30,7 +31,7 @@ use SilverStripe\Versioned\VersionedGridFieldDetailForm;
 /**
  * usage:
  *      $fields->addFieldToTab(
- *          'root.RelationFoo',
+ *          'Root.RelationFoo',
  *          CMSNicetiesManyManyGridField::create($this, 'RelationFoo')
  *              ->setSortField('SortOrder')
  *              ->setLabelForField('Check this Out')
@@ -155,6 +156,11 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     private $checkboxSetField = null;
 
     /**
+     * @var DataList|null
+     */
+    private $dataListForCheckboxSetField = null;
+
+    /**
      * provides a generic Grid Field for Many Many relations
      * @param  DataObject  $callingObject   Name of the Relationship - e.g. MyWidgets
      * @param  string      $relationName  Name of the Relationship - e.g. MyWidgets
@@ -177,7 +183,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         }
     }
 
-    public function setSortField(string $sortField)
+    public function setSortField(string $sortField) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->sortField = $sortField;
@@ -185,7 +191,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setLabelForField(string $labelForField)
+    public function setLabelForField(string $labelForField) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->labelForField = $labelForField;
@@ -193,7 +199,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setAddLabel(string $addLabel)
+    public function setAddLabel(string $addLabel) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->addLabel = $addLabel;
@@ -201,7 +207,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setHasEditRelation(bool $hasEditRelation)
+    public function setHasEditRelation(bool $hasEditRelation) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->hasEditRelation = $hasEditRelation;
@@ -209,7 +215,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setHasUnlink(bool $hasUnlink)
+    public function setHasUnlink(bool $hasUnlink) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->hasUnlink = $hasUnlink;
@@ -217,7 +223,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setHasDelete(bool $hasDelete)
+    public function setHasDelete(bool $hasDelete) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->hasDelete = $hasDelete;
@@ -225,7 +231,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setHasAdd(bool $hasAdd)
+    public function setHasAdd(bool $hasAdd) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->hasAdd = $hasAdd;
@@ -233,7 +239,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setHasAddExisting(bool $hasAddExisting)
+    public function setHasAddExisting(bool $hasAddExisting) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->hasAddExisting = $hasAddExisting;
@@ -241,7 +247,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setMaxItemsForCheckBoxSet(int $maxItemsForCheckBoxSet)
+    public function setMaxItemsForCheckBoxSet(int $maxItemsForCheckBoxSet) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->maxItemsForCheckBoxSet = $maxItemsForCheckBoxSet;
@@ -249,7 +255,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setDataColumns(array $dataColumns)
+    public function setDataColumns(array $dataColumns) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->dataColumns = $dataColumns;
@@ -257,7 +263,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setSearchFields(array $searchFields)
+    public function setSearchFields(array $searchFields) : self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->searchFields = $searchFields;
@@ -265,9 +271,16 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setSearchOutputFormat(string $searchOutputFormat)
+    public function setSearchOutputFormat(string $searchOutputFormat) : self
     {
         $this->searchOutputFormat = $searchOutputFormat;
+
+        return $this;
+    }
+
+    public function setDataListForCheckboxSetField(DataList $list) : self
+    {
+        $this->dataListForCheckboxSetField = $list;
 
         return $this;
     }
@@ -385,10 +398,15 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             if ($hasCheckboxSet) {
                 $className = $this->relationClassName;
                 $obj = Injector::inst()->get($className);
-                if ($obj->hasMethod('getTitleForList')) {
-                    $list = $className::get()->map('ID', 'getTitleForList');
+                if($this->listForCheckboxes) {
+                    $$dataList = $this->dataListForCheckboxSetField;
                 } else {
-                    $list = $className::get()->map('ID', 'Title');
+                    $dataList =  $className::get();
+                }
+                if ($obj->hasMethod('getTitleForList')) {
+                    $list = $dataList->map('ID', 'getTitleForList');
+                } else {
+                    $list = $dataList->map('ID', 'Title');
                 }
                 $this->checkboxSetField = CheckboxSetField::create(
                     $this->relationName,
@@ -426,6 +444,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     {
         return $this->gridField;
     }
+
 
     public function getCheckboxSetField()
     {
