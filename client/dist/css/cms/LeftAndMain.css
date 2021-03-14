@@ -8,6 +8,15 @@ can only be left aligned and the dimensions can't be changed.
 #Form_fileInsertForm #Form_fileInsertForm_Dimensions_Holder
 */
 
+/**
+ * field desciptions
+ */
+
+p.form__field-description.form-text {
+    font-style: italic;
+    font-family: serif;
+    text-align: right;
+}
 
 /**
  * numeric field
