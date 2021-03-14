@@ -183,7 +183,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         }
     }
 
-    public function setSortField(string $sortField) : self
+    public function setSortField(string $sortField): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->sortField = $sortField;
@@ -191,7 +191,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setLabelForField(string $labelForField) : self
+    public function setLabelForField(string $labelForField): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->labelForField = $labelForField;
@@ -199,7 +199,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setAddLabel(string $addLabel) : self
+    public function setAddLabel(string $addLabel): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->addLabel = $addLabel;
@@ -207,7 +207,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setHasEditRelation(bool $hasEditRelation) : self
+    public function setHasEditRelation(bool $hasEditRelation): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->hasEditRelation = $hasEditRelation;
@@ -215,7 +215,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setHasUnlink(bool $hasUnlink) : self
+    public function setHasUnlink(bool $hasUnlink): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->hasUnlink = $hasUnlink;
@@ -223,7 +223,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setHasDelete(bool $hasDelete) : self
+    public function setHasDelete(bool $hasDelete): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->hasDelete = $hasDelete;
@@ -231,7 +231,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setHasAdd(bool $hasAdd) : self
+    public function setHasAdd(bool $hasAdd): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->hasAdd = $hasAdd;
@@ -239,7 +239,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setHasAddExisting(bool $hasAddExisting) : self
+    public function setHasAddExisting(bool $hasAddExisting): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->hasAddExisting = $hasAddExisting;
@@ -247,7 +247,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setMaxItemsForCheckBoxSet(int $maxItemsForCheckBoxSet) : self
+    public function setMaxItemsForCheckBoxSet(int $maxItemsForCheckBoxSet): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->maxItemsForCheckBoxSet = $maxItemsForCheckBoxSet;
@@ -255,7 +255,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setDataColumns(array $dataColumns) : self
+    public function setDataColumns(array $dataColumns): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->dataColumns = $dataColumns;
@@ -263,7 +263,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setSearchFields(array $searchFields) : self
+    public function setSearchFields(array $searchFields): self
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->searchFields = $searchFields;
@@ -271,14 +271,14 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         return $this;
     }
 
-    public function setSearchOutputFormat(string $searchOutputFormat) : self
+    public function setSearchOutputFormat(string $searchOutputFormat): self
     {
         $this->searchOutputFormat = $searchOutputFormat;
 
         return $this;
     }
 
-    public function setDataListForCheckboxSetField(DataList $list) : self
+    public function setDataListForCheckboxSetField(DataList $list): self
     {
         $this->dataListForCheckboxSetField = $list;
 
@@ -398,8 +398,8 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             if ($hasCheckboxSet) {
                 $className = $this->relationClassName;
                 $obj = Injector::inst()->get($className);
-                if($this->dataListForCheckboxSetField === null) {
-                    $this->dataListForCheckboxSetField =  $className::get();
+                if ($this->dataListForCheckboxSetField === null) {
+                    $this->dataListForCheckboxSetField = $className::get();
                 }
                 if ($obj->hasMethod('getTitleForList')) {
                     $list = $this->dataListForCheckboxSetField->map('ID', 'getTitleForList');
@@ -442,7 +442,6 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     {
         return $this->gridField;
     }
-
 
     public function getCheckboxSetField()
     {
