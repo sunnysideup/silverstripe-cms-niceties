@@ -82,9 +82,6 @@ trait CMSNicetiesTraitForCMSLinks
 
     /**
      * Sanitise a model class' name for inclusion in a link
-     *
-     * @param string $class
-     * @return string
      */
     protected function sanitisedClassName(): string
     {
