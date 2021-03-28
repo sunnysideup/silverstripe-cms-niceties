@@ -17,8 +17,7 @@ trait CMSNicetiesTraitForValidation
                 $isUniqueEntry =
                     isset($indexes[$field]) &&
                     isset($indexes[$field]['type']) &&
-                    $indexes[$field]['type'] === 'unique'
-                ? true : false;
+                    $indexes[$field]['type'] === 'unique';
                 if ($isUniqueEntry) {
                     $id = (empty($this->ID) ? 0 : $this->ID);
                     $value = $this->{$field};

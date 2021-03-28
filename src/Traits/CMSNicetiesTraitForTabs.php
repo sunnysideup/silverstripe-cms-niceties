@@ -23,12 +23,8 @@ trait CMSNicetiesTraitForTabs
     public function addTab($fields, string $name, ?string $after = 'Main')
     {
         // add spaces between capitals
-        $items = preg_split('/(?=[A-Z])/', $name);
-        if (is_array($items)) {
-            $title = trim(implode(' ', $items));
-        } else {
-            $title = $name;
-        }
+        $items = preg_split('#(?=[A-Z])#', $name);
+        $title = is_array($items) ? trim(implode(' ', $items)) : $name;
         if ($after !== false) {
             if (! $this->isArchived()) {
                 $fields->removeFieldFromTab(
