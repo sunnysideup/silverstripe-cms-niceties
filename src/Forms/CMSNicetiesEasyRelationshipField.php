@@ -501,6 +501,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             return $this->relationClassName;
         }
         user_error('Can not find related class: ' . $this->relationClassName);
+        return 'error';
     }
 
     private function isVersioned(): bool
@@ -531,7 +532,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         }
         // do we need it because we do not have a checkboxset?
         //we can go without!
-        return !$this->hasCheckboxSet();
+        return ! $this->hasCheckboxSet();
     }
 
     private function getSortField(): string
