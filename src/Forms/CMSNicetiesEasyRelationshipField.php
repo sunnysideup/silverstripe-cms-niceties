@@ -466,11 +466,8 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         if (empty($this->children)) {
             return true;
         }
-        if ($this->children instanceof FieldList && 0 === $this->children->count()) {
-            return true;
-        }
 
-        return false;
+        return $this->children instanceof FieldList && 0 === $this->children->count();
     }
 
     protected function checkIfFieldsHaveBeenBuilt()
