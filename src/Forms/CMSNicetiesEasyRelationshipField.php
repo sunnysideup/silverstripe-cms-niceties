@@ -13,7 +13,6 @@ use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldConfig;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
-
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
@@ -26,7 +25,6 @@ use SilverStripe\Versioned\VersionedGridFieldDetailForm;
 
 // use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 // TODO: use undefinedoffset/sortablegridfield
-
 
 /**
  * usage:
@@ -44,25 +42,27 @@ use SilverStripe\Versioned\VersionedGridFieldDetailForm;
  *              ->setDataColumns(['Title' => 'My Title'])
  *              ->setSearchFields(['Title' => 'My Title'])
  *              ->setSearchOutputFormat('')
- *      );
+ *      );.
  */
-
 class CMSNicetiesEasyRelationshipField extends CompositeField
 {
     /**
-     * the object calling this class, aka the class where we add the fields
+     * the object calling this class, aka the class where we add the fields.
+     *
      * @var object
      */
     protected $callingObject;
 
     /**
-     * name of the relations e.g. Members as defined in has_many or many_many
+     * name of the relations e.g. Members as defined in has_many or many_many.
+     *
      * @var string
      */
     protected $relationName = '';
 
     /**
-     * name of the class that we are linking to
+     * name of the class that we are linking to.
+     *
      * @var string
      */
     protected $relationClassName = '';
@@ -70,49 +70,57 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     /**
      * name of the sort field used
      * works with:
-     *  - UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows
+     *  - UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows.
+     *
      * @var string
      */
     protected $sortField = '';
 
     /**
-     * heading above field
+     * heading above field.
+     *
      * @var string
      */
     protected $labelForField = '';
 
     /**
-     * name for Add - e.g. My Product resulting in a button "Add My Product"
+     * name for Add - e.g. My Product resulting in a button "Add My Product".
+     *
      * @var string
      */
     protected $addLabel = '';
 
     /**
      * should the relationship be editable in the form?
+     *
      * @var bool
      */
     protected $hasEditRelation = true;
 
     /**
      * can the link be removed?
+     *
      * @var bool
      */
     protected $hasUnlink = true;
 
     /**
      * can the linked item be deleted?
+     *
      * @var bool
      */
     protected $hasDelete = true;
 
     /**
      * can new items be added?
+     *
      * @var bool
      */
     protected $hasAdd = true;
 
     /**
      * can existing items be linked?
+     *
      * @var bool
      */
     protected $hasAddExisting = true;
@@ -123,47 +131,51 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     protected $maxItemsForCheckBoxSet = 300;
 
     /**
-     * data columns
+     * data columns.
+     *
      * @var array
      */
     protected $dataColumns = [];
 
     /**
-     * data columns
+     * data columns.
+     *
      * @var array
      */
     protected $searchFields = [];
 
     /**
-     * data columns
+     * data columns.
+     *
      * @var string
      */
     protected $searchOutputFormat = '';
 
     /**
-     * @var GridFieldConfig|null
+     * @var null|GridFieldConfig
      */
     private $gridFieldConfig;
 
     /**
-     * @var GridField|null
+     * @var null|GridField
      */
     private $gridField;
 
     /**
-     * @var CheckboxSetField|null
+     * @var null|CheckboxSetField
      */
     private $checkboxSetField;
 
     /**
-     * @var DataList|null
+     * @var null|DataList
      */
     private $dataListForCheckboxSetField;
 
     /**
-     * provides a generic Grid Field for Many Many relations
-     * @param  DataObject  $callingObject   Name of the Relationship - e.g. MyWidgets
-     * @param  string      $relationName  Name of the Relationship - e.g. MyWidgets
+     * provides a generic Grid Field for Many Many relations.
+     *
+     * @param DataObject $callingObject Name of the Relationship - e.g. MyWidgets
+     * @param string     $relationName  Name of the Relationship - e.g. MyWidgets
      *
      * @return array
      */
@@ -314,7 +326,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             $this->sortField = $this->getSortField();
             $this->relationClassName = $this->getRelationClassName();
 
-            if ($this->labelForField === '') {
+            if ('' === $this->labelForField) {
                 $fieldLabels = Config::inst()->get($this->callingObject->ClassName, 'field_labels');
                 $this->labelForField = isset($fieldLabels[$this->relationName]) ? $fieldLabels[$this->relationName] : '';
             }
@@ -354,7 +366,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 }
 
                 if ($this->hasAdd) {
-                    if ($this->addLabel !== '') {
+                    if ('' !== $this->addLabel) {
                         $this->getGridFieldConfig->getComponentsByType(GridFieldAddNewButton::class)->first()->setButtonName('Add ' . $this->addLabel);
                     }
                 } else {
@@ -367,7 +379,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 if ($hasCheckboxSet) {
                     $this->gridField->setTitle('Added ' . $this->labelForField);
                 }
-                if ($this->sortField !== '') {
+                if ('' !== $this->sortField) {
                     $classA = 'UndefinedOffset\\SortableGridField\\Forms\\GridFieldSortableRows';
                     if (class_exists($classA)) {
                         $this->getGridFieldConfig->addComponent($sorter = new $classA($this->sortField));
@@ -386,7 +398,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                         $autocompleter->setSearchFields($this->searchFields);
                     }
                 }
-                if ($this->searchOutputFormat !== '') {
+                if ('' !== $this->searchOutputFormat) {
                     $autocompleter = $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class);
                     if ($autocompleter) {
                         $autocompleter->setResultsFormat($this->searchOutputFormat);
@@ -398,7 +410,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             if ($hasCheckboxSet) {
                 $className = $this->relationClassName;
                 $obj = Injector::inst()->get($className);
-                if ($this->dataListForCheckboxSetField === null) {
+                if (null === $this->dataListForCheckboxSetField) {
                     $this->dataListForCheckboxSetField = $className::get();
                 }
                 if ($obj->hasMethod('getTitleForList')) {
@@ -416,22 +428,23 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             $fieldsArray = [
                 HeaderField::create($safeLabel . 'Header', $this->labelForField, 1),
             ];
-            if ($this->gridField !== null) {
+            if (null !== $this->gridField) {
                 $fieldsArray[] = $this->gridField;
             }
-            if ($this->checkboxSetField !== null) {
+            if (null !== $this->checkboxSetField) {
                 $fieldsArray[] = $this->checkboxSetField;
             }
             $this->children = FieldList::create($fieldsArray);
             //important - as setChildren does more than just setting variable...
             $this->setChildren($this->children);
         }
+
         return $this->children;
     }
 
     public function getGridFieldConfig()
     {
-        if ($this->gridFieldConfig === null) {
+        if (null === $this->gridFieldConfig) {
             $this->gridFieldConfig = GridFieldConfig_RelationEditor::create();
         }
 
@@ -452,7 +465,8 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     {
         if (empty($this->children)) {
             return true;
-        } elseif ($this->children instanceof FieldList && $this->children->count() === 0) {
+        }
+        if ($this->children instanceof FieldList && 0 === $this->children->count()) {
             return true;
         }
 
@@ -475,12 +489,13 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     {
         $this->doBuild();
         $this->getGridFieldConfig = $this->getGridFieldConfig();
+
         return $this->getGridFieldConfig->getComponentByType(GridFieldDetailForm::class);
     }
 
     private function getRelationClassName(): string
     {
-        if ($this->relationClassName === '') {
+        if ('' === $this->relationClassName) {
             $hasMany = Config::inst()->get($this->callingObject->ClassName, 'has_many');
             $manyMany = Config::inst()->get($this->callingObject->ClassName, 'many_many');
             $belongsManyMany = Config::inst()->get($this->callingObject->ClassName, 'belongs_many_many');
@@ -493,6 +508,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                     $typeOptions = $types[$this->relationName];
                     $typeArray = explode('.', $typeOptions);
                     $this->relationClassName = $typeArray[0];
+
                     break;
                 }
             }
@@ -501,6 +517,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             return $this->relationClassName;
         }
         user_error('Can not find related class: ' . $this->relationClassName);
+
         return 'error';
     }
 
@@ -538,11 +555,11 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     private function getSortField(): string
     {
         //todo - add undefinedoffset/sortablegridfield
-        if ($this->sortField === '') {
+        if ('' === $this->sortField) {
             $manyManyExtras = Config::inst()->get($this->callingObject->ClassName, 'many_many_extraFields');
             if (isset($manyManyExtras[$this->relationName])) {
                 foreach ($manyManyExtras[$this->relationName] as $field => $tempType) {
-                    if (strtolower($tempType) === 'int') {
+                    if ('int' === strtolower($tempType)) {
                         $this->sortField = $field;
                     }
                 }

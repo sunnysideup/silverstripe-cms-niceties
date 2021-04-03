@@ -21,14 +21,17 @@ trait CMSNicetiesTraitForCanMethods
                 foreach ($obj as $item) {
                     if (! $item->canCreate($member, $context)) {
                         $outcome = false;
+
                         break;
                     }
                 }
                 if ($outcome) {
                     return parent::canCreate($member, $context);
                 }
+
                 return false;
             }
+
             return $obj->canCreate($member, $context);
         }
         $groupCodes = $this->hasMethod('canEditingGroupsCodes') ? $this->canEditingGroupsCodes() : [
@@ -41,6 +44,7 @@ trait CMSNicetiesTraitForCanMethods
                 return parent::canCreate($member, $context);
             }
         }
+
         return false;
     }
 

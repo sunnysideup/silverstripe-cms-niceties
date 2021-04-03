@@ -39,6 +39,7 @@ trait CMSNicetiesTraitForCMSLinks
         } else {
             $value = '<em>(none)</em>';
         }
+
         return HTMLReadonlyField::create(
             $relName . 'Link',
             $name,
@@ -50,11 +51,13 @@ trait CMSNicetiesTraitForCMSLinks
     {
         if ($this instanceof SiteTree) {
             return parent::CMSListLink();
-        } elseif ($cont = $this->myModelAdminController()) {
+        }
+        if ($cont = $this->myModelAdminController()) {
             return $cont->Link() .
             $this->sanitisedClassName() . '/EditForm/field/' .
             $this->sanitisedClassName() . '/item/new';
         }
+
         return '404-cms-add-link-not-found';
     }
 
@@ -62,7 +65,8 @@ trait CMSNicetiesTraitForCMSLinks
     {
         if ($this instanceof SiteTree) {
             return parent::CMSListLink();
-        } elseif ($cont = $this->myModelAdminController()) {
+        }
+        if ($cont = $this->myModelAdminController()) {
             return $cont->Link() . $this->sanitisedClassName();
         }
 
@@ -70,7 +74,7 @@ trait CMSNicetiesTraitForCMSLinks
     }
 
     /**
-     * @return ModelAdmin|null
+     * @return null|ModelAdmin
      */
     protected function myModelAdminController()
     {
@@ -81,11 +85,12 @@ trait CMSNicetiesTraitForCMSLinks
     }
 
     /**
-     * Sanitise a model class' name for inclusion in a link
+     * Sanitise a model class' name for inclusion in a link.
      */
     protected function sanitisedClassName(): string
     {
         $className = $this->hasMethod('classNameForModelAdmin') ? $this->classNameForModelAdmin() : $this->ClassName;
+
         return str_replace('\\', '-', $className);
     }
 }

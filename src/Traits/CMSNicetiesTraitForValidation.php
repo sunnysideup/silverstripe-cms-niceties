@@ -15,16 +15,17 @@ trait CMSNicetiesTraitForValidation
         if (is_array($requiredFields)) {
             foreach ($requiredFields as $field) {
                 $isUniqueEntry =
-                    isset($indexes[$field]) &&
-                    isset($indexes[$field]['type']) &&
-                    $indexes[$field]['type'] === 'unique';
+                    isset($indexes[$field], $indexes[$field]['type'])
+                     &&
+                    'unique' === $indexes[$field]['type'];
                 if ($isUniqueEntry) {
                     $id = (empty($this->ID) ? 0 : $this->ID);
                     $value = $this->{$field};
                     $count = self::get()
                         ->filter([$field => $value])
                         ->exclude(['ID' => $id])
-                        ->count();
+                        ->count()
+                    ;
                     if ($count > 0) {
                         $myName = $fieldLabels[$field];
                         $result->addError(
