@@ -17,9 +17,9 @@ class CMSNicetiesLinkButton extends ReadonlyField
     /**
      * Creates a new field.
      *
-     * @param string $name The internal field name, passed to forms.
-     * @param string|ViewableData|null $label The human-readable field label.
-     * @param mixed $link The value of the field.
+     * @param string                   $name  the internal field name, passed to forms
+     * @param null|string|ViewableData $label the human-readable field label
+     * @param mixed                    $link  the value of the field
      */
     public function __construct($name, $label = null, $link = null)
     {

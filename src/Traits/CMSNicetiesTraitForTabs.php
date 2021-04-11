@@ -8,7 +8,7 @@ trait CMSNicetiesTraitForTabs
 {
     public function addSeparator($fields, string $name, ?string $after = 'Main')
     {
-        if ($after !== false) {
+        if (false !== $after) {
             $tab = Tab::create($name, '|');
             $fields->insertAfter($tab, $after);
         } else {
@@ -25,7 +25,7 @@ trait CMSNicetiesTraitForTabs
         // add spaces between capitals
         $items = preg_split('#(?=[A-Z])#', $name);
         $title = is_array($items) ? trim(implode(' ', $items)) : $name;
-        if ($after !== false) {
+        if (false !== $after) {
             if (! $this->isArchived()) {
                 $fields->removeFieldFromTab(
                     'Root',
