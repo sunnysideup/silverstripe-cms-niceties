@@ -157,7 +157,6 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     private $gridFieldConfig;
 
     /**
-     *
      * @var null|GridField
      */
     private $gridField;
