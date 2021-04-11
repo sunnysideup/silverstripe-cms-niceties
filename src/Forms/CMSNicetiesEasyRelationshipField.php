@@ -152,38 +152,23 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     protected $searchOutputFormat = '';
 
     /**
-<<<<<<< HEAD
      * @var null|GridFieldConfig
-=======
-     * @var GridFieldConfig
->>>>>>> 8703cd36e1ded51eb7cb6b77b6dea08e354bd0c4
      */
     private $gridFieldConfig;
 
     /**
-<<<<<<< HEAD
+     *
      * @var null|GridField
-=======
-     * @var GridField
->>>>>>> 8703cd36e1ded51eb7cb6b77b6dea08e354bd0c4
      */
     private $gridField;
 
     /**
-<<<<<<< HEAD
      * @var null|CheckboxSetField
-=======
-     * @var CheckboxSetField
->>>>>>> 8703cd36e1ded51eb7cb6b77b6dea08e354bd0c4
      */
     private $checkboxSetField;
 
     /**
-<<<<<<< HEAD
      * @var null|DataList
-=======
-     * @var DataList
->>>>>>> 8703cd36e1ded51eb7cb6b77b6dea08e354bd0c4
      */
     private $dataListForCheckboxSetField;
 
