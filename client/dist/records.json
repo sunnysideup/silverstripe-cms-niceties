@@ -1,0 +1,83 @@
+{
+  "chunks": {
+    "byName": {
+      "app_LeftAndMain": 566,
+      "app_menu-fix": 250,
+      "app_task-runner": 408
+    },
+    "bySource": {
+      "0 app_LeftAndMain": 566,
+      "0 app_menu-fix": 250,
+      "0 app_task-runner": 408
+    },
+    "usedIds": [
+      250,
+      408,
+      566
+    ]
+  },
+  "mini-css-extract-plugin /mnt/data/srv/dist/web/riverlink/vendor/sunnysideup/cms-niceties/client/node_modules/.pnpm/css-loader@5.2.4_webpack@5.36.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.1_node-sass@5.0.0+webpack@5.36.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/types/LeftAndMain.scss": [
+    {
+      "chunks": {
+        "byName": {
+          "child": 396
+        },
+        "bySource": {
+          "0 child": 396
+        },
+        "usedIds": [
+          396
+        ]
+      },
+      "modules": {
+        "byIdentifier": {
+          "./node_modules/.pnpm/babel-loader@8.2.2_61629e8743792dba92b2cb4b3c11c139/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@5.2.4_webpack@5.36.0/node_modules/css-loader/dist/runtime/api.js": 870,
+          "./node_modules/.pnpm/css-loader@5.2.4_webpack@5.36.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.1_node-sass@5.0.0+webpack@5.36.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/types/LeftAndMain.scss": 629
+        },
+        "usedIds": [
+          629,
+          870
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin /mnt/data/srv/dist/web/riverlink/vendor/sunnysideup/cms-niceties/client/node_modules/.pnpm/css-loader@5.2.4_webpack@5.36.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.1_node-sass@5.0.0+webpack@5.36.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/types/task-runner.scss": [
+    {
+      "chunks": {
+        "byName": {
+          "child": 396
+        },
+        "bySource": {
+          "0 child": 396
+        },
+        "usedIds": [
+          396
+        ]
+      },
+      "modules": {
+        "byIdentifier": {
+          "./node_modules/.pnpm/babel-loader@8.2.2_61629e8743792dba92b2cb4b3c11c139/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@5.2.4_webpack@5.36.0/node_modules/css-loader/dist/runtime/api.js": 870,
+          "./node_modules/.pnpm/css-loader@5.2.4_webpack@5.36.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.1_node-sass@5.0.0+webpack@5.36.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/types/task-runner.scss": 913
+        },
+        "usedIds": [
+          870,
+          913
+        ]
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "./node_modules/.pnpm/babel-loader@8.2.2_61629e8743792dba92b2cb4b3c11c139/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./src/js/types/menu-fix.js": 971,
+      "./node_modules/.pnpm/mini-css-extract-plugin@1.5.1_webpack@5.36.0/node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/.pnpm/css-loader@5.2.4_webpack@5.36.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.1_node-sass@5.0.0+webpack@5.36.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/types/LeftAndMain.scss": 537,
+      "./node_modules/.pnpm/mini-css-extract-plugin@1.5.1_webpack@5.36.0/node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/.pnpm/css-loader@5.2.4_webpack@5.36.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.1_node-sass@5.0.0+webpack@5.36.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/types/task-runner.scss": 944,
+      "external \"jQuery\"": 609
+    },
+    "usedIds": [
+      537,
+      609,
+      944,
+      971
+    ]
+  }
+}
