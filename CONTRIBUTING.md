@@ -1,5 +1,17 @@
 # Contributing to cms niceties
 
+## Modifing frontend
+
++ Edit files at ./client/src
+
++ Rebuild frontend source using webpack
+
+```
+cd ./client
+pnpm install
+yarn build
+```
+
 Please read the
 [generic write up for contributing](https://docs.silverstripe.org/en/4.0/contributing/)
 on silverstripe.org for some general information.  In practice,
