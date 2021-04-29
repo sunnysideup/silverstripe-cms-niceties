@@ -1,0 +1,58 @@
+// Model Admin Search
+.search-box {
+    &--has-filters {
+        height: auto;
+
+        .search-box {
+            &__filter-trigger {
+                display: none;
+            }
+
+            &__cancel {
+                top: 1rem;
+                bottom: auto;
+                height: auto;
+            }
+        }
+
+        .search-form {
+            position: relative;
+            display: block;
+            width: 100%;
+            right: 0;
+
+            .form {
+                width: 100%;
+            }
+
+            fieldset {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .field {
+                padding: 1rem;
+                margin: 0;
+                flex: 1 1 100%;
+                align-content: flex-start;
+
+                @include md-screen {
+                    flex: 1 1 50%;
+                }
+
+                @include lg-screen {
+                    flex: 1 1 33.3333%;
+                }
+
+                input {
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+
+            .form__field-holder {
+                margin: 0;
+            }
+        }
+    }
+}

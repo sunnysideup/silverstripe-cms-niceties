@@ -7,7 +7,9 @@ Name: cms-niceties
 
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
-    - 'sunnysideup/cms-niceties: client/dist/css/cms/LeftAndMain.css'
+    - 'sunnysideup/cms-niceties: client/dist/css/app_LeftAndMain.css'
+  extra_requirements_javascript:
+    - 'sunnysideup/cms-niceties: client/dist/js/app_menu-fix.js'
 
 SilverStripe\Dev\TaskRunner:
   css: 'nothinghere'
@@ -22,4 +24,4 @@ Only:
 
 SilverStripe\Dev\TaskRunner:
   css:
-    0: 'sunnysideup/cms-niceties: client/dist/css/cms/task-runner.css'
+    0: 'sunnysideup/cms-niceties: client/dist/css/app_task-runner.css'

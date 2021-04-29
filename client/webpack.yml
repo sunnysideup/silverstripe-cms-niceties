@@ -1,0 +1,15 @@
+# that's important to place this file into /app/_config/webpack.yml
+# with all configuration variables presented
+# Cuz WebPack compiling script use it to set configuration
+
+Site\Templates\WebpackTemplateProvider:
+  APPDIR: ./
+  THEMESDIR: themes
+  HOSTNAME: 127.0.0.1
+  PORT: 3000
+  SRC: src
+  DIST: dist
+  TYPESJS: src/js/types
+  TYPESSCSS: src/scss/types
+  NODE_ENV: production #production,development
+  webp: false
