@@ -10,6 +10,7 @@ SilverStripe\Admin\LeftAndMain:
     - 'sunnysideup/cms-niceties: client/dist/css/app_LeftAndMain.css'
   extra_requirements_javascript:
     - 'sunnysideup/cms-niceties: client/dist/js/app_menu-fix.js'
+    - 'sunnysideup/cms-niceties: client/dist/js/app_LeftAndMain.js'
 
 SilverStripe\Dev\TaskRunner:
   css: 'nothinghere'
