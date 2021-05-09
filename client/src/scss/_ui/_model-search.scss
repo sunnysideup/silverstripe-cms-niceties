@@ -8,11 +8,19 @@
                 display: none;
             }
 
-            &__cancel {
+            &__cancel,
+            &__close {
+                position: absolute;
                 top: 1rem;
                 bottom: auto;
                 height: auto;
+                right: 0;
+                color: #43536d;
+                background-color: transparent;
+                border-left: 1px solid #ced5e1;
+                margin: 0;
             }
+
         }
 
         .search-form {
