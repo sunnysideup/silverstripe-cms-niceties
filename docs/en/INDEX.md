@@ -36,7 +36,7 @@ Add any of the Traits to any DataObject to add functionality.
      );
 
 ```
-#CMSNicetiesTraitForCanMethods
+#CMS Niceties Trait For Can Methods
 
 Simply way to manage canCreate, canEdit, canDelete, when the object is owned by
 another object (be it a parent or a child, or something else).
@@ -67,7 +67,7 @@ MyDataObject extends DataObject
 }
 ```
 
-# CMSNicetiesTraitForCMSLinks
+# CMS Niceties Trait For CMS Links
 Adds: `CMSEditLink`, `CMSAddLink`, and `CMSListLink` to your `DataObject`
 
 For example:
@@ -80,7 +80,7 @@ MyDataObject extends DataObject
 
 }
 ```
-# CMSNicetiesTraitForRightTitles
+# CMS Niceties Trait For Right Titles
 
 Adds a way to add right titles / descriptions to form fields in a simpler way using:
 `private static $field_labels_right`.
