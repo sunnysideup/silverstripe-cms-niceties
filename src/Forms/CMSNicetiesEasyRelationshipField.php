@@ -30,7 +30,7 @@ use SilverStripe\Versioned\VersionedGridFieldDetailForm;
  * usage:
  *      $fields->addFieldToTab(
  *          'Root.RelationFoo',
- *          CMSNicetiesManyManyGridField::create($this, 'RelationFoo')
+ *          CMSNicetiesEasyRelationshipField::create($this, 'RelationFoo')
  *              ->setSortField('SortOrder')
  *              ->setLabelForField('Check this Out')
  *              ->setHasEditRelation(true)
