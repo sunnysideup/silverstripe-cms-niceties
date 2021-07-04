@@ -5,6 +5,10 @@ Name: cms-niceties
 # update as you see fit.
 
 
+SilverStripe\Admin\ModelAdmin:
+  page_length: 100
+
+
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
     - 'sunnysideup/cms-niceties: client/dist/css/app_LeftAndMain.css'
