@@ -1,9 +1,6 @@
 ---
 Name: cms-niceties
 ---
-#  @todo: UPGRADE: we applied some really basic CMS styling here,
-# update as you see fit.
-
 
 SilverStripe\Admin\ModelAdmin:
   page_length: 100
