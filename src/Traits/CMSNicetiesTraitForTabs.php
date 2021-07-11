@@ -3,10 +3,11 @@
 namespace Sunnysideup\CMSNiceties\Traits;
 
 use SilverStripe\Forms\Tab;
+use SilverStripe\Forms\FieldList;
 
 trait CMSNicetiesTraitForTabs
 {
-    public function addSeparator($fields, string $name, ?string $after = 'Main')
+    public function addSeparator(FieldList $fields, string $name, ?string $after = 'Main')
     {
         if (false !== $after) {
             $tab = Tab::create($name, '|');
@@ -20,7 +21,7 @@ trait CMSNicetiesTraitForTabs
         }
     }
 
-    public function addTab($fields, string $name, ?string $after = 'Main')
+    public function addTab(FieldList $fields, string $name, ?string $after = 'Main')
     {
         // add spaces between capitals
         $items = preg_split('#(?=[A-Z])#', $name);
