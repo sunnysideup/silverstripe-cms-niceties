@@ -327,8 +327,8 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             $this->relationClassName = $this->getRelationClassName();
 
             if ('' === $this->labelForField) {
-                $fieldLabels = Config::inst()->get($this->callingObject->ClassName, 'field_labels');
-                $this->labelForField = isset($fieldLabels[$this->relationName]) ? $fieldLabels[$this->relationName] : '';
+                $fieldLabels = Injector::inst()->get($this->callingObject->ClassName)->fieldLabels();
+                $this->labelForField = $fieldLabels[$this->relationName] ?? $this->relationName;
             }
             $safeLabel = preg_replace('#[^A-Za-z0-9 ]#', '', $this->labelForField);
 
