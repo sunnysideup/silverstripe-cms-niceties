@@ -188,3 +188,13 @@ p.form__field-description.form-text {
         color: rgb(86, 107, 141) !important;
     }
 }
+
+
+// for https://github.com/colymba/GridFieldBulkEditingTools
+.bulkManagerOptions.form--no-dividers label.form-check-label input {
+    margin-left: 3px;
+}
+.bulkManagerOptions.form--no-dividers label.form-check-label {
+    display: block;
+    padding-bottom: 35px;
+}
