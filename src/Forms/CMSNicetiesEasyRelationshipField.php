@@ -162,7 +162,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     private $gridField;
 
     /**
-     * @var null|CheckboxSetField
+     * @var null|CheckboxSetFieldWithLinks
      */
     private $checkboxSetField;
 
@@ -418,11 +418,11 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 } else {
                     $list = $this->dataListForCheckboxSetField->map('ID', 'Title');
                 }
-                $this->checkboxSetField = CheckboxSetField::create(
+                $this->checkboxSetField = CheckboxSetFieldWithLinks::create(
                     $this->relationName,
                     'Add / Remove',
                     $list
-                );
+                )->setClassNameForLinks($this->relationClassName);
             }
 
             $fieldsArray = [
