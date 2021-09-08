@@ -77,6 +77,12 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     protected $sortField = '';
 
     /**
+     *
+     * @var array|string
+     */
+    protected $checkBoxSort = null;
+
+    /**
      * heading above field.
      *
      * @var string
@@ -199,6 +205,14 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     {
         $this->checkIfFieldsHaveBeenBuilt();
         $this->sortField = $sortField;
+
+        return $this;
+    }
+
+    public function setCheckBoxSort($sortArrayOrString): self
+    {
+        $this->checkIfFieldsHaveBeenBuilt();
+        $this->checkBoxSort = $sortArrayOrString;
 
         return $this;
     }
@@ -412,6 +426,9 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 $obj = Injector::inst()->get($className);
                 if (null === $this->dataListForCheckboxSetField) {
                     $this->dataListForCheckboxSetField = $className::get();
+                }
+                if($this->dataListForCheckboxSetField && $this->checkBoxSort) {
+                    $this->dataListForCheckboxSetField = $this->dataListForCheckboxSetField->sort($this->checkBoxSort);
                 }
                 if ($obj->hasMethod('getTitleForList')) {
                     $list = $this->dataListForCheckboxSetField->map('ID', 'getTitleForList');
