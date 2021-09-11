@@ -4,7 +4,6 @@ namespace Sunnysideup\CMSNiceties\Forms;
 
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
@@ -77,10 +76,9 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
     protected $sortField = '';
 
     /**
-     *
      * @var array|string
      */
-    protected $checkBoxSort = null;
+    protected $checkBoxSort;
 
     /**
      * heading above field.
@@ -427,7 +425,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 if (null === $this->dataListForCheckboxSetField) {
                     $this->dataListForCheckboxSetField = $className::get();
                 }
-                if($this->dataListForCheckboxSetField && $this->checkBoxSort) {
+                if ($this->dataListForCheckboxSetField && $this->checkBoxSort) {
                     $this->dataListForCheckboxSetField = $this->dataListForCheckboxSetField->sort($this->checkBoxSort);
                 }
                 if ($obj->hasMethod('getTitleForList')) {
