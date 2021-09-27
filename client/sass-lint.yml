@@ -19,7 +19,7 @@ rules:
     - 1
     - max-depth: 3
   no-ids: 1
-  no-important: 1
+  no-important: 0
   no-misspelled-properties:
     - 1
     - extra-properties:
@@ -34,7 +34,7 @@ rules:
   no-extends: 1
 
   # Warnings: these things are preferential rather than mandatory
-  no-css-comments: 1
+  no-css-comments: 0
 
   # Errors
   # Things that can be easily fixed are marked as errors

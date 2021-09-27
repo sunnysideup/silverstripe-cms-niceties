@@ -4,9 +4,9 @@
  * holder of tasks
  */
 .task {
-  padding: 15px;
   max-width: 900px;
   margin: 0 auto;
+  padding: 15px;
 }
 
 /**
@@ -20,53 +20,51 @@
  * add transition
  */
 .task__item * {
-  transition: all 0.3s ease;
+  transition: all .3s ease;
 }
 
 /**
  * task title
  */
 .task__item > div:first-child  h3 {
+  font-size: 1rem;
   margin: 0;
   padding: 0;
-  font-size: 1rem;
 }
 
 /**
  * task button
  */
 .task__item > div:last-child .task__button {
-  border: 1px solid #ced5e1;
-  border-radius: 5px;
-  background-color: #f6f7f8;
-  color: #43536d;
   display: inline-block;
   padding: 6px 10px;
   text-decoration: none;
+  color: #43536d;
+  border: 1px solid #ced5e1;
+  border-radius: 5px;
+  background-color: #f6f7f8;
 }
 
 /**
  * task button hover
  */
 .task__item > div:last-child .task__button:hover {
-  background-color: #1a5a93;
   color: #fff;
+  background-color: #1a5a93;
 }
 
 /**
  * desktop view
  */
 @media (min-width:992px) {
-
-
   /**
    * add grid
    */
   .task__item {
+    display: grid;
     padding: 0;
     border-top: 1px solid #004e7f;
 
-    display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
@@ -96,14 +94,14 @@
    * hide description
    */
   .task__item > div:first-child  div.task__description {
+    font-size: .7rem;
     color: #999;
-    font-size: 0.7rem;
   }
 
   /**
    * show description on hover
    */
-  .task__item:hover  > div:first-child div.task__description {
+  .task__item:hover > div:first-child div.task__description {
     font-size: 1rem;
     color: #000;
   }
@@ -111,8 +109,7 @@
   /**
    * outline button to right
    */
-  .task__item > div:last-child{
+  .task__item > div:last-child {
     text-align: right;
   }
-
 }

@@ -1,0 +1,306 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "dependencies": {
+        "@babel/core": "^7.15.5",
+        "@babel/eslint-parser": "^7.15.7",
+        "csslint": "^1.0.5",
+        "eslint": "^7.32.0",
+        "eslint-plugin-jquery": "^1.5.1",
+        "eslint-plugin-react": "^7.26.0",
+        "npm-check-updates": "^11.8.5",
+        "pnpm": "^6.15.2",
+        "prettier": "^2.4.1",
+        "sass-lint": "^1.13.1",
+        "sass-lint-auto-fix": "^0.21.2",
+        "sass-migrator": "^1.5.2",
+        "standard": "^16.0.3",
+        "standard-format": "^2.2.4"
+      }
+    },
+    "prefix": "/home/tony/.npm/pnpm-global/5"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": true,
+    "storeDir": "/home/tony/.pnpm-store/v3",
+    "virtualStoreDir": "/home/tony/.npm/pnpm-global/5/node_modules/.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "/home/tony/.npm/pnpm-global/5",
+    "stage": "resolution_started"
+  },
+  "4 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@babel/core/7.15.5",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@babel/core",
+      "rawSpec": "^7.15.5"
+    }
+  },
+  "5 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@babel/eslint-parser/7.15.7",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@babel/eslint-parser",
+      "rawSpec": "^7.15.7"
+    }
+  },
+  "6 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/csslint/1.0.5",
+    "wanted": {
+      "dependentId": ".",
+      "name": "csslint",
+      "rawSpec": "^1.0.5"
+    }
+  },
+  "7 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/eslint/7.32.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "eslint",
+      "rawSpec": "^7.32.0"
+    }
+  },
+  "8 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/eslint-plugin-jquery/1.5.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "eslint-plugin-jquery",
+      "rawSpec": "^1.5.1"
+    }
+  },
+  "9 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/eslint-plugin-react/7.26.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "eslint-plugin-react",
+      "rawSpec": "^7.26.0"
+    }
+  },
+  "10 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/npm-check-updates/11.8.5",
+    "wanted": {
+      "dependentId": ".",
+      "name": "npm-check-updates",
+      "rawSpec": "^11.8.5"
+    }
+  },
+  "11 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/pnpm/6.15.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "pnpm",
+      "rawSpec": "^6.15.2"
+    }
+  },
+  "12 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/sass-lint/1.13.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "sass-lint",
+      "rawSpec": "^1.13.1"
+    }
+  },
+  "13 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/prettier/2.4.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "prettier",
+      "rawSpec": "^2.4.1"
+    }
+  },
+  "14 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/sass-migrator/1.5.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "sass-migrator",
+      "rawSpec": "^1.5.2"
+    }
+  },
+  "15 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/sass-lint-auto-fix/0.21.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "sass-lint-auto-fix",
+      "rawSpec": "^0.21.2"
+    }
+  },
+  "16 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/standard/16.0.3",
+    "wanted": {
+      "dependentId": ".",
+      "name": "standard",
+      "rawSpec": "^16.0.3"
+    }
+  },
+  "17 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/standard-format/2.2.4",
+    "wanted": {
+      "dependentId": ".",
+      "name": "standard-format",
+      "rawSpec": "^2.2.4"
+    }
+  },
+  "18 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@babel/core/7.15.5",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "19 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@babel/core/7.15.5",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "20 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@babel/eslint-parser/7.15.7",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "21 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@babel/eslint-parser/7.15.7",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "22 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/csslint/1.0.5",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "23 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/csslint/1.0.5",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "24 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint/7.32.0",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "25 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint/7.32.0",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "26 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint-plugin-jquery/1.5.1",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "27 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint-plugin-jquery/1.5.1",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "28 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/npm-check-updates/11.8.5",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "29 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/npm-check-updates/11.8.5",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "30 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/sass-lint/1.13.1",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "31 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/sass-lint/1.13.1",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "32 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint-plugin-react/7.26.0",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "33 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint-plugin-react/7.26.0",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "34 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/pnpm/6.15.2",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "35 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/pnpm/6.15.2",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "36 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/prettier/2.4.1",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "37 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/prettier/2.4.1",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "38 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/sass-migrator/1.5.2",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "39 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/sass-migrator/1.5.2",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "40 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/sass-lint-auto-fix/0.21.2",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "41 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/sass-lint-auto-fix/0.21.2",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "42 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/standard/16.0.3",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "43 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/standard/16.0.3",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "44 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/standard-format/2.2.4",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "resolved"
+  },
+  "45 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/standard-format/2.2.4",
+    "requester": "/home/tony/.npm/pnpm-global/5",
+    "status": "found_in_store"
+  },
+  "46 error pnpm": {
+    "code": "ERR_PNPM_FETCH_404",
+    "hint": "@babel/eslint-parser. is not in the npm registry, or you have no permission to fetch it.\n\nAn authorization header was used: Bearer 9630[hidden]",
+    "request": {
+      "authHeaderValue": "Bearer 96304150-6464-4563-ba8e-1cd80eed1f54",
+      "url": "https://registry.npmjs.org/@babel%2Feslint-parser."
+    },
+    "response": {
+      "size": 0
+    },
+    "pkgName": "@babel/eslint-parser.",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "GET https://registry.npmjs.org/@babel%2Feslint-parser.: Not Found - 404",
+      "code": "ERR_PNPM_FETCH_404",
+      "stack": "pnpm: GET https://registry.npmjs.org/@babel%2Feslint-parser.: Not Found - 404\n    at RetryOperation._fn (/home/tony/.npm/pnpm-global/5/node_modules/.pnpm/pnpm@6.15.2/node_modules/pnpm/dist/pnpm.cjs:84810:18)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)"
+    }
+  }
+}
