@@ -29,6 +29,9 @@ const init = () => {
 
   $('.search-box__cancel').remove();
   $('.search-box__group').append($searchHolderHide);
+
+  // Remove changed class to prevent confirmation dialog
+  $('.cms-edit-form.changed').removeClass('changed');
 };
 
 // FIX: dirty timeout

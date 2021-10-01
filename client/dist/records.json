@@ -16,16 +16,43 @@
       566
     ]
   },
+  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/sunnysideup-cms-niceties/client/node_modules/.pnpm/css-loader@6.3.0_webpack@5.54.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@4.0.0/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@12.1.0_node-sass@6.0.1+webpack@5.54.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/LeftAndMain.scss": [
+    {
+      "chunks": {
+        "byName": {
+          "child": 396
+        },
+        "bySource": {
+          "0 child": 396
+        },
+        "usedIds": [
+          396
+        ]
+      },
+      "modules": {
+        "byIdentifier": {
+          "./node_modules/.pnpm/babel-loader@8.2.2_f5e75caac3b594f23a69b34336794b2d/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.3.0_webpack@5.54.0/node_modules/css-loader/dist/runtime/api.js": 689,
+          "./node_modules/.pnpm/babel-loader@8.2.2_f5e75caac3b594f23a69b34336794b2d/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.3.0_webpack@5.54.0/node_modules/css-loader/dist/runtime/sourceMaps.js": 105,
+          "./node_modules/.pnpm/css-loader@6.3.0_webpack@5.54.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@4.0.0/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@12.1.0_node-sass@6.0.1+webpack@5.54.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/LeftAndMain.scss": 203
+        },
+        "usedIds": [
+          105,
+          203,
+          689
+        ]
+      }
+    }
+  ],
   "modules": {
     "byIdentifier": {
-      "./node_modules/.pnpm/babel-loader@8.2.2_90f0e7531115e738439b96a1279188c2/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./src/js/types/LeftAndMain.js": 103,
-      "./node_modules/.pnpm/babel-loader@8.2.2_90f0e7531115e738439b96a1279188c2/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./src/js/types/menu-fix.js": 996,
-      "./node_modules/.pnpm/mini-css-extract-plugin@1.6.0_webpack@5.36.2/node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/.pnpm/css-loader@5.2.4_webpack@5.36.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.3/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@11.0.1_node-sass@5.0.0+webpack@5.36.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/types/task-runner.scss": 524
+      "./node_modules/.pnpm/babel-loader@8.2.2_f5e75caac3b594f23a69b34336794b2d/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./src/js/types/LeftAndMain.js": 500,
+      "./node_modules/.pnpm/babel-loader@8.2.2_f5e75caac3b594f23a69b34336794b2d/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./src/js/types/menu-fix.js": 243,
+      "./node_modules/.pnpm/mini-css-extract-plugin@2.3.0_webpack@5.54.0/node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/.pnpm/css-loader@6.3.0_webpack@5.54.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@4.0.0/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@12.1.0_node-sass@6.0.1+webpack@5.54.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/types/task-runner.scss": 836
     },
     "usedIds": [
-      103,
-      524,
-      996
+      243,
+      500,
+      836
     ]
   }
 }
