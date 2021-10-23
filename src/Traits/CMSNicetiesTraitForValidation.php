@@ -24,9 +24,9 @@ trait CMSNicetiesTraitForValidation
                     $count = self::get()
                         ->filter([$field => $value])
                         ->exclude(['ID' => $id])
-                        ->count()
+                        ->exists()
                     ;
-                    if ($count > 0) {
+                    if ($count) {
                         $myName = $fieldLabels[$field];
                         $result->addError(
                             _t(
