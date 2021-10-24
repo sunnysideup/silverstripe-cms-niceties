@@ -21,12 +21,13 @@ trait CMSNicetiesTraitForValidation
                 if ($isUniqueEntry) {
                     $id = (empty($this->ID) ? 0 : $this->ID);
                     $value = $this->{$field};
-                    $count = self::get()
+                    // https://stackoverflow.com/questions/63227834/return-self-for-the-return-type-of-a-function-inside-a-php-trait
+                    $exists = self::get()
                         ->filter([$field => $value])
                         ->exclude(['ID' => $id])
                         ->exists()
                     ;
-                    if ($count) {
+                    if ($exists) {
                         $myName = $fieldLabels[$field];
                         $result->addError(
                             _t(
