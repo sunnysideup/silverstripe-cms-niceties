@@ -197,3 +197,10 @@ p.form__field-description.form-text {
   display: block;
   padding-bottom: 35px;
 }
+
+.toolbar--content.ss-gridfield-buttonrow.ss-gridfield-buttonrow-before {
+  position: relative;
+  z-index: 999;
+  margin-left: 41px;
+  margin-top: -14px;
+}
