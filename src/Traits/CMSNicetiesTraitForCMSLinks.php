@@ -52,10 +52,11 @@ trait CMSNicetiesTraitForCMSLinks
         if ($this instanceof SiteTree) {
             return parent::CMSListLink();
         }
-        if ($cont = $this->myModelAdminController()) {
-            return $cont->Link() .
-            $this->sanitisedClassName() . '/EditForm/field/' .
-            $this->sanitisedClassName() . '/item/new';
+        $controller = $this->myModelAdminController();
+        if ($controller) {
+            return $controller->Link() .
+                $this->sanitisedClassName() . '/EditForm/field/' .
+                $this->sanitisedClassName() . '/item/new';
         }
 
         return '404-cms-add-link-not-found';
@@ -66,8 +67,9 @@ trait CMSNicetiesTraitForCMSLinks
         if ($this instanceof SiteTree) {
             return parent::CMSListLink();
         }
-        if ($cont = $this->myModelAdminController()) {
-            return $cont->Link() . $this->sanitisedClassName();
+        $controller = $this->myModelAdminController();
+        if ($controller) {
+            return $controller->Link() . $this->sanitisedClassName();
         }
 
         return '404-cms-list-link-not-found';
