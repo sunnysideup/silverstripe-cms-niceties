@@ -54,7 +54,7 @@ class CheckboxSetFieldWithLinks extends CheckboxSetField
         $className = $this->getClassNameForLinks();
         if ($className) {
             foreach ($options as $key => $option) {
-                $obj = $className::get()->byID($option->Value);
+                $obj = $className::get_by_id($option->Value);
                 if ($obj && $obj->hasMethod('CMSEditLink')) {
                     $link = $obj->CMSEditLink();
                     if ($option->isChecked) {

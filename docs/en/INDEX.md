@@ -54,7 +54,7 @@ MyDataObject extends DataObject
     public function canEditingOwnerObject()
     {
         // return $this->Children();
-        return $this->Parent();
+        return $this->getParent();
     }
 
     public function canEditingGroupsCodes() : array
