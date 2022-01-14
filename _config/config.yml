@@ -5,6 +5,8 @@ Name: cms-niceties
 SilverStripe\Admin\ModelAdmin:
   page_length: 100
 
+  extensions:
+    - Sunnysideup\CMSNiceties\Extensions\ModelAdminExtension
 
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
@@ -19,6 +21,7 @@ SilverStripe\Dev\TaskRunner:
 SilverStripe\Forms\HTMLEditor\HTMLEditorField:
   default_rows: 3
   # fixed_row_height: 3
+
 
 ---
 Name: cms-niceties-hack
