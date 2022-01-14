@@ -21,6 +21,8 @@ class ModelAdminExtension extends Extension
 
     private static $excluded_modeladmins_from_ssu_extension = [];
 
+    private static $sort_fields_from_ssu_extension = ['SortNumber', 'Sort'];
+
     function updateEditForm($form)
     {
         $owner = $this->getOwner();
@@ -32,7 +34,7 @@ class ModelAdminExtension extends Extension
                 $obj = Injector::inst()->get($owner->modelClass);
                 if ($obj) {
                     $dbFields = $obj->stat('db');
-                    $sortFields = ['SortNumber', 'Sort'];
+                    $sortFields = Config::inst()->get(ModelAdmin::class, 'sort_fields_from_ssu_extension');;
                     foreach ($sortFields as $sortField) {
                         if (isset($dbFields[$sortField])) {
                             $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassNameHelper($owner->modelClass));
