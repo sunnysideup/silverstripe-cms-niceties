@@ -34,7 +34,7 @@ class CMSNicetiesLinkButton extends ReadonlyField
     {
         return DBField::create_field(
             'HTMLText',
-            '<a href="' . $this->link . '" class="btn action btn-outline-primary" target="_blank">
+            '<a href="' . $this->link . '" class="btn action btn-outline-primary">
                 <span class="btn__title">' . $this->label . '</span>
             </a>'
         );
