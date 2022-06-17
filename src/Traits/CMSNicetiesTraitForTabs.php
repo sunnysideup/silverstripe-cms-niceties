@@ -21,18 +21,23 @@ trait CMSNicetiesTraitForTabs
         }
     }
 
-    public function addTab(FieldList $fields, string $name, ?string $after = 'Main')
+    public function addTab(FieldList $fields, string $name, ?string $after = 'Main', ?string $title = '')
     {
         // add spaces between capitals
         $items = preg_split('#(?=[A-Z])#', $name);
-        $title = is_array($items) ? trim(implode(' ', $items)) : $name;
+        if(! $title) {
+            $title = is_array($items) ? trim(implode(' ', $items)) : $name;
+        }
         if (false !== $after) {
             if (! $this->isArchived()) {
+                $tab = $fields->fieldByName('Root.'.$name);
                 $fields->removeFieldFromTab(
                     'Root',
                     $name
                 );
-                $tab = Tab::create($name, $title);
+                if(! $tab) {
+                    $tab = Tab::create($name, $title);
+                }
                 $fields->insertAfter($tab, $after);
             }
         } else {
