@@ -25,19 +25,21 @@ trait CMSNicetiesTraitForTabs
     {
         // add spaces between capitals
         $items = preg_split('#(?=[A-Z])#', $name);
-        if(! $title) {
+        if (! $title) {
             $title = is_array($items) ? trim(implode(' ', $items)) : $name;
         }
+
         if (false !== $after) {
             if (! $this->isArchived()) {
-                $tab = $fields->fieldByName('Root.'.$name);
+                $tab = $fields->fieldByName('Root.' . $name);
                 $fields->removeFieldFromTab(
                     'Root',
                     $name
                 );
-                if(! $tab) {
+                if (! $tab) {
                     $tab = Tab::create($name, $title);
                 }
+
                 $fields->insertAfter($tab, $after);
             }
         } else {

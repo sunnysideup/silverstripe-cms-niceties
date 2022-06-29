@@ -16,6 +16,7 @@ trait CMSNicetiesTraitForCMSLinks
         if ($this instanceof SiteTree) {
             return Director::absoluteBaseURL() . '/admin/pages/edit/show/' . $this->ID . '/';
         }
+
         $cont = $this->myModelAdminController();
         if ($cont) {
             return $cont->Link() .
@@ -34,6 +35,7 @@ trait CMSNicetiesTraitForCMSLinks
             $nameOptions = $this->fieldLabels();
             $name = $nameOptions[$relName] ?? $nameOptions[$relName . 'ID'] ?? 'error';
         }
+
         if ($obj && $obj->exists()) {
             $value = '<a href="' . $obj->CMSEditLink() . '">' . $obj->getTitle() . '</a>';
         } else {
@@ -52,6 +54,7 @@ trait CMSNicetiesTraitForCMSLinks
         if ($this instanceof SiteTree) {
             return parent::CMSListLink();
         }
+
         $controller = $this->myModelAdminController();
         if ($controller) {
             return $controller->Link() .
@@ -67,6 +70,7 @@ trait CMSNicetiesTraitForCMSLinks
         if ($this instanceof SiteTree) {
             return parent::CMSListLink();
         }
+
         $controller = $this->myModelAdminController();
         if ($controller) {
             return $controller->Link() . $this->sanitisedClassName();

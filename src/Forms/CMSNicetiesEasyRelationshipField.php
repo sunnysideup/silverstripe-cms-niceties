@@ -342,6 +342,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 $fieldLabels = Injector::inst()->get($this->callingObject->ClassName)->fieldLabels();
                 $this->labelForField = $fieldLabels[$this->relationName] ?? $this->relationName;
             }
+
             $safeLabel = preg_replace('#[^A-Za-z0-9 ]#', '', $this->labelForField);
 
             $this->getGridFieldConfig = $this->getGridFieldConfig();
@@ -388,28 +389,33 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 if (! $this->hasAddExisting) {
                     $this->getGridFieldConfig->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
                 }
+
                 if ($hasCheckboxSet) {
                     $this->gridField->setTitle('Added ' . $this->labelForField);
                 }
+
                 if ('' !== $this->sortField) {
-                    $classA = 'UndefinedOffset\\SortableGridField\\Forms\\GridFieldSortableRows';
+                    $classA = \UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows::class;
                     if (class_exists($classA)) {
                         $this->getGridFieldConfig->addComponent($sorter = new $classA($this->sortField));
                         $sorter->setCustomRelationName($this->relationName);
                     }
                 }
-                if (count($this->dataColumns) > 0) {
+
+                if ([] !== $this->dataColumns) {
                     $dataColumns = $this->getGridFieldConfig->getComponentByType(GridFieldDataColumns::class);
                     if ($dataColumns) {
                         $dataColumns->setDisplayFields($this->dataColumns);
                     }
                 }
-                if (count($this->searchFields) > 0) {
+
+                if ([] !== $this->searchFields) {
                     $autocompleter = $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class);
                     if ($autocompleter) {
                         $autocompleter->setSearchFields($this->searchFields);
                     }
                 }
+
                 if ('' !== $this->searchOutputFormat) {
                     $autocompleter = $this->getGridFieldConfig->getComponentByType(GridFieldAddExistingAutocompleter::class);
                     if ($autocompleter) {
@@ -425,14 +431,17 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 if (null === $this->dataListForCheckboxSetField) {
                     $this->dataListForCheckboxSetField = $className::get();
                 }
+
                 if ($this->dataListForCheckboxSetField && $this->checkBoxSort) {
                     $this->dataListForCheckboxSetField = $this->dataListForCheckboxSetField->sort($this->checkBoxSort);
                 }
+
                 if ($obj->hasMethod('getTitleForList')) {
                     $list = $this->dataListForCheckboxSetField->map('ID', 'getTitleForList');
                 } else {
                     $list = $this->dataListForCheckboxSetField->map('ID', 'Title');
                 }
+
                 $this->checkboxSetField = CheckboxSetFieldWithLinks::create(
                     $this->relationName,
                     'Add / Remove',
@@ -446,9 +455,11 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             if (null !== $this->gridField) {
                 $fieldsArray[] = $this->gridField;
             }
+
             if (null !== $this->checkboxSetField) {
                 $fieldsArray[] = $this->checkboxSetField;
             }
+
             $this->children = FieldList::create($fieldsArray);
             //important - as setChildren does more than just setting variable...
             $this->setChildren($this->children);
@@ -525,9 +536,11 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 }
             }
         }
+
         if ($this->relationClassName && class_exists($this->relationClassName)) {
             return $this->relationClassName;
         }
+
         user_error('Can not find related class: ' . $this->relationClassName);
 
         return 'error';
@@ -559,6 +572,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
         if ($this->hasEditRelation || $this->hasDelete || $this->hasAdd || $this->sortField) {
             return true;
         }
+
         // do we need it because we do not have a checkboxset?
         //we can go without!
         return ! $this->hasCheckboxSet();

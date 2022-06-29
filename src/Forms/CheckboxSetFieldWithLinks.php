@@ -60,6 +60,7 @@ class CheckboxSetFieldWithLinks extends CheckboxSetField
                     if ($option->isChecked) {
                         $this->linksPerOption[] = '<a href="' . $link . '">' . $option->Title . '</a>';
                     }
+
                     $option->setField('Link', $link);
                     $option->setField(
                         'Title',

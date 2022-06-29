@@ -25,6 +25,7 @@ trait CMSNicetiesTraitForCanMethods
                         break;
                     }
                 }
+
                 if ($outcome) {
                     return parent::canCreate($member, $context);
                 }
@@ -34,6 +35,7 @@ trait CMSNicetiesTraitForCanMethods
 
             return $obj->canCreate($member, $context);
         }
+
         $groupCodes = $this->hasMethod('canEditingGroupsCodes') ? $this->canEditingGroupsCodes() : [
             'CMS_ACCESS_CMSMain',
         ];
