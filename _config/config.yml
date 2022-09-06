@@ -22,6 +22,9 @@ SilverStripe\Forms\HTMLEditor\HTMLEditorField:
   default_rows: 3
   # fixed_row_height: 3
 
+# speed up the site...
+SilverStripe\CMS\Controllers\CMSMain:
+  enable_dynamic_archive_warning_message: false
 
 ---
 Name: cms-niceties-hack
