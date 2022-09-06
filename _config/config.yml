@@ -3,7 +3,8 @@ Name: cms-niceties
 ---
 
 SilverStripe\Admin\ModelAdmin:
-  page_length: 100
+
+  page_length: 20
 
   extensions:
     - Sunnysideup\CMSNiceties\Extensions\ModelAdminExtension
