@@ -27,7 +27,7 @@ class ModelAdminExtension extends Extension
                 // This check is simply to ensure you are on the managed model you want adjust accordingly
                 $obj = Injector::inst()->get($owner->modelClass);
                 if ($obj) {
-                    $dbFields = $obj->stat('db');
+                    $dbFields = $obj->config()->get('db');
                     $sortFields = Config::inst()->get(ModelAdmin::class, 'sort_fields_from_ssu_extension');
                     foreach ($sortFields as $sortField) {
                         if (isset($dbFields[$sortField])) {

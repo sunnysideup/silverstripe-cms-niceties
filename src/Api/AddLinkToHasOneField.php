@@ -8,7 +8,7 @@ class AddLinkToHasOneField
     {
         $dbFieldNameWithID = $field->getName();
         $dbFieldName = preg_replace('#ID$#', '', $dbFieldNameWithID);
-        $options = $object->stat('has_one');
+        $options = $object->config()->get('has_one');
         $className = $options[$dbFieldName] ?? '';
         if ($className) {
             $value = (int) $object->{$dbFieldName}()->ID;
