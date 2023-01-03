@@ -36,12 +36,13 @@ class CMSNicetiesLinkButton extends ReadonlyField
     public function Value()
     {
         $target = '';
-        if($this->targetBlank) {
+        if ($this->targetBlank) {
             $target = ' target="_blank" rel="noreferrer noopener"';
         }
+
         return DBField::create_field(
             'HTMLText',
-            '<a href="' . $this->link . '" class="btn action btn-outline-primary" '.$target.'>
+            '<a href="' . $this->link . '" class="btn action btn-outline-primary" ' . $target . '>
                 <span class="btn__title">' . $this->label . '</span>
             </a>'
         );

@@ -25,7 +25,7 @@ trait CMSNicetiesTraitForTabs
     {
         $tabs = [];
         foreach ($tabOrder as $tabName => $title) {
-            if($tabName && intval($tabName) === $name) {
+            if ($tabName && intval($tabName) === $name) {
                 $tabName = $title;
                 $items = preg_split('#(?=[A-Z])#', $tabName);
                 $title = is_array($items) ? trim(implode(' ', $items)) : $tabName;
@@ -42,20 +42,19 @@ trait CMSNicetiesTraitForTabs
             }
             $fields->removeByName(['Root.' . $tabName]);
             $fields->removeByName(['Root.' . $tabName]);
-            $fields->removeFieldFromTab('Root' , $tabName);
-            $fields->removeFieldFromTab('Root' , $tabNamePlus);
-            $fields->removeFieldsFromTab('Root' , [$tabName]);
-            $fields->removeFieldsFromTab('Root' , [$tabNamePlus]);
+            $fields->removeFieldFromTab('Root', $tabName);
+            $fields->removeFieldFromTab('Root', $tabNamePlus);
+            $fields->removeFieldsFromTab('Root', [$tabName]);
+            $fields->removeFieldsFromTab('Root', [$tabNamePlus]);
             $tab->setTitle($tabName);
             $tab->setName($tabNamePlus);
             $tabs[] = $tab;
             // $fields->addFieldsToTab('Root', $tab);
         }
         // $tabs = array_reverse($tabs);
-        foreach($tabs as $tab) {
+        foreach ($tabs as $tab) {
             $fields->addFieldToTab('Root', $tab);
         }
-
     }
 
     public function addTab(FieldList $fields, string $name, ?string $after = 'Main', ?string $title = '')
