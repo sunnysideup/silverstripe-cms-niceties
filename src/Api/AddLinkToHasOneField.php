@@ -2,6 +2,8 @@
 
 namespace Sunnysideup\CMSNiceties\Api;
 
+use SilverStripe\ORM\FieldType\DBHTMLVarchar;
+
 class AddLinkToHasOneField
 {
     public static function add_link($field, $object)
@@ -17,11 +19,10 @@ class AddLinkToHasOneField
                 if ($linkedObject && $linkedObject->hasMethod('CMSEditLink')) {
                     $link = $linkedObject->CMSEditLink();
                     if ($link) {
-                        $originalDescription = $field->getDescription();
-                        $descriptions = [$originalDescription];
-                        $descriptions[] = '<a href="' . $link . '">edit ' . $linkedObject->getTitle() . '</a>';
-                        $descriptions = array_filter($descriptions);
-                        $field->setDescription(implode('<br />', $descriptions));
+                        $linkAsHtml = '
+                            <a href="' . $link . '" style="text-decoration: none!important;">✎</a> '.
+                            $linkedObject->getTitle();
+                        $field->setTitle(DBHTMLVarchar::create($linkAsHtml));
                     }
                 }
             }
