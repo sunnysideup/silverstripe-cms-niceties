@@ -142,6 +142,7 @@ MyDataObject extends DataObject
 {
     use Sunnysideup\CMSNiceties\Traits\CMSNicetiesTraitForValidation;
 
+
     private static $indexes = [
         'MyUniuqeField' => [
             'type' => 'unique'
@@ -154,4 +155,26 @@ MyDataObject extends DataObject
 
 
 }
+```
+
+# add links to has_one rels:
+```php
+
+use Sunnysideup\CMSNiceties\Api\AddLinkToHasOneField;
+
+use SilverStripe\ORM\DataObject;
+
+class MyClass extends DataObject
+{
+    private static $has_one = [
+        'Rel' => Class::MyOtherClass,
+    ];
+
+    function getCMSFields() {
+        $fields = parent::getCMSFields();
+        $fields->dataFieldByName('Rel');
+        AddLinkToHasOneField::add_link($rel, $this->Rel());
+        return $fields;
+    }
+
 ```
