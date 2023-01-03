@@ -26,6 +26,7 @@ class AddLinkToHasOneField
                 $linkAsHtml = '
                     <a href="' . $link . '" style="text-decoration: none!important;">✎ add ' . $field->Title() . '</a>';
             }
+
             if ($link) {
                 $field->setRightTitle(DBHTMLVarchar::create_field(DBHTMLVarchar::class, $linkAsHtml));
             }

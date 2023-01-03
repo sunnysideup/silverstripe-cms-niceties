@@ -25,11 +25,12 @@ trait CMSNicetiesTraitForTabs
     {
         $tabs = [];
         foreach ($tabOrder as $tabName => $title) {
-            if ($tabName && intval($tabName) === $name) {
+            if ($tabName && (int) $tabName === $name) {
                 $tabName = $title;
                 $items = preg_split('#(?=[A-Z])#', $tabName);
                 $title = is_array($items) ? trim(implode(' ', $items)) : $tabName;
             }
+
             $tabNamePlus = $tabName . 'Tab';
 
             // fixd existing existing tab
@@ -37,9 +38,11 @@ trait CMSNicetiesTraitForTabs
             if (! $tab) {
                 $tab = $fields->fieldByName('Root.' . $tabNamePlus);
             }
+
             if (! $tab) {
                 $tab = new Tab($tabNamePlus, $tabName);
             }
+
             $fields->removeByName(['Root.' . $tabName]);
             $fields->removeByName(['Root.' . $tabName]);
             $fields->removeFieldFromTab('Root', $tabName);
@@ -51,6 +54,7 @@ trait CMSNicetiesTraitForTabs
             $tabs[] = $tab;
             // $fields->addFieldsToTab('Root', $tab);
         }
+
         // $tabs = array_reverse($tabs);
         foreach ($tabs as $tab) {
             $fields->addFieldToTab('Root', $tab);
