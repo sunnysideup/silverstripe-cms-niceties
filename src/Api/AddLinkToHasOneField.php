@@ -4,9 +4,13 @@ namespace Sunnysideup\CMSNiceties\Api;
 
 use SilverStripe\ORM\FieldType\DBHTMLVarchar;
 
+use SilverStripe\ORM\DataObject;
+
+use SilverStripe\Forms\FormField;
+
 class AddLinkToHasOneField
 {
-    public static function add_link($field, $object)
+    public static function add_link(FormField $field, DataObject $object)
     {
         $dbFieldNameWithID = $field->getName();
         $dbFieldName = preg_replace('#ID$#', '', $dbFieldNameWithID);
