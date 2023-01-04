@@ -5,6 +5,8 @@ namespace Sunnysideup\CMSNiceties\Traits;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Tab;
 
+use SilverStripe\Versioned\Versioned;
+
 trait CMSNicetiesTraitForTabs
 {
     public function addSeparator(FieldList $fields, string $name, ?string $after = 'Main')
@@ -70,7 +72,9 @@ trait CMSNicetiesTraitForTabs
         }
 
         if (null !== $after) {
-            if (! $this->isArchived()) {
+            if ($this->hasExtension(Versioned::class) && $this->isArchived()) {
+                // do nothing
+            } else {
                 $tab = $fields->fieldByName('Root.' . $name);
                 $fields->removeFieldFromTab(
                     'Root',
