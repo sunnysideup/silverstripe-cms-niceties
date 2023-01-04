@@ -44,7 +44,7 @@ trait CMSNicetiesTraitForTabs
             }
 
             $fields->removeByName(['Root.' . $tabName]);
-            $fields->removeByName(['Root.' . $tabName]);
+            $fields->removeByName(['Root.' . $tabNamePlus]);
             $fields->removeFieldFromTab('Root', $tabName);
             $fields->removeFieldFromTab('Root', $tabNamePlus);
             $fields->removeFieldsFromTab('Root', [$tabName]);
@@ -69,7 +69,7 @@ trait CMSNicetiesTraitForTabs
             $title = is_array($items) ? trim(implode(' ', $items)) : $name;
         }
 
-        if (false !== $after) {
+        if (null !== $after) {
             if (! $this->isArchived()) {
                 $tab = $fields->fieldByName('Root.' . $name);
                 $fields->removeFieldFromTab(
