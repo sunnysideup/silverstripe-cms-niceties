@@ -21,7 +21,7 @@ trait CMSNicetiesTraitForReadOnly
             );
         }
     }
-    protected function makeReadonOnlyForCMSFieldsAll(FieldList $fields, $arrayOfFields)
+    protected function makeReadonOnlyForCMSFieldsAll(FieldList $fields, array $arrayOfFields)
     {
         foreach($arrayOfFields as $fieldName) {
             $this->makeReadonOnlyForCMSFields($fields, $fieldName);;
