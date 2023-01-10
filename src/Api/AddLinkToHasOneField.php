@@ -17,6 +17,7 @@ class AddLinkToHasOneField
         if ($className) {
             $linkedObject = $object->{$dbFieldName}();
             $link = '';
+            $linkAsHtml = '';
             if ($linkedObject->exists() && $linkedObject->hasMethod('CMSEditLink')) {
                 $link = $linkedObject->CMSEditLink();
                 $linkAsHtml = '
