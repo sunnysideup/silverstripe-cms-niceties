@@ -204,3 +204,15 @@ p.form__field-description.form-text {
   margin-left: 41px;
   margin-top: -14px;
 }
+
+#Form_ItemEditForm_error {
+    background-color: #da273b;
+    color: white;
+}
+
+
+#Form_ItemEditForm_error.alert.alert-success {
+    background-color: #e9f6e9;
+    border-color: #3fa142;
+    color: #222;
+}
