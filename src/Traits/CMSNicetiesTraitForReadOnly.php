@@ -21,6 +21,7 @@ trait CMSNicetiesTraitForReadOnly
             );
         }
     }
+
     protected function makeReadonOnlyForCMSFieldsAll(FieldList $fields, array $arrayOfFields)
     {
         foreach($arrayOfFields as $fieldName) {

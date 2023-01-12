@@ -19,6 +19,7 @@ trait CMSNicetiesTraitForValidation
                     foreach($fields as $field) {
                         $filter[$field] = $this->$field;
                     }
+
                     $id = (empty($this->ID) ? 0 : $this->ID);
                     // https://stackoverflow.com/questions/63227834/return-self-for-the-return-type-of-a-function-inside-a-php-trait
                     $exists = self::get()
