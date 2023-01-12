@@ -33,7 +33,7 @@ trait CMSNicetiesTraitForValidation
                                 self::class . '.' . $index['type'] . '_UNIQUE',
                                 $index['type'] . ' needs to be unique'
                             ),
-                            'UNIQUE_' . self::class . '.' . $field
+                            'UNIQUE_' . self::class . '.' . implode('_', $fields)
                         );
                     }
                 }

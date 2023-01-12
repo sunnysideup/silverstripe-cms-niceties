@@ -62,6 +62,7 @@ trait CMSNicetiesTraitForTabs
         foreach ($tabs as $tab) {
             $fields->addFieldToTab('Root', $tab);
         }
+        return $fields;
     }
 
     public function addTab(FieldList $fields, string $name, ?string $after = 'Main', ?string $title = '')
