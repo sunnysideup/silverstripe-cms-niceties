@@ -82,6 +82,7 @@ trait CMSNicetiesTraitForCMSLinks
             /** @var ModelAdmin|null $obj */
             $obj = Injector::inst()->get($modelAdminClassName);
         }
+
         return $obj;
     }
 

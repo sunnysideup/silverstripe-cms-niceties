@@ -28,7 +28,7 @@ trait CMSNicetiesTraitForTabs
         $tabs = [];
         foreach ($tabOrder as $tabName => $title) {
             // non-associative array..
-            if (intval($tabName) === $tabName) {
+            if ((int) $tabName === $tabName) {
                 $tabName = $title;
                 $items = preg_split('#(?=[A-Z])#', $tabName);
                 $title = is_array($items) ? trim(implode(' ', $items)) : $tabName;
@@ -62,6 +62,7 @@ trait CMSNicetiesTraitForTabs
         foreach ($tabs as $tab) {
             $fields->addFieldToTab('Root', $tab);
         }
+
         return $fields;
     }
 
