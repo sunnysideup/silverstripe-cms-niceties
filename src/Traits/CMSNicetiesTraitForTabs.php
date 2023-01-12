@@ -27,7 +27,8 @@ trait CMSNicetiesTraitForTabs
     {
         $tabs = [];
         foreach ($tabOrder as $tabName => $title) {
-            if ($tabName && (int) $tabName === $name) {
+            // non-associative array..
+            if (intval($tabName) === $tabName) {
                 $tabName = $title;
                 $items = preg_split('#(?=[A-Z])#', $tabName);
                 $title = is_array($items) ? trim(implode(' ', $items)) : $tabName;

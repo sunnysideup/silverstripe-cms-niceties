@@ -51,10 +51,6 @@ trait CMSNicetiesTraitForCMSLinks
 
     public function CMSAddLink(): string
     {
-        if ($this instanceof SiteTree) {
-            return parent::CMSListLink();
-        }
-
         $controller = $this->myModelAdminController();
         if ($controller) {
             return $controller->Link() .
@@ -67,10 +63,6 @@ trait CMSNicetiesTraitForCMSLinks
 
     public function CMSListLink(): string
     {
-        if ($this instanceof SiteTree) {
-            return parent::CMSListLink();
-        }
-
         $controller = $this->myModelAdminController();
         if ($controller) {
             return $controller->Link() . $this->sanitisedClassName();

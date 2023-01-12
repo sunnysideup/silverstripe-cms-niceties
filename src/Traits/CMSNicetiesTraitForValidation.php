@@ -23,7 +23,7 @@ trait CMSNicetiesTraitForValidation
                     $id = (empty($this->ID) ? 0 : $this->ID);
                     // https://stackoverflow.com/questions/63227834/return-self-for-the-return-type-of-a-function-inside-a-php-trait
                     $exists = self::get()
-                        ->filter($field)
+                        ->filter($filter)
                         ->exclude(['ID' => $id])
                         ->exists()
                     ;
