@@ -4,7 +4,6 @@ namespace Sunnysideup\CMSNiceties\Traits;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Tab;
-
 use SilverStripe\Versioned\Versioned;
 
 trait CMSNicetiesTraitForTabs

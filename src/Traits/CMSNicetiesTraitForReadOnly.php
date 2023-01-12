@@ -2,15 +2,12 @@
 
 namespace Sunnysideup\CMSNiceties\Traits;
 
-use SilverStripe\ORM\ValidationResult;
-
 use SilverStripe\Forms\FieldList;
 
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
 
 trait CMSNicetiesTraitForReadOnly
 {
-
     protected function makeReadonOnlyForCMSFields(FieldList $fields, string $fieldName)
     {
         $field = $fields->dataFieldByName($fieldName);
@@ -24,8 +21,8 @@ trait CMSNicetiesTraitForReadOnly
 
     protected function makeReadonOnlyForCMSFieldsAll(FieldList $fields, array $arrayOfFields)
     {
-        foreach($arrayOfFields as $fieldName) {
-            $this->makeReadonOnlyForCMSFields($fields, $fieldName);;
+        foreach ($arrayOfFields as $fieldName) {
+            $this->makeReadonOnlyForCMSFields($fields, $fieldName);
         }
     }
 }

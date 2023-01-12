@@ -8,16 +8,16 @@ use SilverStripe\ORM\ValidationResult;
 
 trait CMSNicetiesTraitForValidation
 {
-    public function validateForUniqueValues(ValidationResult $result) : ValidationResult
+    public function validateForUniqueValues(ValidationResult $result): ValidationResult
     {
         foreach ($this->Config()->get('indexes') as $index) {
             $isUniqueEntry = isset($index['type']) && 'unique' === $index['type'];
             if ($isUniqueEntry) {
-                $fields = $index['columns'] ??[];
-                if(count($fields)) {
+                $fields = $index['columns'] ?? [];
+                if (count($fields)) {
                     $filter = [];
-                    foreach($fields as $field) {
-                        $filter[$field] = $this->$field;
+                    foreach ($fields as $field) {
+                        $filter[$field] = $this->{$field};
                     }
 
                     $id = (empty($this->ID) ? 0 : $this->ID);

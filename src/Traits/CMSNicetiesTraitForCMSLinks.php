@@ -79,7 +79,7 @@ trait CMSNicetiesTraitForCMSLinks
         $modelAdminClassName = $this->Config()->get('primary_model_admin_class');
         $obj = null;
         if ($modelAdminClassName) {
-            /** @var ModelAdmin|null $obj */
+            /** @var null|ModelAdmin $obj */
             $obj = Injector::inst()->get($modelAdminClassName);
         }
 
