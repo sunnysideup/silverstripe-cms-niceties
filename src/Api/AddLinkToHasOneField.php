@@ -11,7 +11,7 @@ class AddLinkToHasOneField
     public static function add_link(FormField $field, DataObject $object)
     {
         $dbFieldNameWithID = $field->getName();
-        $dbFieldName = substr($dbFieldNameWithID, 0, -2);
+        $dbFieldName = substr((string) $dbFieldNameWithID, 0, -2);
         $options = $object->config()->get('has_one');
         $className = $options[$dbFieldName] ?? '';
         if ($className) {
