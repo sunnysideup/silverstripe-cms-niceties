@@ -489,7 +489,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
 
     protected function listIsEmpty(): bool
     {
-        return !$this->children || ($this->children instanceof FieldList && ! $this->children->exists());
+        return ! $this->children || ($this->children instanceof FieldList && ! $this->children->exists());
     }
 
     protected function checkIfFieldsHaveBeenBuilt()
