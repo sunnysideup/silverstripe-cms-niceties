@@ -343,7 +343,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 $this->labelForField = $fieldLabels[$this->relationName] ?? $this->relationName;
             }
 
-            $safeLabel = preg_replace('#[^A-Za-z0-9 ]#', '', $this->labelForField);
+            $safeLabel = preg_replace('#[^A-Za-z0-9 ]#', '', (string) $this->labelForField);
 
             $this->getGridFieldConfig = $this->getGridFieldConfig();
 
