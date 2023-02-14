@@ -8,3 +8,6 @@ Name: cms-niceties
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
     - 'sunnysideup/cms-niceties: client/dist/css/cms/LeftAndMain.css'
+
+SilverStripe\i18n\i18n:
+    locale: en_GB
