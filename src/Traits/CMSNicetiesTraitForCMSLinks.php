@@ -5,62 +5,94 @@ namespace Sunnysideup\CMSNiceties\Traits;
 use SilverStripe\Admin\ModelAdmin;
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Director;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\HTMLReadonlyField;
 
 trait CMSNicetiesTraitForCMSLinks
 {
-    public function CMSEditLink()
+    public function CMSEditLink(): string
     {
         if ($this instanceof SiteTree) {
-            return 'admin/pages/edit/show/' . $this->ID . '/';
+            return Director::absoluteBaseURL() . '/admin/pages/edit/show/' . $this->ID . '/';
         }
-        if ($cont = $this->myModelAdminController()) {
+
+        $cont = $this->myModelAdminController();
+        if ($cont) {
             return $cont->Link() .
-                    $this->sanitisedClassName() . '/EditForm/field/' .
-                    $this->sanitisedClassName() . '/item/' . $this->ID .
-                    '/edit';
+                        $this->sanitisedClassName() . '/EditForm/field/' .
+                        $this->sanitisedClassName() . '/item/' . $this->ID .
+                        '/edit';
         }
+
+        return '404-cms-edit-link-not-found';
     }
 
-    public function CMSAddLink()
+    public function CMSEditLinkField(string $relName, string $name = ''): HTMLReadonlyField
     {
-        if (! $this instanceof SiteTree) {
-            if ($cont = $this->myModelAdminController()) {
-                return $cont->Link() .
-                    $this->sanitisedClassName() . '/EditForm/field/' .
-                    $this->sanitisedClassName() . '/item/new';
-            }
+        $obj = $this->{$relName}();
+        if (! $name) {
+            $nameOptions = $this->fieldLabels();
+            $name = $nameOptions[$relName] ?? $nameOptions[$relName . 'ID'] ?? 'error';
         }
+
+        if ($obj && $obj->exists()) {
+            $value = '<a href="' . $obj->CMSEditLink() . '">' . $obj->getTitle() . '</a>';
+        } else {
+            $value = '<em>(none)</em>';
+        }
+
+        return HTMLReadonlyField::create(
+            $relName . 'Link',
+            $name,
+            $value
+        );
     }
 
-    public function CMSListLink()
+    public function CMSAddLink(): string
     {
-        if (! $this instanceof SiteTree) {
-            if ($cont = $this->myModelAdminController()) {
-                return $cont->Link() . $this->sanitisedClassName();
-            }
+        $controller = $this->myModelAdminController();
+        if ($controller) {
+            return $controller->Link() .
+                $this->sanitisedClassName() . '/EditForm/field/' .
+                $this->sanitisedClassName() . '/item/new';
         }
+
+        return '404-cms-add-link-not-found';
+    }
+
+    public function CMSListLink(): string
+    {
+        $controller = $this->myModelAdminController();
+        if ($controller) {
+            return $controller->Link() . $this->sanitisedClassName();
+        }
+
+        return '404-cms-list-link-not-found';
     }
 
     /**
-     * @return ModelAdmin|null
+     * @return null|ModelAdmin
      */
     protected function myModelAdminController()
     {
         $modelAdminClassName = $this->Config()->get('primary_model_admin_class');
+        $obj = null;
         if ($modelAdminClassName) {
-            return Injector::inst()->get($modelAdminClassName);
+            /** @var null|ModelAdmin $obj */
+            $obj = Injector::inst()->get($modelAdminClassName);
         }
+
+        return $obj;
     }
 
     /**
-     * Sanitise a model class' name for inclusion in a link
-     *
-     * @param string $class
-     * @return string
+     * Sanitise a model class' name for inclusion in a link.
      */
-    protected function sanitisedClassName()
+    protected function sanitisedClassName(): string
     {
-        return str_replace('\\', '-', $this->ClassName);
+        $className = $this->hasMethod('classNameForModelAdmin') ? $this->classNameForModelAdmin() : $this->ClassName;
+
+        return str_replace('\\', '-', $className);
     }
 }

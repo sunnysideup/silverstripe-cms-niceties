@@ -15,11 +15,13 @@ trait CMSNicetiesTraitForRightTitles
                 if (! $formField) {
                     $formField = $fields->DataFieldByName($field . 'ID');
                 }
+
                 if ($formField) {
                     $formField->setDescription($desc);
                 }
             }
         }
+
         //...
     }
 }

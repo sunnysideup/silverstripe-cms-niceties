@@ -1,0 +1,20 @@
+# that's important to place this file into /app/_config/webpack.yml
+# with all configuration variables presented
+# Cuz WebPack compiling script use it to set configuration
+
+App\Templates\WebpackTemplateProvider:
+  APPDIR: ./
+  THEMESDIR: themes
+  HOSTNAME: 127.0.0.1
+  PORT: 3001
+  SRC: src
+  DIST: dist
+  TYPESJS: src/js/types
+  TYPESSCSS: src/scss/types
+  webp: false
+  NODE_ENV: production #production,development
+  HTTPS: false
+  injectClient: true # disable it to test caching service worker
+  GRAPHQL_URL: 'http://127.0.0.1/graphql'
+  GRAPHQL_API_KEY: 'ApKrRSjySO4JAmX3E2Z7HvrBD0m8xdDlAiXyh4IbH3w'
+  STATIC_URL: 'http://127.0.0.1'

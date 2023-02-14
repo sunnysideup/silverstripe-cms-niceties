@@ -2,13 +2,15 @@
 
 namespace Sunnysideup\CMSNiceties\Traits;
 
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Tab;
+use SilverStripe\Versioned\Versioned;
 
 trait CMSNicetiesTraitForTabs
 {
-    public function addSeparator($fields, $name, $after = 'Main')
+    public function addSeparator(FieldList $fields, string $name, ?string $after = 'Main')
     {
-        if ($after !== false) {
+        if (false !== $after) {
             $tab = Tab::create($name, '|');
             $fields->insertAfter($tab, $after);
         } else {
@@ -20,22 +22,70 @@ trait CMSNicetiesTraitForTabs
         }
     }
 
-    public function addTab($fields, $name, $after = 'Main')
+    public function reorderTabs(FieldList $fields, array $tabOrder): FieldList
+    {
+        $tabs = [];
+        foreach ($tabOrder as $tabName => $title) {
+            // non-associative array..
+            if ((int) $tabName === $tabName) {
+                $tabName = $title;
+                $items = preg_split('#(?=[A-Z])#', $tabName);
+                $title = is_array($items) ? trim(implode(' ', $items)) : $tabName;
+            }
+
+            $tabNamePlus = $tabName . 'Tab';
+
+            // fixd existing existing tab
+            $tab = $fields->fieldByName('Root.' . $tabName);
+            if (! $tab) {
+                $tab = $fields->fieldByName('Root.' . $tabNamePlus);
+            }
+
+            if (! $tab) {
+                $tab = new Tab($tabNamePlus, $tabName);
+            }
+
+            $fields->removeByName(['Root.' . $tabName]);
+            $fields->removeByName(['Root.' . $tabNamePlus]);
+            $fields->removeFieldFromTab('Root', $tabName);
+            $fields->removeFieldFromTab('Root', $tabNamePlus);
+            $fields->removeFieldsFromTab('Root', [$tabName]);
+            $fields->removeFieldsFromTab('Root', [$tabNamePlus]);
+            $tab->setTitle($tabName);
+            $tab->setName($tabNamePlus);
+            $tabs[] = $tab;
+            // $fields->addFieldsToTab('Root', $tab);
+        }
+
+        // $tabs = array_reverse($tabs);
+        foreach ($tabs as $tab) {
+            $fields->addFieldToTab('Root', $tab);
+        }
+
+        return $fields;
+    }
+
+    public function addTab(FieldList $fields, string $name, ?string $after = 'Main', ?string $title = '')
     {
         // add spaces between capitals
-        $items = preg_split('/(?=[A-Z])/', $name);
-        if (is_array($items)) {
-            $title = trim(implode(' ', $items));
-        } else {
-            $title = $name;
+        if (! $title) {
+            $items = preg_split('#(?=[A-Z])#', $name);
+            $title = is_array($items) ? trim(implode(' ', $items)) : $name;
         }
-        if ($after !== false) {
-            if (! $this->isArchived()) {
+
+        if (null !== $after) {
+            if ($this->hasExtension(Versioned::class) && $this->isArchived()) {
+                // do nothing
+            } else {
+                $tab = $fields->fieldByName('Root.' . $name);
                 $fields->removeFieldFromTab(
                     'Root',
                     $name
                 );
-                $tab = Tab::create($name, $title);
+                if (! $tab) {
+                    $tab = Tab::create($name, $title);
+                }
+
                 $fields->insertAfter($tab, $after);
             }
         } else {

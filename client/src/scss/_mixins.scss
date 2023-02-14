@@ -1,0 +1,11 @@
+@mixin md-screen() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin lg-screen() {
+  @media (min-width: 1100px) {
+    @content;
+  }
+}

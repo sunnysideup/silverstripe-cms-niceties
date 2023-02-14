@@ -21,20 +21,24 @@ trait CMSNicetiesTraitForCanMethods
                 foreach ($obj as $item) {
                     if (! $item->canCreate($member, $context)) {
                         $outcome = false;
+
                         break;
                     }
                 }
-                return $outcome;
+
+                if ($outcome) {
+                    return parent::canCreate($member, $context);
+                }
+
+                return false;
             }
+
             return $obj->canCreate($member, $context);
         }
-        if ($this->hasMethod('canEditingGroupsCodes')) {
-            $groupCodes = $this->canEditingGroupsCodes();
-        } else {
-            $groupCodes = [
-                'CMS_ACCESS_CMSMain',
-            ];
-        }
+
+        $groupCodes = $this->hasMethod('canEditingGroupsCodes') ? $this->canEditingGroupsCodes() : [
+            'CMS_ACCESS_CMSMain',
+        ];
         $groupCodes = array_merge(['ADMIN'], $groupCodes);
 
         foreach ($groupCodes as $groupCode) {
@@ -42,6 +46,7 @@ trait CMSNicetiesTraitForCanMethods
                 return parent::canCreate($member, $context);
             }
         }
+
         return false;
     }
 

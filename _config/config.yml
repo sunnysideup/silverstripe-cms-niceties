@@ -1,13 +1,43 @@
 ---
 Name: cms-niceties
 ---
-#  @todo: UPGRADE: we applied some really basic CMS styling here,
-# update as you see fit.
 
+SilverStripe\Admin\ModelAdmin:
 
-SilverStripe\Admin\LeftAndMain:
-  extra_requirements_css:
-    - 'sunnysideup/cms-niceties: client/dist/css/cms/LeftAndMain.css'
+  page_length: 20
+
+  extensions:
+    - Sunnysideup\CMSNiceties\Extensions\ModelAdminExtension
 
 SilverStripe\i18n\i18n:
     locale: en_GB
+
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_css:
+    - 'sunnysideup/cms-niceties: client/dist/css/app_LeftAndMain.css'
+  extra_requirements_javascript:
+    - 'sunnysideup/cms-niceties: client/dist/js/app_menu-fix.js'
+    - 'sunnysideup/cms-niceties: client/dist/js/app_LeftAndMain.js'
+
+SilverStripe\Dev\TaskRunner:
+  css: 'nothinghere'
+
+SilverStripe\Forms\HTMLEditor\HTMLEditorField:
+  default_rows: 3
+  # fixed_row_height: 3
+
+# speed up the site...
+SilverStripe\CMS\Controllers\CMSMain:
+  enable_dynamic_archive_warning_message: false
+
+---
+Name: cms-niceties-hack
+Only:
+    classexists:
+        - SilverStripe\Admin\LeftAndMain
+---
+
+
+SilverStripe\Dev\TaskRunner:
+  css:
+    0: 'sunnysideup/cms-niceties: client/dist/css/app_task-runner.css'
