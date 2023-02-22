@@ -65,7 +65,7 @@
     display: grid;
     padding: 0;
     border-top: 1px solid #004e7f;
-
+    width: 100%;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
