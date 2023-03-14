@@ -18,6 +18,7 @@ SilverStripe\Admin\LeftAndMain:
   extra_requirements_javascript:
     - 'sunnysideup/cms-niceties: client/dist/js/app_menu-fix.js'
     - 'sunnysideup/cms-niceties: client/dist/js/app_LeftAndMain.js'
+    - 'sunnysideup/cms-niceties: client/dist/js/app_MenuTabClick.js'
 
 SilverStripe\Dev\TaskRunner:
   css: 'nothinghere'
