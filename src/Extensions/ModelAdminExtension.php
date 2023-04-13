@@ -9,6 +9,11 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\GridField\GridField;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
+/**
+ * Class \Sunnysideup\CMSNiceties\Extensions\ModelAdminExtension
+ *
+ * @property ModelAdmin|ModelAdminExtension $owner
+ */
 class ModelAdminExtension extends Extension
 {
     private static $excluded_models_from_ssu_extension = [];
