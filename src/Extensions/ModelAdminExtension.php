@@ -12,7 +12,7 @@ use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 /**
  * Class \Sunnysideup\CMSNiceties\Extensions\ModelAdminExtension
  *
- * @property ModelAdmin|ModelAdminExtension $owner
+ * @property \SilverStripe\Admin\ModelAdmin|\Sunnysideup\CMSNiceties\Extensions\ModelAdminExtension $owner
  */
 class ModelAdminExtension extends Extension
 {
