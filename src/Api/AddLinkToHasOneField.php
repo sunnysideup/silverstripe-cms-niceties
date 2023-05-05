@@ -16,20 +16,22 @@ class AddLinkToHasOneField
         $className = $options[$dbFieldName] ?? '';
         if ($className) {
             $linkedObject = $object->{$dbFieldName}();
-            $link = '';
-            $linkAsHtml = '';
-            if ($linkedObject->exists() && $linkedObject->hasMethod('CMSEditLink')) {
-                $link = $linkedObject->CMSEditLink();
-                $linkAsHtml = '
-                    <a href="' . $link . '" style="text-decoration: none!important;">✎ edit ' . $linkedObject->getTitle() . '</a>';
-            } elseif ($linkedObject->hasMethod('CMSAddLink')) {
-                $link = $linkedObject->CMSAddLink();
-                $linkAsHtml = '
-                    <a href="' . $link . '" style="text-decoration: none!important;">✎ add ' . $field->Title() . '</a>';
-            }
+            if($linkedObject->canEdit()) {
+                $link = '';
+                $linkAsHtml = '';
+                if ($linkedObject->exists() && $linkedObject->hasMethod('CMSEditLink')) {
+                    $link = $linkedObject->CMSEditLink();
+                    $linkAsHtml = '
+                        <a href="' . $link . '" style="text-decoration: none!important;">✎ edit ' . $linkedObject->getTitle() . '</a>';
+                } elseif ($linkedObject->hasMethod('CMSAddLink')) {
+                    $link = $linkedObject->CMSAddLink();
+                    $linkAsHtml = '
+                        <a href="' . $link . '" style="text-decoration: none!important;">✎ add ' . $field->Title() . '</a>';
+                }
 
-            if ($link) {
-                $field->setRightTitle(DBHTMLVarchar::create_field(DBHTMLVarchar::class, $linkAsHtml));
+                if ($link) {
+                    $field->setRightTitle(DBHTMLVarchar::create_field(DBHTMLVarchar::class, $linkAsHtml));
+                }
             }
         }
     }
