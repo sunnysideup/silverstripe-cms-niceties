@@ -47,7 +47,7 @@
     }
 
     fieldset.grid-field.ss-gridfield .grid-field__title-row .pull-xs-right .pagination-records-number {
-        display: none;
+        // display: none;
     }
 
     fieldset.grid-field.ss-gridfield table {
@@ -65,8 +65,8 @@
 
     fieldset.grid-field.ss-gridfield tfoot td {
         line-height: 1 !important;
-        padding-top: 1rem !important;
-        padding-bottom: 0 !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
     }
 
 
@@ -86,5 +86,8 @@
 
     fieldset.grid-field.ss-gridfield .sortablerowsheading * {
         color: rgb(86, 107, 141) !important;
+    }
+    .grid-field__table thead tr th {
+        padding: 5px;
     }
 }
