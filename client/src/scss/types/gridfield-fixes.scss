@@ -1,0 +1,90 @@
+@import "../helpers/mixins";
+
+
+.toolbar--content.ss-gridfield-buttonrow.ss-gridfield-buttonrow-before {
+    position: relative;
+    z-index: 999;
+    margin-left: 41px;
+    margin-top: -14px;
+}
+
+
+
+@include lg-screen {
+
+    /**
+     * large gridfield
+     */
+    fieldset.grid-field.ss-gridfield {
+        margin-bottom: 2rem;
+        padding-bottom: 10px !important;
+        padding: 0px !important;
+        border: 1px solid rgba(219, 224, 233, 1);
+        border-radius: .2rem;
+        background-color: #f1f3f6 !important;
+    }
+
+    fieldset.grid-field.ss-gridfield .toolbar--content {
+        margin-top: 0 !important;
+        margin-right: 0;
+        margin-left: 0;
+        background-color: rgba(219, 224, 233, .3) !important;
+    }
+
+    fieldset.grid-field.ss-gridfield .toolbar--content::after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+
+    fieldset.grid-field.ss-gridfield h2 {
+        font-size: 1.67rem;
+        font-weight: bold;
+        float: left;
+        padding-top: 1.5rem !important;
+        text-align: center !important;
+        color: #0071c4 !important;
+    }
+
+    fieldset.grid-field.ss-gridfield .grid-field__title-row .pull-xs-right .pagination-records-number {
+        display: none;
+    }
+
+    fieldset.grid-field.ss-gridfield table {
+        min-width: 100% !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+
+    fieldset.grid-field.ss-gridfield .sortablerowsheading {
+        padding-top: .4rem !important;
+        padding-bottom: .4rem !important;
+        border-top: 1px solid #fff !important;
+    }
+
+    fieldset.grid-field.ss-gridfield tfoot td {
+        line-height: 1 !important;
+        padding-top: 1rem !important;
+        padding-bottom: 0 !important;
+    }
+
+
+    fieldset.grid-field.ss-gridfield .sortable-header th,
+    fieldset.grid-field.ss-gridfield .sortablerowsheading {
+        line-height: 1 !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        background-color: rgba(219, 224, 233, .7);
+    }
+
+    fieldset.grid-field.ss-gridfield .sortablerowsheading {
+        padding-top: .5rem !important;
+        padding-bottom: .5rem !important;
+        background-color: rgba(219, 224, 233, .3) !important;
+    }
+
+    fieldset.grid-field.ss-gridfield .sortablerowsheading * {
+        color: rgb(86, 107, 141) !important;
+    }
+}

@@ -1,0 +1,17 @@
+@import "../helpers/mixins";
+
+
+
+
+
+/**
+ * tree
+ */
+
+.jstree-apple .jstree-clicked {
+    background-color: rgba(180, 204, 255, .67) !important;
+}
+
+.jstree-apple .jstree-hovered {
+    background-color: rgba(180, 204, 255, .33) !important;
+}

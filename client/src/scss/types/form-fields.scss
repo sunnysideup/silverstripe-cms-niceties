@@ -1,0 +1,71 @@
+#Form_ItemEditForm_error {
+    background-color: #da273b;
+    color: white;
+}
+
+
+#Form_ItemEditForm_error.alert.alert-success {
+    background-color: #e9f6e9;
+    border-color: #3fa142;
+    color: #222;
+}
+
+
+/**
+ * field desciptions
+ */
+
+p.form__field-description.form-text {
+    font-family: serif;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.form-group.field.htmleditor p.form__field-description.form-text,
+.form-group.field.text p.form__field-description.form-text {
+    text-align: right;
+}
+
+.form-group.field.numeric p.form__field-description.form-text {
+    text-align: left;
+}
+
+/**
+   * numeric field
+   */
+.field.numeric.text input {
+    max-width: 12rem;
+}
+
+
+/**
+   * date-time
+   */
+.field.text.datetime input {
+    max-width: 16rem;
+}
+
+/**
+   * checkbox set label
+   */
+.CompositeField .form-group.optionset.checkboxset>label {
+    font-weight: bold;
+    font-style: italic;
+    color: #43536d;
+}
+
+/**
+   * dropdown
+   */
+.form-group.field.dropdown {
+    overflow: visible !important;
+}
+
+
+/**
+   * field description
+   */
+.form__field-description,
+.form__field-extra-label {
+    display: block !important;
+}

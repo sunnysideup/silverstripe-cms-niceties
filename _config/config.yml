@@ -14,11 +14,11 @@ SilverStripe\i18n\i18n:
 
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
-    - 'sunnysideup/cms-niceties: client/dist/css/app_LeftAndMain.css'
+    - 'sunnysideup/cms-niceties: client/dist/main.css'
+
   extra_requirements_javascript:
-    - 'sunnysideup/cms-niceties: client/dist/js/app_menu-fix.js'
-    - 'sunnysideup/cms-niceties: client/dist/js/app_LeftAndMain.js'
-    - 'sunnysideup/cms-niceties: client/dist/js/app_MenuTabClick.js'
+    - 'sunnysideup/cms-niceties: client/dist/runtime.js'
+    - 'sunnysideup/cms-niceties: client/dist/app.js'
 
 SilverStripe\Dev\TaskRunner:
   css: 'nothinghere'

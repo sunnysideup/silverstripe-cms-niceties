@@ -1,0 +1,18 @@
+/**
+ *  improve CMS header for when there are too many tabs
+ */
+.cms-content-header-tabs {
+    max-width: calc(100% - 250px);
+}
+
+.cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary {
+    float: right;
+}
+
+.cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li {
+    margin-left: .6154rem;
+}
+
+.cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li a {
+    border-bottom: .15385rem solid transparent;
+}

@@ -1,6 +1,6 @@
-import '../../scss/LeftAndMain.scss';
+// import '../../scss/LeftAndMain.scss';
 
-const $ = jQuery;
+const $ = window.jQuery;
 const NAME = 'sunnysideup/cms-niceties: LeftAndMain';
 const $document = $(document);
 
