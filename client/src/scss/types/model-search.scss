@@ -71,6 +71,13 @@
                 font-weight: bold;
                 width: 100%;
                 margin-top: .5rem;
+                max-width: 19%;
+                float: right;
+                &:after {
+                    content: '';
+                    display: block;
+                    clear: both;
+                }
             }
         }
     }
