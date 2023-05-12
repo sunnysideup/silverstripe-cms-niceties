@@ -2,7 +2,8 @@
 .search-box {
     &--has-filters {
         height: auto;
-
+        margin: 20px;
+        width: auto;
         .search-box {
             &__filter-trigger {
                 display: none;
