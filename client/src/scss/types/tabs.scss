@@ -2,11 +2,15 @@
  *  improve CMS header for when there are too many tabs
  */
 
-.cms-content-header .cms-content-header-info .toolbar__back-button {
-    display: none;
+.cms-content-header .cms-content-header-info {
+    .toolbar__back-button {
+        display: none;
+    }
 }
-.cms-content-header .cms-content-header-info:hover .toolbar__back-button {
-    display: block!important;
+.cms-content-header .cms-content-header-info:hover  {
+    .toolbar__back-button {
+        display: block!important;
+    }
 }
 
  .cms-content-header-tabs {

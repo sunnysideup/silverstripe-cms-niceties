@@ -52,7 +52,8 @@
                 }
 
                 @include lg-screen {
-                    flex: 1 1 33.3333%;
+                    flex: 1 1 20%;
+                    max-width: 20%;
                 }
 
                 input {
@@ -73,4 +74,9 @@
             }
         }
     }
+}
+
+
+.search-holder.grid-field__search-holder {
+    padding-bottom: 100px;
 }
