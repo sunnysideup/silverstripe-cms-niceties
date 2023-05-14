@@ -1,17 +1,20 @@
 #Form_ItemEditForm_error {
     background-color: #cf3f00!important;
     color: white!important;
+    border-color: #862901!important;
     a, a:link, a:visited, * {
         color: white!important;
     }
-    border-color: #862901!important;
 }
 
 
 #Form_ItemEditForm_error.alert.alert-success {
-    background-color: #e9f6e9;
-    border-color: #3fa142;
-    color: #222;
+    background-color: #e9f6e9!important;
+    border-color: #3fa142!important;
+    color: #222!important;
+    a:link, a:visited, * {
+        color: #222!important;
+    }
 }
 
 
