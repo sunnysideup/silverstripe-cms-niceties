@@ -10,7 +10,7 @@ use SilverStripe\Forms\GridField\GridField;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 /**
- * Class \Sunnysideup\CMSNiceties\Extensions\ModelAdminExtension
+ * Class \Sunnysideup\CMSNiceties\Extensions\ModelAdminExtension.
  *
  * @property ModelAdmin|ModelAdminExtension $owner
  */
