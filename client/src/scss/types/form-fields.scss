@@ -19,6 +19,16 @@
     }
 }
 
+#Form_ItemEditForm_error.alert,
+#Form_ItemEditForm_error.alert {
+    background-color: lighten(#E9D104, 47%)!important;
+    border-color: #E9D104!important;
+    color: #222!important;
+    a:link, a:visited, * {
+        color: #222!important;
+    }
+}
+
 
 /**
  * field desciptions
