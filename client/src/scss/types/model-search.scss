@@ -58,6 +58,9 @@
                     input {
                         width: 100%;
                         max-width: 100%;
+                        &.form-check {
+                            width: auto!important;
+                        }
                     }
                 }
 
