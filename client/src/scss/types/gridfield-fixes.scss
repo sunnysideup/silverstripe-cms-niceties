@@ -8,7 +8,10 @@
     margin-top: -14px;
 }
 
-
+fieldset.grid-field.ss-gridfield .grid-field__table th,
+fieldset.grid-field.ss-gridfield .grid-field__table td{
+    padding: 9px 7px!important;
+}
 
 @include lg-screen {
 
@@ -56,7 +59,6 @@
         margin-left: 0 !important;
     }
 
-
     fieldset.grid-field.ss-gridfield .sortablerowsheading {
         padding-top: .4rem !important;
         padding-bottom: .4rem !important;
@@ -68,7 +70,6 @@
         padding-top: 0.5rem !important;
         padding-bottom: 0.5rem !important;
     }
-
 
     fieldset.grid-field.ss-gridfield .sortable-header th,
     fieldset.grid-field.ss-gridfield .sortablerowsheading {
@@ -87,7 +88,5 @@
     fieldset.grid-field.ss-gridfield .sortablerowsheading * {
         color: rgb(86, 107, 141) !important;
     }
-    .grid-field__table thead tr th {
-        padding: 5px;
-    }
+
 }
