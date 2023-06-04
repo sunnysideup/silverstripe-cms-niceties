@@ -8,12 +8,15 @@
     margin-top: -14px;
 }
 
-fieldset.grid-field.ss-gridfield .grid-field__table th,
-fieldset.grid-field.ss-gridfield .grid-field__table td{
-    padding: 9px 7px!important;
-}
-
 @include lg-screen {
+
+    .table grid-field__table {
+        position: relative;
+    }
+    fieldset.grid-field.ss-gridfield .grid-field__table th,
+    fieldset.grid-field.ss-gridfield .grid-field__table td{
+        padding: 9px 7px!important;
+    }
 
     /**
      * large gridfield
@@ -49,8 +52,12 @@ fieldset.grid-field.ss-gridfield .grid-field__table td{
         color: #0071c4 !important;
     }
 
-    fieldset.grid-field.ss-gridfield .grid-field__title-row .pull-xs-right .pagination-records-number {
-        // display: none;
+    fieldset.grid-field.ss-gridfield .grid-field__title-row  {
+        position: relative;
+    }
+
+    fieldset.grid-field.ss-gridfield .grid-field__title-row  {
+        position: relative;
     }
 
     fieldset.grid-field.ss-gridfield table {
