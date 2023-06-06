@@ -6,15 +6,15 @@
     z-index: 999;
     margin-left: 41px;
     margin-top: -14px;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 @include lg-screen {
 
     fieldset.grid-field.ss-gridfield .grid-field__table th,
     fieldset.grid-field.ss-gridfield .grid-field__table td{
-        padding: 9px 7px!important;
+        padding: 1rem 1rem!important;
     }
 
     /**
