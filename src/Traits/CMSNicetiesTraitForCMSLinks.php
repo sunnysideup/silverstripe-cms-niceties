@@ -14,8 +14,21 @@ trait CMSNicetiesTraitForCMSLinks
     public function CMSEditLink(): string
     {
         if ($this instanceof SiteTree) {
-            return Director::absoluteBaseURL() . '/admin/pages/edit/show/' . $this->ID . '/';
+            return parent::CMSEditLink();
         }
+
+        $cont = $this->myModelAdminController();
+        if ($cont) {
+            return $cont->Link() .
+                        $this->sanitisedClassName() . '/EditForm/field/' .
+                        $this->sanitisedClassName() . '/item/' . $this->ID .
+                        '/edit';
+        }
+
+        return '404-cms-edit-link-not-found';
+    }
+    public function CMSEditLinkLimited(): string
+    {
 
         $cont = $this->myModelAdminController();
         if ($cont) {
