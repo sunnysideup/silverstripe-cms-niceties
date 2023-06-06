@@ -78,6 +78,9 @@
         padding-bottom: 1rem !important;
         border-top: 1px solid rgba(219, 224, 233, .7);
     }
+    fieldset.grid-field.ss-gridfield .sortable-header th {
+        overflow: hidden;
+    }
 
     fieldset.grid-field.ss-gridfield .sortablerowsheading {
         padding-top: .5rem !important;
