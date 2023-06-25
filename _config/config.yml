@@ -15,6 +15,10 @@ SilverStripe\i18n\i18n:
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
     - 'sunnysideup/cms-niceties: client/dist/main.css'
+  help_links:
+    'Developer docs': ''
+    'Community': ''
+    'Feedback': ''
 
   extra_requirements_javascript:
     - 'sunnysideup/cms-niceties: client/dist/runtime.js'
