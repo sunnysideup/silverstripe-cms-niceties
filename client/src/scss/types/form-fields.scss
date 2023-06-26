@@ -50,23 +50,23 @@ p.form__field-description.form-text {
 }
 
 /**
-   * numeric field
-   */
+  * numeric field
+  */
 .field.numeric.text input {
     max-width: 12rem;
 }
 
 
 /**
-   * date-time
-   */
+  * date-time
+  */
 .field.text.datetime input {
     max-width: 16rem;
 }
 
 /**
-   * checkbox set label
-   */
+  * checkbox set label
+  */
 .CompositeField .form-group.optionset.checkboxset>label {
     font-weight: bold;
     font-style: italic;
@@ -74,17 +74,24 @@ p.form__field-description.form-text {
 }
 
 /**
-   * dropdown
-   */
+  * dropdown
+  */
 .form-group.field.dropdown {
     overflow: visible !important;
 }
 
 
 /**
-   * field description
-   */
+ * field description
+ */
 .form__field-description,
 .form__field-extra-label {
     display: block !important;
+}
+
+/**
+ * allow stuff to the right...
+ */
+.tabset input.text.datetime {
+    float: left;
 }
