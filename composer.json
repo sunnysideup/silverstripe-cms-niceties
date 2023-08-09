@@ -15,8 +15,8 @@
   "require": {
     "silverstripe/cms": "^4.0 || ^5.0",
     "sunnysideup/cms-dark-theme": "dev-main",
-    "symbiote/silverstripe-grouped-cms-menu": "*",
-    "undefinedoffset/sortablegridfield": "*"
+    "symbiote/silverstripe-grouped-cms-menu": "^4",
+    "undefinedoffset/sortablegridfield": "^2"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
