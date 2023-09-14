@@ -433,7 +433,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 }
 
                 if ($this->dataListForCheckboxSetField && $this->checkBoxSort) {
-                    if(is_string($this->checkBoxSort)) {
+                    if (is_string($this->checkBoxSort)) {
                         $this->dataListForCheckboxSetField = $this->dataListForCheckboxSetField->orderBy($this->checkBoxSort);
                     } else {
                         $this->dataListForCheckboxSetField = $this->dataListForCheckboxSetField->sort($this->checkBoxSort);

@@ -5,7 +5,6 @@ namespace Sunnysideup\CMSNiceties\Traits;
 use SilverStripe\Admin\ModelAdmin;
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Control\Director;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\HTMLReadonlyField;
 
@@ -27,9 +26,9 @@ trait CMSNicetiesTraitForCMSLinks
 
         return '404-cms-edit-link-not-found';
     }
+
     public function CMSEditLinkLimited(): string
     {
-
         $cont = $this->myModelAdminController();
         if ($cont) {
             return $cont->Link() .
