@@ -1,6 +1,14 @@
 .cms-menu__list {
   > .link.children,
   > .current.children {
+    &.opened {
+      background-color: #004e7f;
+      > a {
+        .text {
+          font-weight: bold;
+        }
+      }
+    }
     > a {
       background-color: #f7cd55;
       .menu__icon {
