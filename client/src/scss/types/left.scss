@@ -4,13 +4,15 @@
     &.opened {
       background-color: #004e7f;
       > a {
-        .text {
+        .text,
+        .toggle-children {
           font-weight: bold;
+          color: #fff;
         }
       }
     }
     > a {
-      background-color: #f7cd55;
+      background-color: #566b8d;
       .menu__icon {
         display: none;
       }
