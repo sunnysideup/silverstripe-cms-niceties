@@ -12,13 +12,16 @@
       }
     }
     > a {
-      background-color: #004e7fcc;
+      background-color: #004e7f22;
       .menu__icon {
         display: none;
       }
       .text {
         margin-left: 0;
       }
+    }
+    ul.group li {
+      margin-left: 0;
     }
   }
 }
