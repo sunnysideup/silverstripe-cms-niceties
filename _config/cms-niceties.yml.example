@@ -27,7 +27,8 @@ SilverStripe\Admin\LeftAndMain:
     menu_groups:
       Content:
         priority: -10
-        items:
+        children:
           - SilverStripe-CMS-Controllers-CMSPagesController
           - SilverStripe-AssetAdmin-Controller-AssetAdmin
           - SilverStripe-SiteConfig-SiteConfigLeftAndMain
+
