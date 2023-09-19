@@ -21,11 +21,11 @@
         margin-left: 0;
       }
     }
-  }
-  ul.group {
-    margin-left: 0;
-    li {
-      margin-left: 0;
+    ul.group {
+      margin-left: 0 !important;
+      li {
+        margin-left: 0 !important;
+      }
     }
   }
 }
