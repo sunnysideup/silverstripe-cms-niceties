@@ -1,5 +1,6 @@
 .cms-menu__list {
-  > .link.children {
+  > .link.children,
+  > .current.children {
     > a {
       background-color: #f7cd55;
       .menu__icon {
