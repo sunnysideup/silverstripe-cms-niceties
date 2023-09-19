@@ -14,6 +14,12 @@
     }
     > a {
       background-color: #004e7f22;
+      &:hover {
+        color: #004e7f;
+        * {
+          color: #004e7f;
+        }
+      }
       .menu__icon {
         display: none;
       }
