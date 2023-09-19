@@ -4,9 +4,9 @@
     > a {
       background-color: #004e7f22;
       &:hover {
-        color: #004e7f;
+        color: #004e7f !important;
         * {
-          color: #004e7f;
+          color: #004e7f !important;
         }
       }
       .menu__icon {
