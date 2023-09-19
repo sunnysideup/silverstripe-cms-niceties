@@ -3,6 +3,7 @@
   > .current.children {
     &.opened {
       background-color: #004e7f;
+      color: #fff;
       > a {
         .text,
         .toggle-children {
@@ -20,7 +21,10 @@
         margin-left: 0;
       }
     }
-    ul.group li {
+  }
+  ul.group {
+    margin-left: 0;
+    li {
       margin-left: 0;
     }
   }
