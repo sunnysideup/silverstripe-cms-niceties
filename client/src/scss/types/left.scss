@@ -1,7 +1,13 @@
 .cms-menu__list {
   > .link.children {
-    a {
+    > a {
       background-color: #f7cd55;
+      .menu__icon {
+        display: none;
+      }
+      .text {
+        margin-left: 0;
+      }
     }
   }
 }
