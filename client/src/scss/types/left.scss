@@ -21,6 +21,11 @@
       li {
         margin-left: 0 !important;
       }
+      .current {
+        a {
+          font-weight: bold;
+        }
+      }
     }
   }
   > .current.children {
