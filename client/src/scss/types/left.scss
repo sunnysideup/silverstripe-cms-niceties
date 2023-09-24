@@ -20,9 +20,12 @@
         top: 0;
         bottom: 0;
         right: 0;
-        left: 30%;
+        left: 70%;
         z-index: 2;
         width: 30%;
+        &:hover {
+          background-color: #004e7f22;
+        }
       }
     }
     ul.group {
