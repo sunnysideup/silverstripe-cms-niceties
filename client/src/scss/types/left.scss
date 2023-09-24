@@ -1,8 +1,8 @@
 .cms-menu__list {
   > .link.children,
   > .current.children {
+    position: relative;
     > a {
-      background-color: #004e7f22;
       &:hover {
         color: #004e7f !important;
         * {
@@ -14,6 +14,14 @@
       }
       .text {
         margin-left: 0;
+      }
+      .toggle-children {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 50%;
+        z-index: 2;
       }
     }
     ul.group {
