@@ -39,6 +39,9 @@
         }
       }
     }
+    &.opened {
+      background-color: #004e7f22;
+    }
   }
   > .current.children {
     background-color: #004e7f;
