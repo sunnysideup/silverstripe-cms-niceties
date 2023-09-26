@@ -585,7 +585,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
             $manyManyExtras = Config::inst()->get($this->callingObject->ClassName, 'many_many_extraFields');
             if (isset($manyManyExtras[$this->relationName])) {
                 foreach ($manyManyExtras[$this->relationName] as $field => $tempType) {
-                    if ('int' === strtolower($tempType)) {
+                    if ('int' === strtolower((string) $tempType)) {
                         $this->sortField = $field;
                     }
                 }
