@@ -5,6 +5,7 @@ namespace Sunnysideup\CMSNiceties\Traits;
 use SilverStripe\Admin\ModelAdmin;
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\HTMLReadonlyField;
 
@@ -18,10 +19,7 @@ trait CMSNicetiesTraitForCMSLinks
 
         $cont = $this->myModelAdminController();
         if ($cont) {
-            return $cont->Link() .
-                        $this->sanitisedClassName() . '/EditForm/field/' .
-                        $this->sanitisedClassName() . '/item/' . $this->ID .
-                        '/edit';
+            return $this->editLink($cont);
         }
 
         return '404-cms-edit-link-not-found';
@@ -31,13 +29,24 @@ trait CMSNicetiesTraitForCMSLinks
     {
         $cont = $this->myModelAdminController();
         if ($cont) {
-            return $cont->Link() .
-                        $this->sanitisedClassName() . '/EditForm/field/' .
-                        $this->sanitisedClassName() . '/item/' . $this->ID .
-                        '/edit';
+            return $this->editLink($cont);
         }
 
         return '404-cms-edit-link-not-found';
+    }
+
+    protected function editLink($controller): string
+    {
+        return Controller::join_links(
+            $controller->Link(),
+            $this->sanitisedClassName(),
+            'EditForm',
+            'field',
+            $this->sanitisedClassName(),
+            'item',
+            $this->ID,
+            'edit'
+        );
     }
 
     public function CMSEditLinkField(string $relName, string $name = ''): HTMLReadonlyField
