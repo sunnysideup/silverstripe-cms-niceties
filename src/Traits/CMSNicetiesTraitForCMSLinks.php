@@ -74,9 +74,15 @@ trait CMSNicetiesTraitForCMSLinks
     {
         $controller = $this->myModelAdminController();
         if ($controller) {
-            return $controller->Link() .
-                $this->sanitisedClassName() . '/EditForm/field/' .
-                $this->sanitisedClassName() . '/item/new';
+            return Controller::join_links(
+                $controller->Link(),
+                $this->sanitisedClassName(),
+                'EditForm',
+                'field',
+                $this->sanitisedClassName(),
+                'item',
+                'new'
+            );
         }
 
         return '404-cms-add-link-not-found';
@@ -86,7 +92,10 @@ trait CMSNicetiesTraitForCMSLinks
     {
         $controller = $this->myModelAdminController();
         if ($controller) {
-            return $controller->Link() . $this->sanitisedClassName();
+            return Controller::join_links(
+                $controller->Link(),
+                $this->sanitisedClassName()
+            );
         }
 
         return '404-cms-list-link-not-found';
