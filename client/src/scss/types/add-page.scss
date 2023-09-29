@@ -1,0 +1,14 @@
+#Form_AddForm {
+  #Form_AddForm_PageType {
+    .form-check-label {
+      align-items: flex-start;
+      span.title {
+        width: 30%;
+      }
+      .form__field-description {
+        width: 70%;
+        padding-left: 20px;
+      }
+    }
+  }
+}
