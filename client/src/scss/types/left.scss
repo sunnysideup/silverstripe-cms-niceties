@@ -54,4 +54,12 @@
       }
     }
   }
+  ul.group {
+    > .link {
+      opacity: 0.77;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 }
