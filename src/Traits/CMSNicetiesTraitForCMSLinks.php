@@ -121,7 +121,7 @@ trait CMSNicetiesTraitForCMSLinks
      */
     protected function sanitisedClassName(): string
     {
-        $className = $this->hasMethod('classNameForModelAdmin') ? $this->classNameForModelAdmin() : $this->ClassName;
+        $className = (string) $this->hasMethod('classNameForModelAdmin') ? $this->classNameForModelAdmin() : $this->ClassName;
 
         return str_replace('\\', '-', $className);
     }
