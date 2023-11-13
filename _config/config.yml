@@ -1,16 +1,14 @@
 ---
 Name: cms-niceties
 ---
-
 SilverStripe\Admin\ModelAdmin:
-
   page_length: 20
 
   extensions:
     - Sunnysideup\CMSNiceties\Extensions\ModelAdminExtension
 
 SilverStripe\i18n\i18n:
-    locale: en_GB
+  locale: en_GB
 
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
@@ -35,14 +33,21 @@ SilverStripe\Forms\HTMLEditor\HTMLEditorField:
 SilverStripe\CMS\Controllers\CMSMain:
   enable_dynamic_archive_warning_message: false
 
+SilverStripe\ORM\FieldType\DBDate:
+  nice_format: 'j.n.Y'
+
+SilverStripe\ORM\FieldType\DBTime:
+  nice_format: 'H:i'
+
+SilverStripe\ORM\FieldType\DBDatetime:
+  nice_format: 'j.n.Y H:i'
+
 ---
 Name: cms-niceties-hack
 Only:
-    classexists:
-        - SilverStripe\Admin\LeftAndMain
+  classexists:
+    - SilverStripe\Admin\LeftAndMain
 ---
-
-
 SilverStripe\Dev\TaskRunner:
   css:
     0: 'sunnysideup/cms-niceties: client/dist/css/app_task-runner.css'
