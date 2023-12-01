@@ -24,11 +24,6 @@ class AddLinkToHasOneField
                     $linkAsHtml = '
                         <a href="' . $link . '" style="text-decoration: none!important;">✎ edit ' . $linkedObject->getTitle() . '</a><br />';
                 }
-                if ($linkedObject->hasMethod('CMSAddLink')) {
-                    $link = $linkedObject->CMSAddLink();
-                    $linkAsHtml .= '
-                        <a href="' . $link . '" style="text-decoration: none!important;">+ add new ' . $field->Title() . '</a>';
-                }
 
                 if ($link) {
                     $field->setRightTitle(DBHTMLVarchar::create_field(DBHTMLVarchar::class, $linkAsHtml));
