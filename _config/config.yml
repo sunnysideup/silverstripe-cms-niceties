@@ -51,26 +51,22 @@ SilverStripe\Control\Session:
     properties:
       queueRunner: '%$App\Tasks\Engines\MediumQueueAsyncRunner'
 
-# ---
-# Name: cms-niceties-hack
-# Only:
-#   classexists:
-#     - SilverStripe\Admin\LeftAndMain
-# ---
-
+---
+# this is added to first reset (above) and then add the new values
+Name: cms-niceties-hack
+---
 SilverStripe\Dev\TaskRunner:
   css:
     0: 'sunnysideup/cms-niceties: client/dist/css/app_task-runner.css'
 
-
+## TO DO: this does not work at all!!!
 ---
 Name: canonicalurls_better
-After:
-  - 'canonicalurls'
+After: 'canonicalurls'
 Except:
-  Environment: dev
+  Environment: 'dev'
 ---
 SilverStripe\Core\Injector\Injector:
   SilverStripe\Control\Middleware\CanonicalURLMiddleware:
     properties:
-      ForceSSL: tue
+      forceSSL: true
