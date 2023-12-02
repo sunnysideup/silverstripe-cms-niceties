@@ -46,12 +46,31 @@ SilverStripe\Control\Session:
   cookie_secure: true
   cookie_name_secure: 'PHPSESSID'
 
----
-Name: cms-niceties-hack
-Only:
-  classexists:
-    - SilverStripe\Admin\LeftAndMain
----
+  SilverStripe\Core\Injector\Injector:
+  App\Services\MediumQueuedJobService:
+    properties:
+      queueRunner: '%$App\Tasks\Engines\MediumQueueAsyncRunner'
+
+# ---
+# Name: cms-niceties-hack
+# Only:
+#   classexists:
+#     - SilverStripe\Admin\LeftAndMain
+# ---
+
 SilverStripe\Dev\TaskRunner:
   css:
     0: 'sunnysideup/cms-niceties: client/dist/css/app_task-runner.css'
+
+
+---
+Name: canonicalurls_better
+After:
+  - 'canonicalurls'
+Except:
+  environment: 'dev'
+---
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Control\Middleware\CanonicalURLMiddleware:
+    properties:
+      ForceSSL: tue
