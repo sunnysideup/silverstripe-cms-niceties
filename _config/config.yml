@@ -68,7 +68,7 @@ Name: canonicalurls_better
 After:
   - 'canonicalurls'
 Except:
-  environment: 'dev'
+  Environment: dev
 ---
 SilverStripe\Core\Injector\Injector:
   SilverStripe\Control\Middleware\CanonicalURLMiddleware:
