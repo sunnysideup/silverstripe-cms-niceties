@@ -42,6 +42,10 @@ SilverStripe\ORM\FieldType\DBTime:
 SilverStripe\ORM\FieldType\DBDatetime:
   nice_format: 'j.n.Y H:i'
 
+SilverStripe\Control\Session:
+  cookie_secure: true
+  cookie_name_secure: 'PHPSESSID'
+
 ---
 Name: cms-niceties-hack
 Only:
