@@ -52,7 +52,7 @@ trait CMSNicetiesTraitForCMSLinks
     public function CMSEditLinkField(string $relName, string $name = ''): HTMLReadonlyField
     {
         $obj = $this->{$relName}();
-        if (! $name) {
+        if (!$name) {
             $nameOptions = $this->fieldLabels();
             $name = $nameOptions[$relName] ?? $nameOptions[$relName . 'ID'] ?? 'error';
         }
