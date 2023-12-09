@@ -19,6 +19,7 @@ class AddLinkToHasOneField
             if ($linkedObject->canEdit()) {
                 $link = '';
                 $linkAsHtml = '';
+                //@TODO: add other methods... see Sunnysideup\CmsEditLinkField\Forms\Fields\CMSEditLinkField
                 if ($linkedObject->exists() && $linkedObject->hasMethod('CMSEditLink')) {
                     $link = $linkedObject->CMSEditLink();
                     $linkAsHtml = '
