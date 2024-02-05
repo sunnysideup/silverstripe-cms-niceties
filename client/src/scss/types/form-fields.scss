@@ -1,104 +1,116 @@
 #Form_ItemEditForm_error.alert.bad,
 #Form_ItemEditForm_error.alert.alert-error {
-    background-color: #cf3f00!important;
-    color: white!important;
-    border-color: #862901!important;
-    a, a:link, a:visited, * {
-        color: white!important;
-    }
+  background-color: #cf3f00 !important;
+  color: white !important;
+  border-color: #862901 !important;
+  a,
+  a:link,
+  a:visited,
+  * {
+    color: white !important;
+  }
 }
-
 
 #Form_ItemEditForm_error.alert.alert-success,
 #Form_ItemEditForm_error.alert.good {
-    background-color: #e9f6e9!important;
-    border-color: #3fa142!important;
-    color: #222!important;
-    a:link, a:visited, * {
-        color: #222!important;
-    }
+  background-color: #e9f6e9 !important;
+  border-color: #3fa142 !important;
+  color: #222 !important;
+  a:link,
+  a:visited,
+  * {
+    color: #222 !important;
+  }
 }
 
 #Form_ItemEditForm_error.alert,
 #Form_ItemEditForm_error.alert {
-    background-color: lighten(#E9D104, 47%)!important;
-    border-color: #E9D104!important;
-    color: #222!important;
-    a:link, a:visited, * {
-        color: #222!important;
-    }
+  background-color: lighten(#e9d104, 47%) !important;
+  border-color: #e9d104 !important;
+  color: #222 !important;
+  a:link,
+  a:visited,
+  * {
+    color: #222 !important;
+  }
 }
-
 
 /**
  * field desciptions
  */
 
 p.form__field-description.form-text {
-    font-family: serif;
-    font-size: 1rem;
-    font-style: italic;
+  font-family: serif;
+  font-size: 1rem;
+  font-style: italic;
 }
 
 .form-group.field.htmleditor p.form__field-description.form-text,
 .form-group.field.text p.form__field-description.form-text {
-    text-align: right;
+  text-align: right;
 }
 
 .form-group.field.numeric p.form__field-description.form-text {
-    text-align: left;
+  text-align: left;
 }
 
 /**
   * numeric field
   */
 .field.numeric.text input {
-    max-width: 12rem;
+  max-width: 12rem;
 }
-
 
 /**
   * date-time
   */
 .field.text.datetime input {
-    max-width: 16rem;
+  max-width: 16rem;
 }
 
 /**
   * checkbox set label
   */
-.CompositeField .form-group.optionset.checkboxset>label {
-    font-weight: bold;
-    font-style: italic;
-    color: #43536d;
+
+.cms-edit-form .form-group .field.optionset {
+  display: block;
+  .optionset {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); /* Set width to 200px */
+    gap: 5px; /* Space between items */
+  }
+}
+
+.CompositeField .form-group.optionset.checkboxset > label {
+  font-weight: bold;
+  font-style: italic;
+  color: #43536d;
 }
 
 /**
   * dropdown
   */
 .form-group.field.dropdown {
-    overflow: visible !important;
+  overflow: visible !important;
 }
-
 
 /**
  * field description
  */
 .form__field-description,
 .form__field-extra-label {
-    display: block !important;
+  display: block !important;
 }
 
 /**
  * allow stuff to the right...
  */
 .tabset input.text.datetime {
-    float: left;
+  float: left;
 }
 
-
 .btn.action.ss-ui-action-constructive {
-    background-color: #3fa142;
-    border-color: #3fa142;
-    color: white;
+  background-color: #3fa142;
+  border-color: #3fa142;
+  color: white;
 }
