@@ -2,11 +2,16 @@
   > .link.children,
   > .current.children {
     position: relative;
+    opacity: 0.95 !important;
     > a {
+      background-color: #004e7f11 !important;
+      border-top: 1px solid #004e7f55;
       &:hover {
-        color: #004e7f !important;
+        opacity: 1 !important;
+        color: #fff !important;
+        background-color: #004e7f55 !important;
         * {
-          color: #004e7f !important;
+          color: #fff !important;
         }
       }
       .menu__icon {
@@ -35,7 +40,9 @@
       }
       .current {
         a {
+          background-color: #004e7f33;
           font-weight: bold;
+          color: #222;
         }
       }
     }
@@ -51,6 +58,14 @@
       .toggle-children {
         font-weight: bold;
         color: #fff;
+      }
+    }
+  }
+  ul.group {
+    > .link {
+      opacity: 0.95;
+      &:hover {
+        opacity: 1;
       }
     }
   }

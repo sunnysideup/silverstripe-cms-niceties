@@ -19,15 +19,11 @@ class AddLinkToHasOneField
             if ($linkedObject->canEdit()) {
                 $link = '';
                 $linkAsHtml = '';
+                //@TODO: add other methods... see Sunnysideup\CmsEditLinkField\Forms\Fields\CMSEditLinkField
                 if ($linkedObject->exists() && $linkedObject->hasMethod('CMSEditLink')) {
                     $link = $linkedObject->CMSEditLink();
                     $linkAsHtml = '
                         <a href="' . $link . '" style="text-decoration: none!important;">✎ edit ' . $linkedObject->getTitle() . '</a><br />';
-                }
-                if ($linkedObject->hasMethod('CMSAddLink')) {
-                    $link = $linkedObject->CMSAddLink();
-                    $linkAsHtml .= '
-                        <a href="' . $link . '" style="text-decoration: none!important;">+ add new ' . $field->Title() . '</a>';
                 }
 
                 if ($link) {

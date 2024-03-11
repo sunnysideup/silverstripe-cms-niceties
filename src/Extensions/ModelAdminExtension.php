@@ -59,8 +59,8 @@ class ModelAdminExtension extends Extension
     //  * @param string $class
     //  * @return string
     //  */
-    protected function sanitiseClassNameHelper($class)
+    protected function sanitiseClassNameHelper(string $class): string
     {
-        return str_replace('\\', '-', $class);
+        return str_replace('\\', '-', (string) $class);
     }
 }

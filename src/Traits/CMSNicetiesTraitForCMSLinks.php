@@ -37,22 +37,23 @@ trait CMSNicetiesTraitForCMSLinks
 
     protected function editLink($controller): string
     {
-        return Controller::join_links(
-            $controller->Link(),
-            $this->sanitisedClassName(),
-            'EditForm',
-            'field',
-            $this->sanitisedClassName(),
-            'item',
-            $this->ID,
-            'edit'
-        );
+        return '/' .
+            Controller::join_links(
+                $controller->Link(),
+                $this->sanitisedClassName(),
+                'EditForm',
+                'field',
+                $this->sanitisedClassName(),
+                'item',
+                $this->ID,
+                'edit'
+            );
     }
 
     public function CMSEditLinkField(string $relName, string $name = ''): HTMLReadonlyField
     {
         $obj = $this->{$relName}();
-        if (! $name) {
+        if (!$name) {
             $nameOptions = $this->fieldLabels();
             $name = $nameOptions[$relName] ?? $nameOptions[$relName . 'ID'] ?? 'error';
         }
@@ -74,15 +75,16 @@ trait CMSNicetiesTraitForCMSLinks
     {
         $controller = $this->myModelAdminController();
         if ($controller) {
-            return Controller::join_links(
-                $controller->Link(),
-                $this->sanitisedClassName(),
-                'EditForm',
-                'field',
-                $this->sanitisedClassName(),
-                'item',
-                'new'
-            );
+            return '/' .
+                Controller::join_links(
+                    $controller->Link(),
+                    $this->sanitisedClassName(),
+                    'EditForm',
+                    'field',
+                    $this->sanitisedClassName(),
+                    'item',
+                    'new'
+                );
         }
 
         return '404-cms-add-link-not-found';
@@ -121,7 +123,7 @@ trait CMSNicetiesTraitForCMSLinks
      */
     protected function sanitisedClassName(): string
     {
-        $className = $this->hasMethod('classNameForModelAdmin') ? $this->classNameForModelAdmin() : $this->ClassName;
+        $className = (string) $this->hasMethod('classNameForModelAdmin') ? $this->classNameForModelAdmin() : $this->ClassName;
 
         return str_replace('\\', '-', $className);
     }
