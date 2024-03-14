@@ -81,4 +81,4 @@ SilverStripe\Core\Injector\Injector:
     properties:
       forceSSL: true
       enabledEnvs:
-        - test # live is already enabled by default
+        - test # live is already enabled by default, thank you axllent!
