@@ -11,6 +11,9 @@ SilverStripe\i18n\i18n:
   locale: en_GB
 
 SilverStripe\Admin\LeftAndMain:
+  extensions:
+    - Sunnysideup\CMSNiceties\Extensions\LeftAndMainExtension
+
   extra_requirements_css:
     - 'sunnysideup/cms-niceties: client/dist/main.css'
   help_links:
@@ -21,6 +24,7 @@ SilverStripe\Admin\LeftAndMain:
   extra_requirements_javascript:
     - 'sunnysideup/cms-niceties: client/dist/runtime.js'
     - 'sunnysideup/cms-niceties: client/dist/app.js'
+    # - 'sunnysideup/cms-niceties: client/lang/en.js'
 
 SilverStripe\Dev\TaskRunner:
   css: 'nothinghere'
