@@ -35,8 +35,11 @@ trait CMSNicetiesTraitForCMSLinks
         return '404-cms-edit-link-not-found';
     }
 
-    protected function editLink($controller): string
+    public function editLink($controller = null): string
     {
+        if(! $controller) {
+            $controller = $this->myModelAdminController();
+        }
         return '/' .
             Controller::join_links(
                 $controller->Link(),
