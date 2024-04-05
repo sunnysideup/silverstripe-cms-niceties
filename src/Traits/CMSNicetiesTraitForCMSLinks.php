@@ -8,6 +8,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\HTMLReadonlyField;
+use Sunnysideup\CmsEditLinkField\Api\CMSEditLinkAPI;
 
 trait CMSNicetiesTraitForCMSLinks
 {
@@ -16,41 +17,12 @@ trait CMSNicetiesTraitForCMSLinks
         if ($this instanceof SiteTree) {
             return parent::CMSEditLink();
         }
-
-        $cont = $this->myModelAdminController();
-        if ($cont) {
-            return $this->editLink($cont);
-        }
-
-        return '404-cms-edit-link-not-found';
+        return CMSEditLinkAPI::find_edit_link_for_object($this);
     }
 
     public function CMSEditLinkLimited(): string
     {
-        $cont = $this->myModelAdminController();
-        if ($cont) {
-            return $this->editLink($cont);
-        }
-
-        return '404-cms-edit-link-not-found';
-    }
-
-    public function editLink($controller = null): string
-    {
-        if(! $controller) {
-            $controller = $this->myModelAdminController();
-        }
-        return '/' .
-            Controller::join_links(
-                $controller->Link(),
-                $this->sanitisedClassName(),
-                'EditForm',
-                'field',
-                $this->sanitisedClassName(),
-                'item',
-                $this->ID,
-                'edit'
-            );
+        return CMSEditLinkAPI::find_edit_link_for_object($this);
     }
 
     public function CMSEditLinkField(string $relName, string $name = ''): HTMLReadonlyField
@@ -76,21 +48,7 @@ trait CMSNicetiesTraitForCMSLinks
 
     public function CMSAddLink(): string
     {
-        $controller = $this->myModelAdminController();
-        if ($controller) {
-            return '/' .
-                Controller::join_links(
-                    $controller->Link(),
-                    $this->sanitisedClassName(),
-                    'EditForm',
-                    'field',
-                    $this->sanitisedClassName(),
-                    'item',
-                    'new'
-                );
-        }
-
-        return '404-cms-add-link-not-found';
+        return CMSEditLinkAPI::find_add_link_for_object($this->ClassName);
     }
 
     public function CMSListLink(): string
