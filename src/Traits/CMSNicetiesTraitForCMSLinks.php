@@ -55,10 +55,7 @@ trait CMSNicetiesTraitForCMSLinks
     {
         $controller = $this->myModelAdminController();
         if ($controller) {
-            return Controller::join_links(
-                $controller->Link(),
-                $this->sanitisedClassName()
-            );
+            return $controller->getLinkForModelClass($this->ClassName);
         }
 
         return '404-cms-list-link-not-found';
