@@ -9,6 +9,10 @@
   padding-right: 1rem;
 }
 
+.flexbox-area-grow {
+  overflow-x: hidden;
+}
+
 @include lg-screen {
   fieldset.grid-field.ss-gridfield .grid-field__table th,
   fieldset.grid-field.ss-gridfield .grid-field__table td {
