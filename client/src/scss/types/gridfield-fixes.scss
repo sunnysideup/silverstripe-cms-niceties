@@ -1,5 +1,10 @@
 @import "../helpers/mixins";
 
+.ss-gridfield-item img {
+  max-height: 50px;
+  max-width: 50px;
+}
+
 .toolbar--content.ss-gridfield-buttonrow.ss-gridfield-buttonrow-before {
   position: relative;
   z-index: 999;
