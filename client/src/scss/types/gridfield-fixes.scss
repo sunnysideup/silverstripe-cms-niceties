@@ -5,6 +5,21 @@
   max-width: 50px;
 }
 
+table.grid-field__table {
+  width: 100%;
+  border-collapse: collapse;
+  position: relative !important;
+  thead th {
+    position: sticky !important;
+    top: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: 1px solid #dbe0e9 !important;
+  }
+}
+
+/* Style the header */
+
 .toolbar--content.ss-gridfield-buttonrow.ss-gridfield-buttonrow-before {
   position: relative;
   z-index: 999;
@@ -21,7 +36,7 @@
 @include lg-screen {
   fieldset.grid-field.ss-gridfield .grid-field__table th,
   fieldset.grid-field.ss-gridfield .grid-field__table td {
-    padding: 1rem 1rem !important;
+    padding: 0.6rem 1rem !important;
   }
 
   /**
@@ -59,7 +74,7 @@
   }
 
   fieldset.grid-field.ss-gridfield .grid-field__title-row {
-    background-color: rgba(219, 224, 233, 0.3) !important;
+    // background-color: rgba(219, 224, 233, 0.3) !important;
   }
 
   fieldset.grid-field.ss-gridfield table {
