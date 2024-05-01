@@ -98,9 +98,13 @@ table.grid-field__table {
   fieldset.grid-field.ss-gridfield .sortable-header th,
   fieldset.grid-field.ss-gridfield .sortablerowsheading {
     line-height: 1 !important;
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
     border-top: 1px solid rgba(219, 224, 233, 0.7);
+    font-weight: bold;
+    * {
+      font-weight: bold;
+    }
   }
   fieldset.grid-field.ss-gridfield .sortable-header th {
     overflow: hidden;
