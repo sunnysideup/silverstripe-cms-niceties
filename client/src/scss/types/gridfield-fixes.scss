@@ -10,8 +10,8 @@ table.grid-field__table {
   border-collapse: collapse;
   position: relative !important;
   thead th {
-    position: sticky !important;
-    top: 0;
+    // position: sticky !important;
+    // top: 0;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     border-bottom: 1px solid #dbe0e9 !important;
@@ -104,6 +104,9 @@ table.grid-field__table {
     font-weight: bold;
     * {
       font-weight: bold;
+    }
+    button:after {
+      vertical-align: middle;
     }
   }
   fieldset.grid-field.ss-gridfield .sortable-header th {
