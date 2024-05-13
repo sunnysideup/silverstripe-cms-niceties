@@ -3,10 +3,12 @@
 namespace Sunnysideup\CMSNiceties\Extensions;
 
 use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Extension;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\View\Requirements;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 /**
@@ -39,7 +41,10 @@ class ModelAdminExtension extends Extension
                             $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassNameHelper($owner->modelClass));
                             // This is just a precaution to ensure we got a GridField from dataFieldByName() which you should have
                             if ($gridField instanceof GridField) {
-                                $gridField->getConfig()->addComponent(new GridFieldSortableRows($sortField));
+                                $config = $gridField->getConfig();
+                                if($config->getComponentByType(GridFieldSortableRows::class) === null) {
+                                    $config->addComponent(new GridFieldSortableRows($sortField));
+                                }
                             }
 
                             break;
@@ -63,4 +68,32 @@ class ModelAdminExtension extends Extension
     {
         return str_replace('\\', '-', (string) $class);
     }
+
+    // /**
+    //  * checks if there is only one record and if no further records can be created.
+    //  * If those conditions are true, then redirect immediately to the record
+    //  * for the convenience of the user.
+    //  *
+    //  * @return void
+    //  */
+    // protected function updateList($list)
+    // {
+    //     $owner = $this->getOwner();
+    //     if($owner->getRequest()->param('ModelClass')) {
+    //         $obj = $list->first();
+    //         $link = $owner->getCMSEditLinkForManagedDataObject($obj);
+    //         // die($_SERVER['HTTP_REFERER'] ?? 'xxx');
+    //         if($list->count() === 1) {
+    //             $obj = $list->first();
+    //             if($obj->canCreate() === true) {
+    //                 $link = $owner->getCMSEditLinkForManagedDataObject($obj);
+    //                 if($link && $owner->getRequest()->getURL() !== $link) {
+    //                     if(Director::is_ajax()) {
+    //                         die('<script>window.location.replace("/' . $link . '");</script>');
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
