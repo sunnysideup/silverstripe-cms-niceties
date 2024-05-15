@@ -16,6 +16,9 @@
     "silverstripe/cms": "^4.0 || ^5.0",
     "sunnysideup/cms-dark-theme": "dev-main"
   },
+  "require-dev": {
+    "sunnysideup/sswebpack_engine_only": "dev-master"
+  },
   "suggest": {
     "symbiote/silverstripe-grouped-cms-menu": "^4",
     "undefinedoffset/sortablegridfield": "^2"
@@ -40,5 +43,9 @@
     "psr-4": {
       "Sunnysideup\\CMSNiceties\\": "src/"
     }
-  }
+  },
+  "bin": [
+    "bin/npm-watch.sh",
+    "bin/npm-build.sh"
+  ]
 }

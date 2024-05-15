@@ -1,0 +1,10 @@
+.cms-content-view {
+  form#Form_EditForm {
+    .ui-tabs {
+      .ui-tabs-nav {
+        float: none;
+        border-bottom: 1px solid var(--grey, #566b8d);
+      }
+    }
+  }
+}
