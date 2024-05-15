@@ -45,7 +45,7 @@
     }
   },
   "bin": [
-    "bin/npm-watch.sh",
-    "bin/npm-build.sh"
+    "bin/npm-watch-cms-niceties.sh",
+    "bin/npm-build-cms-niceties.sh"
   ]
 }
