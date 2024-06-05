@@ -10,10 +10,13 @@ SilverStripe\Admin\ModelAdmin:
 SilverStripe\i18n\i18n:
   locale: en_GB
 
+SilverStripe\Security\Member:
+  extensions:
+    - Sunnysideup\CMSNiceties\Extensions\MemberExtension
+
 SilverStripe\Admin\LeftAndMain:
   extensions:
     - Sunnysideup\CMSNiceties\Extensions\LeftAndMainExtension
-
   extra_requirements_css:
     - 'sunnysideup/cms-niceties: client/dist/main.css'
   help_links:
