@@ -22,7 +22,7 @@ class ModelAdminExtension extends Extension
 
     private static $excluded_modeladmins_from_ssu_extension = [];
 
-    private static $sort_fields_from_ssu_extension = ['SortNumber', 'Sort'];
+    private static $sort_fields_from_ssu_extension = ['SortNumber', 'Sort', 'SortOrder'];
 
     public function updateEditForm($form)
     {
