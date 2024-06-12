@@ -14,7 +14,7 @@ trait CMSNicetiesTraitForValidation
             $isUniqueEntry = isset($index['type']) && 'unique' === $index['type'];
             if ($isUniqueEntry) {
                 $fields = $index['columns'] ?? [];
-                if (count($fields)) {
+                if (count($fields) > 0) {
                     $filter = [];
                     foreach ($fields as $field) {
                         $filter[$field] = $this->{$field};

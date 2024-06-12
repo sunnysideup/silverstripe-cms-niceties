@@ -8,7 +8,6 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Extension;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\View\Requirements;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 /**
@@ -42,7 +41,7 @@ class ModelAdminExtension extends Extension
                             // This is just a precaution to ensure we got a GridField from dataFieldByName() which you should have
                             if ($gridField instanceof GridField) {
                                 $config = $gridField->getConfig();
-                                if($config->getComponentByType(GridFieldSortableRows::class) === null) {
+                                if ($config->getComponentByType(GridFieldSortableRows::class) === null) {
                                     $config->addComponent(new GridFieldSortableRows($sortField));
                                 }
                             }
@@ -66,7 +65,7 @@ class ModelAdminExtension extends Extension
     //  */
     protected function sanitiseClassNameHelper(string $class): string
     {
-        return str_replace('\\', '-', (string) $class);
+        return str_replace('\\', '-', $class);
     }
 
     // /**

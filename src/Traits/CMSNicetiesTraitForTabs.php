@@ -37,11 +37,11 @@ trait CMSNicetiesTraitForTabs
 
             // fixd existing existing tab
             $tab = $fields->fieldByName('Root.' . $tabName);
-            if (!$tab) {
+            if (! $tab) {
                 $tab = $fields->fieldByName('Root.' . $tabNamePlus);
             }
 
-            if (!$tab) {
+            if (! $tab) {
                 $tab = new Tab($tabNamePlus, $tabName);
             }
 
@@ -68,7 +68,7 @@ trait CMSNicetiesTraitForTabs
     public function addTab(FieldList $fields, string $name, ?string $after = 'Main', ?string $title = '')
     {
         // add spaces between capitals
-        if (!$title) {
+        if (! $title) {
             $items = preg_split('#(?=[A-Z])#', $name);
             $title = is_array($items) ? trim(implode(' ', $items)) : $name;
         }
@@ -82,7 +82,7 @@ trait CMSNicetiesTraitForTabs
                     'Root',
                     $name
                 );
-                if (!$tab) {
+                if (! $tab) {
                     $tab = Tab::create($name, $title);
                 }
 

@@ -5,7 +5,6 @@ namespace Sunnysideup\CMSNiceties\Traits;
 use SilverStripe\Admin\ModelAdmin;
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Control\Controller;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\HTMLReadonlyField;
 use Sunnysideup\CmsEditLinkField\Api\CMSEditLinkAPI;
@@ -28,7 +27,7 @@ trait CMSNicetiesTraitForCMSLinks
     public function CMSEditLinkField(string $relName, string $name = ''): HTMLReadonlyField
     {
         $obj = $this->{$relName}();
-        if (!$name) {
+        if ($name === '' || $name === '0') {
             $nameOptions = $this->fieldLabels();
             $name = $nameOptions[$relName] ?? $nameOptions[$relName . 'ID'] ?? 'error';
         }
@@ -81,7 +80,7 @@ trait CMSNicetiesTraitForCMSLinks
      */
     protected function sanitisedClassName(): string
     {
-        $className = (string) $this->hasMethod('classNameForModelAdmin') ? $this->classNameForModelAdmin() : $this->ClassName;
+        $className = (string) $this->hasMethod('classNameForModelAdmin') !== '' && (string) $this->hasMethod('classNameForModelAdmin') !== '0' ? $this->classNameForModelAdmin() : $this->ClassName;
 
         return str_replace('\\', '-', $className);
     }

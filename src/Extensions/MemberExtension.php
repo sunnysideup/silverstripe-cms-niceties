@@ -2,16 +2,10 @@
 
 namespace Sunnysideup\CMSNiceties\Extensions;
 
-use SilverStripe\Forms\FieldList;
 use SilverStripe\Core\Config\Config;
-use SilverStripe\Core\Extension;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
-use SilverStripe\Security\Member;
-use SilverStripe\View\Requirements;
 
-/**
- *
- */
 class MemberExtension extends DataExtension
 {
     private static $fix_locales = [
@@ -22,11 +16,7 @@ class MemberExtension extends DataExtension
     {
         $owner = $this->getOwner();
         $localeFixes = Config::inst()->get(self::class, 'fix_locales') ?: [];
-        foreach ($localeFixes as $was => $is) {
-            if ($owner->Locale === $was) {
-                $owner->Locale = $is;
-            }
-        }
+        $owner->Locale = $localeFixes[$owner->Locale] ?? $owner->Locale;
     }
 
     /**
