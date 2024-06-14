@@ -127,7 +127,8 @@ table.grid-field__table {
     top: 0 !important;
   }
   // make it easier to use this field! see more ...
-  .cms .grid-field .add-existing-autocompleter input.relation-search {
-    width: 37vw;
-  }
+}
+
+.cms-container--content-mode .grid-field .add-existing-autocompleter input.relation-search {
+  width: 37vw;
 }
