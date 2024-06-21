@@ -11,7 +11,7 @@ use Sunnysideup\CmsEditLinkField\Api\CMSEditLinkAPI;
 
 trait CMSNicetiesTraitForCMSLinks
 {
-    public function CMSEditLink(): string
+    public function CMSEditLink()
     {
         if ($this instanceof SiteTree) {
             return parent::CMSEditLink();
