@@ -1,10 +1,9 @@
 
-
 Add any of the Traits to any DataObject to add functionality.
 
 # CMSNicetiesEasyRelationshipField
 
-## example usage:
+## example usage
 
 ### Basic usage
 
@@ -15,6 +14,7 @@ Add any of the Traits to any DataObject to add functionality.
          CMSNicetiesEasyRelationshipField::create($this, 'RelationFoo')
      );
 ```
+
 ### Full Usage
 
 ```php
@@ -36,13 +36,16 @@ Add any of the Traits to any DataObject to add functionality.
      );
 
 ```
-#CMS Niceties Trait For Can Methods
+
+# CMS Niceties Trait For Can Methods
 
 Simply way to manage canCreate, canEdit, canDelete, when the object is owned by
 another object (be it a parent or a child, or something else).
 
 For example:
+
 ```php
+
 MyDataObject extends DataObject
 {
     use Sunnysideup\CMSNiceties\Traits\CMSNicetiesTraitForCanMethods;
@@ -68,10 +71,13 @@ MyDataObject extends DataObject
 ```
 
 # CMS Niceties Trait For CMS Links
+
 Adds: `CMSEditLink`, `CMSAddLink`, and `CMSListLink` to your `DataObject`
 
 For example:
+
 ```php
+
 MyDataObject extends DataObject
 {
     use Sunnysideup\CMSNiceties\Traits\CMSNicetiesTraitForCMSLinks;
@@ -79,14 +85,18 @@ MyDataObject extends DataObject
 
 
 }
+
 ```
+
 # CMS Niceties Trait For Right Titles
 
 Adds a way to add right titles / descriptions to form fields in a simpler way using:
 `private static $field_labels_right`.
 
 For example:
+
 ```php
+
 MyDataObject extends DataObject
 {
     use Sunnysideup\CMSNiceties\Traits\CMSNicetiesTraitForRightTitles;
@@ -105,8 +115,8 @@ MyDataObject extends DataObject
      }
 
 }
-```
 
+```
 
 # CMSNicetiesTraitForTabs
 
@@ -115,6 +125,7 @@ Adds separation between tabs or adds a tab to a specific spot
 For example:
 
 ```php
+
 MyDataObject extends DataObject
 {
     use Sunnysideup\CMSNiceties\Traits\CMSNicetiesTraitForTabs;
@@ -130,7 +141,9 @@ MyDataObject extends DataObject
     }
 
 }
+
 ```
+
 # CMSNicetiesTraitForValidation
 
 Adds basic validation to required and unique fields. In the example below, any value for
@@ -155,9 +168,11 @@ MyDataObject extends DataObject
 
 
 }
+
 ```
 
-# add links to has_one rels:
+# add links to has_one rels
+
 ```php
 
 use Sunnysideup\CMSNiceties\Api\AddLinkToHasOneField;
@@ -176,5 +191,17 @@ class MyClass extends DataObject
         AddLinkToHasOneField::add_link($rel, $this->Rel());
         return $fields;
     }
+
+```
+
+# add colours to CMS
+
+```yml
+
+Sunnysideup\CMSNiceties\Extensions\LeftAndMainExtension:
+    brand_colours: 
+        Light: '#FF0000'
+        Dark: '#FF0000'
+        Font: '#FF0000'
 
 ```
