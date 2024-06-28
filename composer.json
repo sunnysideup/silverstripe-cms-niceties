@@ -14,7 +14,8 @@
   ],
   "require": {
     "silverstripe/cms": "^4.0 || ^5.0",
-    "sunnysideup/cms-dark-theme": "dev-main"
+    "sunnysideup/cms-dark-theme": "dev-main",
+    "silverstripe/lumberjack": "^3.0"
   },
   "require-dev": {
     "sunnysideup/sswebpack_engine_only": "dev-master"

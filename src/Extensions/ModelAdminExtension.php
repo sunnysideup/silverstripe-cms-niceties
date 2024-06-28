@@ -8,6 +8,8 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Extension;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Lumberjack\Forms\GridFieldSiteTreeState;
+use SilverStripe\Versioned\Versioned;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 /**
@@ -33,14 +35,14 @@ class ModelAdminExtension extends Extension
                 // This check is simply to ensure you are on the managed model you want adjust accordingly
                 $obj = Injector::inst()->get($owner->modelClass);
                 if ($obj) {
-                    $dbFields = $obj->config()->get('db');
                     $sortFields = Config::inst()->get(ModelAdmin::class, 'sort_fields_from_ssu_extension');
-                    foreach ($sortFields as $sortField) {
-                        if (isset($dbFields[$sortField])) {
-                            $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassNameHelper($owner->modelClass));
-                            // This is just a precaution to ensure we got a GridField from dataFieldByName() which you should have
-                            if ($gridField instanceof GridField) {
-                                $config = $gridField->getConfig();
+                    $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassNameHelper($owner->modelClass));
+                    if ($gridField instanceof GridField) {
+                        $config = $gridField->getConfig();
+                        $dbFields = $obj->config()->get('db');
+                        foreach ($sortFields as $sortField) {
+                            if (isset($dbFields[$sortField])) {
+                                // This is just a precaution to ensure we got a GridField from dataFieldByName() which you should have
                                 if ($config->getComponentByType(GridFieldSortableRows::class) === null) {
                                     $config->addComponent(new GridFieldSortableRows($sortField));
                                 }
@@ -48,10 +50,15 @@ class ModelAdminExtension extends Extension
 
                             break;
                         }
+
+                        if($obj->hasExtension(Versioned::class) && class_exists(GridFieldSiteTreeState::class)) {
+                            $config->addComponent(new GridFieldSiteTreeState());
+                        }
                     }
                 }
             }
         }
+
 
         return $form;
     }

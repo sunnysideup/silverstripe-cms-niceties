@@ -25,7 +25,11 @@ class MemberExtension extends DataExtension
      */
     public function updateCMSFields(FieldList $fields)
     {
+        $owner = $this->getOwner();
         $fields->removeByName('FailedLoginCount');
-        return $fields;
+        if (!$owner->exists()) {
+            //ugly-ish but works. Defaults and populateDefaults don't.
+            $owner->Locale = "en_GB";
+        }
     }
 }
