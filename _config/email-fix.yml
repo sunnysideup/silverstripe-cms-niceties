@@ -1,6 +1,7 @@
 ---
 Only:
   envvarset: 'SS_HOSTED_WITH_SITEHOST'
+After: 'mailer'
 ---
 SilverStripe\Core\Injector\Injector:
   Symfony\Component\Mailer\Transport\TransportInterface:
