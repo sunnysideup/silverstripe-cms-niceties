@@ -46,7 +46,7 @@ SilverStripe\Control\Session:
   cookie_secure: true
   cookie_name_secure: 'PHPSESSID'
 
-  SilverStripe\Core\Injector\Injector:
+SilverStripe\Core\Injector\Injector:
   App\Services\MediumQueuedJobService:
     properties:
       queueRunner: '%$App\Tasks\Engines\MediumQueueAsyncRunner'
@@ -70,3 +70,11 @@ SilverStripe\Core\Injector\Injector:
   SilverStripe\Control\Middleware\CanonicalURLMiddleware:
     properties:
       forceSSL: true
+---
+Only:
+  envvarset: 'SS_HOSTED_WITH_SITEHOST'
+---
+SilverStripe\Core\Injector\Injector:
+  Symfony\Component\Mailer\Transport\TransportInterface:
+    constructor:
+      dsn: 'sendmail://default?command=/usr/sbin/sendmail%20-oi%20-t'

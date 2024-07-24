@@ -1,0 +1,8 @@
+---
+Only:
+  envvarset: 'SS_HOSTED_WITH_SITEHOST'
+---
+SilverStripe\Core\Injector\Injector:
+  Symfony\Component\Mailer\Transport\TransportInterface:
+    constructor:
+      dsn: 'sendmail://default?command=/usr/sbin/sendmail%20-oi%20-t'
