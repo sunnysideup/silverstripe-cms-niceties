@@ -3,7 +3,6 @@ Name: cms-niceties
 ---
 SilverStripe\Admin\ModelAdmin:
   page_length: 20
-
   extensions:
     - Sunnysideup\CMSNiceties\Extensions\ModelAdminExtension
 
@@ -46,11 +45,6 @@ SilverStripe\Control\Session:
   cookie_secure: true
   cookie_name_secure: 'PHPSESSID'
 
-  SilverStripe\Core\Injector\Injector:
-  App\Services\MediumQueuedJobService:
-    properties:
-      queueRunner: '%$App\Tasks\Engines\MediumQueueAsyncRunner'
-
 ---
 # this is added to first reset (above) and then add the new values
 Name: cms-niceties-hack
@@ -58,31 +52,5 @@ Name: cms-niceties-hack
 SilverStripe\Dev\TaskRunner:
   css:
     0: 'sunnysideup/cms-niceties: client/dist/css/app_task-runner.css'
+---
 
-SilverStripe\Core\Injector\Injector:
-  SilverStripe\Control\Middleware\CanonicalURLMiddleware:
-    properties:
-      enabledEnvs:
-        - dev
-
-## TO DO: this does not work at all!!!
----
-Name: canonicalurls_better
-After: 'canonicalurls'
-Except:
-  Environment: 'dev'
----
-SilverStripe\Core\Injector\Injector:
-  SilverStripe\Control\Middleware\CanonicalURLMiddleware:
-    properties:
-      forceSSL: true
-      enabledEnvs:
-        - test # live is already enabled by default, thank you axllent!
----
-Only:
-  envvarset: 'SS_HOSTED_WITH_SITEHOST'
----
-SilverStripe\Core\Injector\Injector:
-  Symfony\Component\Mailer\Transport\TransportInterface:
-    constructor:
-      dsn: 'sendmail://default?command=/usr/sbin/sendmail%20-oi%20-t'

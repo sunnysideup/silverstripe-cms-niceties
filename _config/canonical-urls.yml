@@ -1,0 +1,11 @@
+## TO DO: this does not work at all!!!
+Name: canonicalurls_better
+After: 'canonicalurls'
+Except:
+  Environment: 'dev'
+---
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Control\Middleware\CanonicalURLMiddleware:
+    properties:
+      enabledEnvs:
+        - dev
