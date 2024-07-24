@@ -15,6 +15,12 @@
   "require": {
     "silverstripe/cms": "^4.0 || ^5.0",
     "sunnysideup/cms-dark-theme": "dev-main",
+    "silverstripe/lumberjack": "^3.0"
+  },
+  "require-dev": {
+    "sunnysideup/sswebpack_engine_only": "dev-master"
+  },
+  "suggest": {
     "symbiote/silverstripe-grouped-cms-menu": "^4",
     "undefinedoffset/sortablegridfield": "^2"
   },
@@ -30,12 +36,17 @@
   ],
   "extra": {
     "expose": [
-      "client/dist"
+      "client/dist",
+      "client/lang"
     ]
   },
   "autoload": {
     "psr-4": {
       "Sunnysideup\\CMSNiceties\\": "src/"
     }
-  }
+  },
+  "bin": [
+    "bin/npm-watch-cms-niceties.sh",
+    "bin/npm-build-cms-niceties.sh"
+  ]
 }

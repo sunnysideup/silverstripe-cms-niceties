@@ -1,0 +1,35 @@
+.cms-content-view {
+  form#Form_EditForm {
+    .ui-tabs {
+      .ui-tabs-nav {
+        float: none;
+        border-bottom: 1px solid var(--grey, #566b8d);
+      }
+    }
+  }
+}
+
+.cms-content-header.north {
+  background-color: #fff;
+  flex-direction: row-reverse;
+  .breadcrumbs-wrapper {
+    margin-right: 1.5rem;
+  }
+  .breadcrumbs-wrapper,
+  .breadcrumbs-wrapper * {
+    text-align: right;
+  }
+}
+
+.toolbar--north.cms-content-header.vertical-align-items {
+  display: block;
+  background-color: #fff;
+  margin-top: 0.3rem;
+  .cms-content-header-tabs.cms-tabset-nav-primary {
+    margin-top: -1rem;
+  }
+  .breadcrumbs-wrapper * {
+    display: inline !important;
+    font-size: 1.2rem !important;
+  }
+}

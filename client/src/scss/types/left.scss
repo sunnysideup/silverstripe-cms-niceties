@@ -70,3 +70,9 @@
     }
   }
 }
+
+.cms-menu .cms-panel-content {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}

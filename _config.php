@@ -2,6 +2,6 @@
 
 use SilverStripe\Control\Director;
 
-if(!Director::isDev()) {
+if (! Director::isDev()) {
     Director::forceSSL();
 }

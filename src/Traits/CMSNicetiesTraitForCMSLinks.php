@@ -5,54 +5,29 @@ namespace Sunnysideup\CMSNiceties\Traits;
 use SilverStripe\Admin\ModelAdmin;
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Control\Controller;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\HTMLReadonlyField;
+use Sunnysideup\CmsEditLinkField\Api\CMSEditLinkAPI;
 
 trait CMSNicetiesTraitForCMSLinks
 {
-    public function CMSEditLink(): string
+    public function CMSEditLink()
     {
         if ($this instanceof SiteTree) {
             return parent::CMSEditLink();
         }
-
-        $cont = $this->myModelAdminController();
-        if ($cont) {
-            return $this->editLink($cont);
-        }
-
-        return '404-cms-edit-link-not-found';
+        return CMSEditLinkAPI::find_edit_link_for_object($this);
     }
 
     public function CMSEditLinkLimited(): string
     {
-        $cont = $this->myModelAdminController();
-        if ($cont) {
-            return $this->editLink($cont);
-        }
-
-        return '404-cms-edit-link-not-found';
-    }
-
-    protected function editLink($controller): string
-    {
-        return Controller::join_links(
-            $controller->Link(),
-            $this->sanitisedClassName(),
-            'EditForm',
-            'field',
-            $this->sanitisedClassName(),
-            'item',
-            $this->ID,
-            'edit'
-        );
+        return CMSEditLinkAPI::find_edit_link_for_object($this);
     }
 
     public function CMSEditLinkField(string $relName, string $name = ''): HTMLReadonlyField
     {
         $obj = $this->{$relName}();
-        if (!$name) {
+        if ($name === '' || $name === '0') {
             $nameOptions = $this->fieldLabels();
             $name = $nameOptions[$relName] ?? $nameOptions[$relName . 'ID'] ?? 'error';
         }
@@ -72,30 +47,14 @@ trait CMSNicetiesTraitForCMSLinks
 
     public function CMSAddLink(): string
     {
-        $controller = $this->myModelAdminController();
-        if ($controller) {
-            return Controller::join_links(
-                $controller->Link(),
-                $this->sanitisedClassName(),
-                'EditForm',
-                'field',
-                $this->sanitisedClassName(),
-                'item',
-                'new'
-            );
-        }
-
-        return '404-cms-add-link-not-found';
+        return CMSEditLinkAPI::find_add_link_for_object($this->ClassName);
     }
 
     public function CMSListLink(): string
     {
         $controller = $this->myModelAdminController();
         if ($controller) {
-            return Controller::join_links(
-                $controller->Link(),
-                $this->sanitisedClassName()
-            );
+            return $controller->getLinkForModelClass($this->ClassName);
         }
 
         return '404-cms-list-link-not-found';
@@ -121,7 +80,7 @@ trait CMSNicetiesTraitForCMSLinks
      */
     protected function sanitisedClassName(): string
     {
-        $className = (string) $this->hasMethod('classNameForModelAdmin') ? $this->classNameForModelAdmin() : $this->ClassName;
+        $className = (string) $this->hasMethod('classNameForModelAdmin') !== '' && (string) $this->hasMethod('classNameForModelAdmin') !== '0' ? $this->classNameForModelAdmin() : $this->ClassName;
 
         return str_replace('\\', '-', $className);
     }

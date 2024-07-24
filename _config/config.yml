@@ -46,7 +46,7 @@ SilverStripe\Control\Session:
   cookie_secure: true
   cookie_name_secure: 'PHPSESSID'
 
-SilverStripe\Core\Injector\Injector:
+  SilverStripe\Core\Injector\Injector:
   App\Services\MediumQueuedJobService:
     properties:
       queueRunner: '%$App\Tasks\Engines\MediumQueueAsyncRunner'
@@ -59,6 +59,12 @@ SilverStripe\Dev\TaskRunner:
   css:
     0: 'sunnysideup/cms-niceties: client/dist/css/app_task-runner.css'
 
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Control\Middleware\CanonicalURLMiddleware:
+    properties:
+      enabledEnvs:
+        - dev
+
 ## TO DO: this does not work at all!!!
 ---
 Name: canonicalurls_better
@@ -70,6 +76,8 @@ SilverStripe\Core\Injector\Injector:
   SilverStripe\Control\Middleware\CanonicalURLMiddleware:
     properties:
       forceSSL: true
+      enabledEnvs:
+        - test # live is already enabled by default, thank you axllent!
 ---
 Only:
   envvarset: 'SS_HOSTED_WITH_SITEHOST'
