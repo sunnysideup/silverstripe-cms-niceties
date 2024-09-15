@@ -21,7 +21,6 @@ class CMSNicetiesMemberExtension extends DataExtension
 
     /**
      * Update Fields
-     * @return FieldList
      */
     public function updateCMSFields(FieldList $fields)
     {

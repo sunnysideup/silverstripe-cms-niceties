@@ -45,7 +45,7 @@ SilverStripe\Control\Session:
   cookie_secure: true
   cookie_name_secure: 'PHPSESSID'
 
-use SilverStripe\Security\Member:
+SilverStripe\Security\Member:
   extensions:
     - Sunnysideup\CMSNiceties\Extensions\CMSNicetiesMemberExtension
 
