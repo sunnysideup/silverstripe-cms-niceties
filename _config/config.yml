@@ -45,6 +45,10 @@ SilverStripe\Control\Session:
   cookie_secure: true
   cookie_name_secure: 'PHPSESSID'
 
+use SilverStripe\Security\Member:
+  extensions:
+    - Sunnysideup\CMSNiceties\Extensions\CMSNicetiesMemberExtension
+
 ---
 # this is added to first reset (above) and then add the new values
 Name: cms-niceties-hack

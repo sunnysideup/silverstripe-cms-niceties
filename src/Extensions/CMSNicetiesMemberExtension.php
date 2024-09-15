@@ -6,7 +6,7 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 
-class MemberExtension extends DataExtension
+class CMSNicetiesMemberExtension extends DataExtension
 {
     private static $fix_locales = [
         'af_ZA' => 'en_GB',
