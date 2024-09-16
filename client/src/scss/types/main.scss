@@ -9,7 +9,7 @@
   }
 }
 
-.cms-content-header.north {
+:not(.pages-controller-cms-content) .cms-content-header.north {
   background-color: #fff;
   flex-direction: row-reverse;
   padding-left: 1rem;
