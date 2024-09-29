@@ -6,6 +6,11 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 
+/**
+ * Class \Sunnysideup\CMSNiceties\Extensions\CMSNicetiesMemberExtension
+ *
+ * @property Member|CMSNicetiesMemberExtension $owner
+ */
 class CMSNicetiesMemberExtension extends DataExtension
 {
     private static $fix_locales = [

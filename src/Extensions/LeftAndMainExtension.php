@@ -12,7 +12,7 @@ use SilverStripe\View\Requirements;
 /**
  * Class \Sunnysideup\CMSNiceties\Extensions\LeftAndMainExtension.
  *
- * @property LeftAndMain|LeftAndMainExtension $owner
+ * @property LeftAndMainExtension $owner
  */
 class LeftAndMainExtension extends Extension
 {
