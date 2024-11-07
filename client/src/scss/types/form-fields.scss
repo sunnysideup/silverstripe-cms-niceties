@@ -57,7 +57,8 @@ p.form__field-description.form-text {
 /**
   * numeric field
   */
-.field.numeric.text input {
+.field.numeric.text input,
+.field.currency.text input {
   max-width: 12rem;
 }
 
