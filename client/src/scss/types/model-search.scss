@@ -37,6 +37,7 @@
         display: flex;
         width: auto;
         margin: -3.5rem -0.5rem 0 -0.5rem;
+        align-items: flex-end;
 
         flex-wrap: wrap;
         > .field {
@@ -67,6 +68,13 @@
 
       .form__field-holder {
         margin: 0;
+        .form-group {
+          margin-bottom: 0;
+        }
+      }
+      .search-form__clear {
+        background-color: var(--light);
+        margin-top: 0.5rem;
       }
 
       &__submit {
