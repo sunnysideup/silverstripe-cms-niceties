@@ -24,8 +24,6 @@ SilverStripe\Admin\LeftAndMain:
 SilverStripe\Dev\TaskRunner:
   css: 'nothinghere'
 
-SilverStripe\Forms\HTMLEditor\HTMLEditorField:
-  default_rows: 3
   # fixed_row_height: 3
 
 # speed up the site...
