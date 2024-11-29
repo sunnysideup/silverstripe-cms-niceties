@@ -3,6 +3,8 @@
  */
 
 .cms-content-header .cms-content-header-info {
+  flex-wrap: nowrap;
+  flex-direction: row-reverse;
   .toolbar__back-button {
     border: 1px solid var(--light, #f4f4f4);
   }
@@ -10,6 +12,9 @@
 .cms-content-header .cms-content-header-info:hover {
   .toolbar__back-button {
     display: block !important;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
   }
 }
 
