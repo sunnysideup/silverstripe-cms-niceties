@@ -2,7 +2,8 @@
  *  improve CMS header for when there are too many tabs
  */
 
-.cms-content-header .cms-content-header-info {
+.cms-content-header-info,
+.toolbar.toolbar--north {
   flex-wrap: nowrap;
   flex-direction: row-reverse;
   .toolbar__back-button {
