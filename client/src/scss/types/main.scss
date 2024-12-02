@@ -37,14 +37,18 @@
 
 .cms-content-header,
 .toolbar.toolbar--north {
-  background-color: #ffc10733 !important;
+  background-color: #008a0033 !important;
   margin-top: 0 !important;
   padding-top: 0.3rem;
   * {
     color: #222 !important;
   }
   .ui-state-active {
-    background-color: #ffc10777 !important;
+    background-color: #008a0077 !important;
+    color: #fff !important;
+    * {
+      color: #fff !important;
+    }
   }
 }
 
@@ -54,7 +58,7 @@ form#Form_ItemEditForm .cms-content-header {
 }
 
 form#Form_ItemEditForm .cms-content-header-info {
-  background-color: #ffc10733 !important;
+  background-color: #008a0033 !important;
   border-bottom: 1px solid #ced5e1;
   margin: -0.5rem -1.5rem 1.5rem !important;
   padding: 0.5rem 1.5rem !important;
