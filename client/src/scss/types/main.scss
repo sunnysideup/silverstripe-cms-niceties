@@ -29,10 +29,10 @@
   .cms-content-header-tabs.cms-tabset-nav-primary {
     margin-top: -1rem;
   }
-  .breadcrumbs-wrapper * {
-    display: inline !important;
-    font-size: 1.2rem !important;
-  }
+  // .breadcrumbs-wrapper * {
+  //   display: inline !important;
+  //   font-size: 1.2rem !important;
+  // }
 }
 
 .cms-content-header,
@@ -51,4 +51,11 @@
 form#Form_ItemEditForm .cms-content-header {
   margin-top: 0 !important;
   background-color: var(--light) !important;
+}
+
+form#Form_ItemEditForm .cms-content-header-info {
+  background-color: #ffc10733 !important;
+  border-bottom: 1px solid #ced5e1;
+  margin: -0.5rem -1.5rem 1rem !important;
+  padding: 0.5rem 1.5rem !important;
 }
