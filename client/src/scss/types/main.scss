@@ -44,7 +44,11 @@
     color: #222 !important;
   }
   .ui-state-active {
-    background-color: #6610f233 !important;
+    background-color: #6610f277 !important;
+    color: #fff !important;
+    * {
+      color: #fff !important;
+    }
   }
 }
 
