@@ -46,12 +46,11 @@ class ModelAdminExtension extends Extension
                                 if ($config->getComponentByType(GridFieldSortableRows::class) === null) {
                                     $config->addComponent(new GridFieldSortableRows($sortField));
                                 }
+                                break;
                             }
-
-                            break;
                         }
 
-                        if($obj->hasExtension(Versioned::class) && class_exists(GridFieldSiteTreeState::class)) {
+                        if ($obj->hasExtension(Versioned::class) && $obj->hasStages() && class_exists(GridFieldSiteTreeState::class)) {
                             $config->addComponent(new GridFieldSiteTreeState());
                         }
                     }
