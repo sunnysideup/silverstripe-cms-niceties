@@ -34,3 +34,19 @@
 .cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li a {
   border-bottom: 0.15385rem solid transparent;
 }
+
+.validationerror .panel--padded .ui-tabs-nav .tab-attention, .validationerror .toolbar--north .ui-tabs-nav .tab-attention {
+  color: #cf3f00 !important;
+  margin-left: 0;
+  margin-top: 0;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  border-radius: 20px;
+  width: 1.5em;
+  text-align: center;
+  /* vertical-align: baseline; */
+  padding-top: 3px;
+  background-color: #ffffffaa;
+  display: block;
+}
