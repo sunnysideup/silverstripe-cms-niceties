@@ -4,14 +4,14 @@ namespace Sunnysideup\CMSNiceties\Extensions;
 
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
 /**
  * Class \Sunnysideup\CMSNiceties\Extensions\CMSNicetiesMemberExtension
  *
  * @property Member|CMSNicetiesMemberExtension $owner
  */
-class CMSNicetiesMemberExtension extends DataExtension
+class CMSNicetiesMemberExtension extends Extension
 {
     private static $fix_locales = [
         'af_ZA' => 'en_GB',

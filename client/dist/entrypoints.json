@@ -13,6 +13,14 @@
       "css": [
         "./main.css"
       ]
+    },
+    "editor": {
+      "js": [
+        "./runtime.js"
+      ],
+      "css": [
+        "./editor.css"
+      ]
     }
   }
 }

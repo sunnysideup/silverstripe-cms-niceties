@@ -36,14 +36,16 @@
 }
 
 .cms-content-header,
-.toolbar.toolbar--north {
+.toolbar.toolbar--north,
+#Form_fileEditForm .nav-tabs {
   background-color: #6610f215 !important;
   margin-top: 0 !important;
   padding-top: 0.3rem;
   * {
     color: #222 !important;
   }
-  .ui-state-active {
+  .ui-state-active,
+  a.active {
     background-color: #6610f277 !important;
     color: #fff !important;
     * {
