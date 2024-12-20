@@ -1,8 +1,15 @@
-#Form_fileEditForm {
+#Form_fileEditForm,
+#Form_fileSelectForm  {
   .nav-tabs {
     margin: 0 -2rem 2rem;
     padding: 0 2rem 0rem;
   }
+  fieldset {
+    overflow: hidden;
+  }
 }
 
 
+.griddle-footer>div {
+  align-items: flex-end;
+}
