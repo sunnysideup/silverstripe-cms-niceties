@@ -43,8 +43,15 @@ class ModelAdminExtension extends Extension
                         foreach ($sortFields as $sortField) {
                             if (isset($dbFields[$sortField])) {
                                 // This is just a precaution to ensure we got a GridField from dataFieldByName() which you should have
-                                if ($config->getComponentByType(GridFieldSortableRows::class) === null) {
-                                    $config->addComponent(new GridFieldSortableRows($sortField));
+                                if (! $config->getComponentByType(GridFieldSortableRows::class)) {
+                                    $obj = $owner->modelClass::singleton();
+                                    if ($obj->hasExtension(Versioned::class)) {
+                                        $sorter = (new GridFieldSortableRows($sortField))
+                                            ->setUpdateVersionedStage(Versioned::LIVE);
+                                    } else {
+                                        $sorter = new GridFieldSortableRows($sortField);
+                                    }
+                                    $config->addComponent($sorter);
                                 }
                                 break;
                             }
