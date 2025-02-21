@@ -71,13 +71,13 @@ class ModelAdminExtension extends Extension
         return $form;
     }
 
-    //
-    // /**
-    //  * Sanitise a model class' name for inclusion in a link
-    //  *
-    //  * @param string $class
-    //  * @return string
-    //  */
+
+    /**
+     * Sanitise a model class' name for inclusion in a link
+     *
+     * @param string $class
+     * @return string
+     */
     protected function sanitiseClassNameHelper(string $class): string
     {
         return str_replace('\\', '-', $class);
