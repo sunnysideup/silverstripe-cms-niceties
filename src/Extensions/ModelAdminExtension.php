@@ -91,11 +91,12 @@ class ModelAdminExtension extends Extension
                 $count = $list->count();
                 $limit = $owner->config()->get('max_records_to_check_for_can_view');
                 $ids = [0 => 0];
-                if ($count < $limit) {
-                    foreach ($list as $record) {
-                        if ($record->canView()) {
-                            $ids[] = $record->ID;
-                        }
+                if ($count > $limit) {
+                    $list = $list->limit($limit);
+                }
+                foreach ($list as $record) {
+                    if ($record->canView()) {
+                        $ids[] = $record->ID;
                     }
                 }
                 $list = $list->filter(['ID' => $ids]);
