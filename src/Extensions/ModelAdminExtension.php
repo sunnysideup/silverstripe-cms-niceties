@@ -9,6 +9,9 @@ use SilverStripe\Core\Extension;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Lumberjack\Forms\GridFieldSiteTreeState;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\PermissionChecker;
+use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
@@ -24,6 +27,10 @@ class ModelAdminExtension extends Extension
     private static $excluded_modeladmins_from_ssu_extension = [];
 
     private static $sort_fields_from_ssu_extension = ['SortNumber', 'Sort', 'SortOrder'];
+
+    private static $assume_view_all = [
+        'ADMIN',
+    ];
 
     public function updateEditForm($form)
     {
@@ -81,31 +88,25 @@ class ModelAdminExtension extends Extension
         return str_replace('\\', '-', $class);
     }
 
-    // /**
-    //  * checks if there is only one record and if no further records can be created.
-    //  * If those conditions are true, then redirect immediately to the record
-    //  * for the convenience of the user.
-    //  *
-    //  * @return void
-    //  */
-    // protected function updateList($list)
-    // {
-    //     $owner = $this->getOwner();
-    //     if($owner->getRequest()->param('ModelClass')) {
-    //         $obj = $list->first();
-    //         $link = $owner->getCMSEditLinkForManagedDataObject($obj);
-    //         // die($_SERVER['HTTP_REFERER'] ?? 'xxx');
-    //         if($list->count() === 1) {
-    //             $obj = $list->first();
-    //             if($obj->canCreate() === true) {
-    //                 $link = $owner->getCMSEditLinkForManagedDataObject($obj);
-    //                 if($link && $owner->getRequest()->getURL() !== $link) {
-    //                     if(Director::is_ajax()) {
-    //                         die('<script>window.location.replace("/' . $link . '");</script>');
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+
+    protected function updateList(&$list)
+    {
+        $owner = $this->getOwner();
+        $member = Security::getCurrentUser();
+        if (Permission::checkMember($member, $owner->Config()->get('assume_view_all'))) {
+            return;
+        }
+        $count = $list->count();
+        if ($count > 10000) {
+            return;
+        }
+        $includeIDs = [0 => 0];
+        foreach ($list as $record) {
+            if ($record->canEdit($member)) {
+                $includeIDs[] = $record->ID;
+            }
+        }
+        $list = $list->filter(['ID' => $includeIDs]);
+        return $list;
+    }
 }
