@@ -1,24 +1,48 @@
 .record-summary {
   background-color: var(--yellow);
   color: #000;
-  border-radius: 3px;
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
   position: relative;
-  span {
-    display: block;
-    &.record-summary-more {
-      position: absolute;
-      top: 1rem;
-      transition: transform 0.3s ease-in-out;
-      transform: translate(0);
-    }
+  display: inline-block;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+
+  .record-summary-id {
+    font-weight: bold;
   }
-  &:hover {
+
+  .record-summary-dropdown {
+    position: absolute;
+    left: 0;
+    top: 100%;
     background-color: #000;
     color: var(--yellow);
-    span {
-      &.record-summary-more {
-        transform: translate(1);
-      }
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-top: 0.3rem;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    z-index: 10;
+    min-width: 170px;
+
+    .record-summary-more {
+      display: block;
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+
+  &:hover {
+    .record-summary-dropdown {
+      opacity: 1;
+      transform: scaleY(1);
     }
   }
 }
