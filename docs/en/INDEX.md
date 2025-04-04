@@ -214,3 +214,6 @@ Sunnysideup\CMSNiceties\Extensions\LeftAndMainExtension:
 MyDataObject:
   extensions: 
     - Sunnysideup\CMSNiceties\Extensions\CMSNicetiesRecordSummaryExtension
+```
+
+And then in DataObject:

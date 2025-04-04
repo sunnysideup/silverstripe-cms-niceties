@@ -1,0 +1,24 @@
+.record-summary {
+  background-color: var(--yellow);
+  color: #000;
+  border-radius: 3px;
+  position: relative;
+  span {
+    display: block;
+    &.record-summary-more {
+      position: absolute;
+      top: 1rem;
+      transition: transform 0.3s ease-in-out;
+      transform: translate(0);
+    }
+  }
+  &:hover {
+    background-color: #000;
+    color: var(--yellow);
+    span {
+      &.record-summary-more {
+        transform: translate(1);
+      }
+    }
+  }
+}

@@ -15,10 +15,10 @@ class CMSNicetiesRecordSummaryExtension extends Extension
 
     public function updateSummaryFields(&$array)
     {
-        array_unshift($array, ['RecordSummary' => 'ID']);
+        $array = ['RecordSummary' => 'ID'] + $array;
     }
 
-    protected function getRecordSummary()
+    public function getRecordSummary()
     {
         /** @var DBField $owner */
         $owner = $this->getOwner();
