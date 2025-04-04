@@ -205,3 +205,12 @@ Sunnysideup\CMSNiceties\Extensions\LeftAndMainExtension:
         Font: '#FF0000'
 
 ```
+
+
+# Nicer Summary in GridField
+
+```yml
+
+MyDataObject:
+  extensions: 
+    - Sunnysideup\CMSNiceties\Extensions\CMSNicetiesRecordSummaryExtension
