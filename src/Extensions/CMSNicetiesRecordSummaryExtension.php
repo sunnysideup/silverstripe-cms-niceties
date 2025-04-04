@@ -23,14 +23,14 @@ class CMSNicetiesRecordSummaryExtension extends Extension
         /** @var DBField $owner */
         $owner = $this->getOwner();
         $html = '<div class="record-summary">';
-        $html .= '<span class="record-summary-id">' . $owner->ID . '</span>';
+        $html .= '<div class="record-summary-id">' . $owner->ID . '</div>';
         $html .= '<div class="record-summary-dropdown">';
         //created
         $created = $owner->obj('Created');
-        $html .= '<span class="record-summary-more">Created: ' . $created->Ago() . '</span>';
+        $html .= '<div class="record-summary-more">Created: ' . $created->Ago() . '</div>';
         //last edited
         $lastEdited = $owner->obj('LastEdited');
-        $html .= '<span class="record-summary-more">Last Edited: ' . $lastEdited->Ago() . '</span>';
+        $html .= '<div class="record-summary-more">Last Edited: ' . $lastEdited->Ago() . '</div>';
         // close
         $html .= '</div>';
         $html .= '</div>';
