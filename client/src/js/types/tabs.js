@@ -23,10 +23,10 @@ window.addEventListener('load', function () {
 
         const runClick = function (el) {
           let ahref = el.querySelector('a')
-          ahref.click()
+          ahref.dispatchEvent(new Event('click'))
           ahref.style.fontWeight = 'bold'
           ahref.style.color = '#0071c4'
-          el.click()
+          el.dispatchEvent(new Event('click'))
           el.style.fontWeight = 'bold'
           el.style.color = '#0071c4'
         }
