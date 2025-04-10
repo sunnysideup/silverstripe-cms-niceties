@@ -30,6 +30,10 @@ SilverStripe\Dev\TaskRunner:
 SilverStripe\CMS\Controllers\CMSMain:
   enable_dynamic_archive_warning_message: false
 
+SilverStripe\Forms\FormField:
+  extensions:
+    - Sunnysideup\CMSNiceties\Extensions\CMSNicetiesFormFieldExtension
+
 SilverStripe\ORM\FieldType\DBDate:
   nice_format: 'j.n.Y'
 
