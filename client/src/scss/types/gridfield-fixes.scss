@@ -34,8 +34,8 @@ table.grid-field__table {
 }
 
 @include lg-screen {
-  fieldset.grid-field.ss-gridfield .grid-field__table th,
-  fieldset.grid-field.ss-gridfield .grid-field__table td {
+  .grid-field__table th,
+  .grid-field__table td {
     padding: 0.6rem 1rem !important;
   }
 
@@ -49,78 +49,92 @@ table.grid-field__table {
     border: 1px solid rgba(219, 224, 233, 1);
     border-radius: 0.2rem;
     background-color: #f1f3f6 !important;
-  }
+    .toolbar--content {
+      margin-top: 0 !important;
+      margin-right: 0;
+      margin-left: 0;
+      background-color: transparent !important;
+    }
 
-  fieldset.grid-field.ss-gridfield .toolbar--content {
-    margin-top: 0 !important;
-    margin-right: 0;
-    margin-left: 0;
-    background-color: transparent !important;
-  }
+    .toolbar--content::after {
+      display: table;
+      clear: both;
+      content: "";
+    }
 
-  fieldset.grid-field.ss-gridfield .toolbar--content::after {
-    display: table;
-    clear: both;
-    content: "";
-  }
-
-  fieldset.grid-field.ss-gridfield h2 {
-    font-size: 1.67rem;
-    font-weight: bold;
-    float: left;
-    padding-top: 0 !important;
-    text-align: center !important;
-    color: #566b8d !important;
-  }
-
-  fieldset.grid-field.ss-gridfield .grid-field__title-row {
-    // background-color: rgba(219, 224, 233, 0.3) !important;
-  }
-
-  fieldset.grid-field.ss-gridfield table {
-    min-width: 100% !important;
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-  }
-
-  fieldset.grid-field.ss-gridfield .sortablerowsheading {
-    padding-top: 0.4rem !important;
-    padding-bottom: 0.4rem !important;
-    border-top: 1px solid #fff !important;
-  }
-
-  fieldset.grid-field.ss-gridfield tfoot td {
-    line-height: 1 !important;
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
-  }
-
-  fieldset.grid-field.ss-gridfield .sortable-header th,
-  fieldset.grid-field.ss-gridfield .sortablerowsheading {
-    line-height: 1 !important;
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
-    border-top: 1px solid rgba(219, 224, 233, 0.7);
-    font-weight: bold;
-    * {
+    h2 {
+      font-size: 1.67rem;
       font-weight: bold;
+      float: left;
+      padding-top: 0 !important;
+      text-align: center !important;
+      color: var(--indigo, #6610f2) !important;
+      margin-top: -5px;
     }
-    button:after {
-      vertical-align: middle;
+
+    .grid-field__title-row {
+      // background-color: rgba(219, 224, 233, 0.3) !important;
     }
-  }
-  fieldset.grid-field.ss-gridfield .sortable-header th {
-    overflow: hidden;
-  }
+    .btn-toolbar button,
+    button[name="showFilter"],
+    button[name="Close"] {
+      background-color: var(--secondary) !important;
+      color: #fff;
+      opacity: 0.77;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    button[name="showFilter"],
+    button[name="Close"] {
+      margin-right: 0;
+    }
 
-  fieldset.grid-field.ss-gridfield .sortablerowsheading {
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
-    background-color: rgba(219, 224, 233, 0.3) !important;
-  }
+    table {
+      min-width: 100% !important;
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
 
-  fieldset.grid-field.ss-gridfield .sortablerowsheading * {
-    color: rgb(86, 107, 141) !important;
+    .sortablerowsheading {
+      padding-top: 0.4rem !important;
+      padding-bottom: 0.4rem !important;
+      border-top: 1px solid #fff !important;
+    }
+
+    tfoot td {
+      line-height: 1 !important;
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+
+    .sortable-header th,
+    .sortablerowsheading {
+      line-height: 1 !important;
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+      border-top: 1px solid rgba(219, 224, 233, 0.7);
+      font-weight: bold;
+      * {
+        font-weight: bold;
+      }
+      button:after {
+        vertical-align: middle;
+      }
+    }
+    .sortable-header th {
+      overflow: hidden;
+    }
+
+    .sortablerowsheading {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+      background-color: rgba(219, 224, 233, 0.3) !important;
+    }
+
+    .sortablerowsheading * {
+      color: rgb(86, 107, 141) !important;
+    }
   }
   // fix for user-defined forms.
   .uf-field-editor .sticky-buttons {
