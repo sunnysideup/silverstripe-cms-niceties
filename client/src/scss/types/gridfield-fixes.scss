@@ -16,6 +16,17 @@ table.grid-field__table {
     padding-bottom: 0 !important;
     border-bottom: 1px solid #dbe0e9 !important;
   }
+  td.gridfield-icon {
+    font-size: 0px;
+    width: 1em;
+    &:hover {
+      background-color: #f0f4f7;
+      position: absolute;
+      width: auto;
+      font-size: 1em;
+      z-index: 1;
+    }
+  }
 }
 
 /* Style the header */
@@ -70,6 +81,7 @@ table.grid-field__table {
       text-align: center !important;
       color: var(--indigo, #6610f2) !important;
       margin-top: -5px;
+      filter: grayscale(0.6);
     }
 
     .grid-field__title-row {

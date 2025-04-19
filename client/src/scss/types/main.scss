@@ -35,6 +35,10 @@
   // }
 }
 
+.breadcrumbs-wrapper .crumb.last {
+  color: var(--indigo, #6610f2) !important;
+}
+
 .cms-content-header,
 .toolbar.toolbar--north,
 #Form_fileEditForm .nav-tabs,
@@ -49,9 +53,7 @@
   a.active {
     background-color: #6610f277 !important;
     color: #fff !important;
-    font-weight: bold !important;
     * {
-      font-weight: bold !important;
       color: #fff !important;
     }
     a {
