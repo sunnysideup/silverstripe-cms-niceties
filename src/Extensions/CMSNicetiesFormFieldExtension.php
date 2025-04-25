@@ -4,6 +4,11 @@ namespace Sunnysideup\CMSNiceties\Extensions;
 
 use SilverStripe\Core\Extension;
 
+/**
+ * Class \Sunnysideup\CMSNiceties\Extensions\CMSNicetiesFormFieldExtension
+ *
+ * @property FormField|CMSNicetiesFormFieldExtension $owner
+ */
 class CMSNicetiesFormFieldExtension extends Extension
 {
 
