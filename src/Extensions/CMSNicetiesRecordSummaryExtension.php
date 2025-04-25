@@ -6,6 +6,11 @@ use SilverStripe\Core\Extension;
 use SilverStripe\ORM\FieldType\DBField;
 
 
+/**
+ * Class \Sunnysideup\CMSNiceties\Extensions\CMSNicetiesRecordSummaryExtension
+ *
+ * @property CMSNicetiesRecordSummaryExtension $owner
+ */
 class CMSNicetiesRecordSummaryExtension extends Extension
 {
 
