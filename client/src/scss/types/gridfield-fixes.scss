@@ -38,6 +38,7 @@ table.grid-field__table {
   margin-top: -14px;
   padding-left: 1rem;
   padding-right: 1rem;
+  margin-bottom: 1rem;
 }
 
 .flexbox-area-grow {
@@ -57,7 +58,6 @@ table.grid-field__table {
     margin-bottom: 2rem;
     padding-bottom: 10px !important;
     padding: 0px !important;
-    border: 1px solid rgba(219, 224, 233, 1);
     border-radius: 0.2rem;
     background-color: #f1f3f6 !important;
     .toolbar--content {
@@ -157,4 +157,14 @@ table.grid-field__table {
 
 .cms-container--content-mode .grid-field .add-existing-autocompleter input.relation-search {
   width: 37vw;
+}
+
+fieldset.grid-field.ss-gridfield {
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 4px; //#f1f3f6
+  > span.description {
+    display: block;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    font-style: normal;
+  }
 }
