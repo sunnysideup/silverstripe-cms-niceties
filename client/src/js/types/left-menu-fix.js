@@ -7,19 +7,19 @@
  *
  * @author Tristan Mastrodicasa
  */
-const $ = window.jQuery;
+// const $ = window.jQuery
 
-$.cookie('cms-menu-sticky', 'true', {
-  path: '/',
-  expires: 31,
-});
+// jQuery.cookie('cms-menu-sticky', 'true', {
+//   path: '/',
+//   expires: 31
+// })
 
-$.cookie('cms-panel-collapsed-cms-menu', 'false', {
-  path: '/',
-  expires: 31,
-});
+// jQuery.cookie('cms-panel-collapsed-cms-menu', 'false', {
+//   path: '/',
+//   expires: 31
+// })
 
-$.cookie('cms-panel-collapsed-cms-content-tools-CMSMain', 'false', {
-  path: '/',
-  expires: 31,
-});
+// jQuery.cookie('cms-panel-collapsed-cms-content-tools-CMSMain', 'false', {
+//   path: '/',
+//   expires: 31
+// })

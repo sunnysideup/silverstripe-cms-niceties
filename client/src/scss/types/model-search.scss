@@ -1,114 +1,118 @@
-// Model Admin Search
-.search-box {
-  &--has-filters {
-    height: auto;
-    margin: 20px;
-    margin-top: 0;
-    width: auto;
-    .search-box {
-      &__filter-trigger {
-        display: none;
-      }
-
-      &__cancel,
-      &__close {
-        position: absolute;
-        top: 1rem;
-        right: 0;
-        bottom: auto;
-        height: auto;
-        margin: 0;
-        color: #43536d;
-        border-left: 1px solid #ced5e1;
-        background-color: transparent;
-      }
-    }
-
-    .search-form {
-      position: relative;
-      right: 0;
-      display: block;
-      width: 100%;
-
-      .form {
-        width: 100%;
-      }
-
-      fieldset {
-        display: flex;
-        width: auto;
-        margin: -3.5rem -0.5rem 0 -0.5rem;
-        align-items: flex-start;
-
-        flex-wrap: wrap;
-        > .field {
-          flex: 1 1 100%;
-          margin: 0;
-          padding: 0.5rem;
-
-          align-content: flex-start;
-
-          @include md-screen {
-            flex: 1 1 50%;
-          }
-
-          @include lg-screen {
-            flex: 1 1 20%;
-            max-width: 20%;
-          }
-
-          input {
-            width: 100%;
-            max-width: 100%;
-            &.form-check {
-              width: auto !important;
-            }
-          }
-        }
-      }
-
-      .form__field-holder {
-        margin: 0;
-        .form-group {
-          margin-bottom: 0;
-        }
-      }
-      .search-form__clear {
-        background-color: var(--light);
-        margin-top: 0.5rem;
-      }
-
-      &__submit {
-        font-size: 1.2rem;
-        font-weight: bold;
-        width: 100%;
-        margin-top: 0.5rem;
-        max-width: 19%;
-        float: right;
-      }
-      .search-form__wrapper {
-        &:after {
-          content: "";
-          display: block;
-          clear: both;
-        }
-      }
-    }
-  }
+.grid-field:first-child .grid-field__search-holder {
+  margin-top: 0 !important;
 }
 
-.search-holder.grid-field__search-holder {
-  padding-bottom: 100px;
-}
+// // Model Admin Search
+// .search-box {
+//   &--has-filters {
+//     height: auto;
+//     margin: 20px;
+//     margin-top: 0;
+//     width: auto;
+//     .search-box {
+//       &__filter-trigger {
+//         display: none;
+//       }
 
-#pages-controller-cms-content {
-  .search-box--has-filters .search-form fieldset > .field {
-    min-width: 100% !important;
-  }
-}
+//       &__cancel,
+//       &__close {
+//         position: absolute;
+//         top: 1rem;
+//         right: 0;
+//         bottom: auto;
+//         height: auto;
+//         margin: 0;
+//         color: #43536d;
+//         border-left: 1px solid #ced5e1;
+//         background-color: transparent;
+//       }
+//     }
 
-#cms-content-tools-CMSMain {
-  .search-form__submit {
-    max-width: auto !important;
-  }
-}
+//     .search-form {
+//       position: relative;
+//       right: 0;
+//       display: block;
+//       width: 100%;
+
+//       .form {
+//         width: 100%;
+//       }
+
+//       fieldset {
+//         display: flex;
+//         width: auto;
+//         margin: -3.5rem -0.5rem 0 -0.5rem;
+//         align-items: flex-start;
+
+//         flex-wrap: wrap;
+//         > .field {
+//           flex: 1 1 100%;
+//           margin: 0;
+//           padding: 0.5rem;
+
+//           align-content: flex-start;
+
+//           @include md-screen {
+//             flex: 1 1 50%;
+//           }
+
+//           @include lg-screen {
+//             flex: 1 1 20%;
+//             max-width: 20%;
+//           }
+
+//           input {
+//             width: 100%;
+//             max-width: 100%;
+//             &.form-check {
+//               width: auto !important;
+//             }
+//           }
+//         }
+//       }
+
+//       .form__field-holder {
+//         margin: 0;
+//         .form-group {
+//           margin-bottom: 0;
+//         }
+//       }
+//       .search-form__clear {
+//         background-color: var(--light);
+//         margin-top: 0.5rem;
+//       }
+
+//       &__submit {
+//         font-size: 1.2rem;
+//         font-weight: bold;
+//         width: 100%;
+//         margin-top: 0.5rem;
+//         max-width: 19%;
+//         float: right;
+//       }
+//       .search-form__wrapper {
+//         &:after {
+//           content: "";
+//           display: block;
+//           clear: both;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .search-holder.grid-field__search-holder {
+//   padding-bottom: 100px;
+// }
+
+// #pages-controller-cms-content {
+//   .search-box--has-filters .search-form fieldset > .field {
+//     min-width: 100% !important;
+//   }
+// }
+
+// #cms-content-tools-CMSMain {
+//   .search-form__submit {
+//     max-width: auto !important;
+//   }
+// }
