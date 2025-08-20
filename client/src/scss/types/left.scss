@@ -76,3 +76,16 @@
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
+
+.cms-menu__list {
+  &.collapsed {
+    > .link.children,
+    > .current.children {
+      > a {
+        .menu__icon {
+          display: block;
+        }
+      }
+    }
+  }
+}
