@@ -11,18 +11,18 @@ SilverStripe\i18n\i18n:
 
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
-    - "sunnysideup/cms-niceties: client/dist/main.css"
+    - 'sunnysideup/cms-niceties: client/dist/main.css'
   help_links:
-    "Developer docs": ""
-    "Community": ""
-    "Feedback": ""
+    'Developer docs': ''
+    'Community': ''
+    'Feedback': ''
 
   extra_requirements_javascript:
-    - "sunnysideup/cms-niceties: client/dist/runtime.js"
-    - "sunnysideup/cms-niceties: client/dist/app.js"
+    - 'sunnysideup/cms-niceties: client/dist/runtime.js'
+    - 'sunnysideup/cms-niceties: client/dist/app.js'
 
 SilverStripe\Dev\TaskRunner:
-  css: "nothinghere"
+  css: 'nothinghere'
 
   # fixed_row_height: 3
 
@@ -35,23 +35,23 @@ SilverStripe\Forms\FormField:
     - Sunnysideup\CMSNiceties\Extensions\CMSNicetiesFormFieldExtension
 
 SilverStripe\ORM\FieldType\DBDate:
-  nice_format: "j.n.Y"
+  nice_format: 'j.n.Y'
 
 SilverStripe\ORM\FieldType\DBTime:
-  nice_format: "H:i"
+  nice_format: 'H:i'
 
 SilverStripe\ORM\FieldType\DBDatetime:
-  nice_format: "j.n.Y H:i"
+  nice_format: 'j.n.Y H:i'
 
 SilverStripe\Control\Session:
   cookie_secure: true
-  cookie_name_secure: "PHPSESSID"
+  cookie_name_secure: 'PHPSESSID'
 
 SilverStripe\Security\Member:
   extensions:
     - Sunnysideup\CMSNiceties\Extensions\CMSNicetiesMemberExtension
 
-  lock_out_after_incorrect_logins: 5
+  lock_out_after_incorrect_logins: 15
   lock_out_delay_mins: 5
 
 ---
@@ -60,6 +60,6 @@ Name: cms-niceties-hack
 ---
 SilverStripe\Dev\TaskRunner:
   css:
-    0: "sunnysideup/cms-niceties: client/dist/css/app_task-runner.css"
+    0: 'sunnysideup/cms-niceties: client/dist/css/app_task-runner.css'
 ---
 
