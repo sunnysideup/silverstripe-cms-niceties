@@ -3,8 +3,11 @@
 namespace Sunnysideup\CMSNiceties\Extensions;
 
 use SilverStripe\Core\Config\Config;
+use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Core\Extension;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\NumericField;
 
 /**
  * Class \Sunnysideup\CMSNiceties\Extensions\CMSNicetiesMemberExtension
@@ -30,10 +33,20 @@ class CMSNicetiesMemberExtension extends Extension
     public function updateCMSFields(FieldList $fields)
     {
         $owner = $this->getOwner();
-        $fields->removeByName('FailedLoginCount');
         if (!$owner->exists()) {
             //ugly-ish but works. Defaults and populateDefaults don't.
             $owner->Locale = "en_GB";
         }
+        if ($fields->fieldByName('Root.Main.LoginToken') || $fields->dataFieldByName('LoginToken')) {
+            $fields->removeByName('LoginToken');
+        }
+        if ($fields->fieldByName('Root.Main.TokenExpiry') || $fields->dataFieldByName('TokenExpiry')) {
+            $fields->removeByName('TokenExpiry');
+        }
+        $fields->addFieldsToTab('Root.Security', [
+            DatetimeField::create('LockedOutUntil', 'Locked Out Until'),
+            NumericField::create('FailedLoginCount', 'Failed Login Count'),
+        ]);
+        // $fields->replaceField('FailedLoginCount', NumericField::create('FailedLoginCount', 'Failed Login Count'));
     }
 }
