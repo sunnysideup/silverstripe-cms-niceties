@@ -5,6 +5,8 @@ namespace Sunnysideup\CMSNiceties\Extensions;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Core\Extension;
+use SilverStripe\Forms\DatetimeField;
+use SilverStripe\Forms\NumericField;
 
 /**
  * Class \Sunnysideup\CMSNiceties\Extensions\CMSNicetiesMemberExtension
@@ -35,5 +37,10 @@ class CMSNicetiesMemberExtension extends Extension
             //ugly-ish but works. Defaults and populateDefaults don't.
             $owner->Locale = "en_GB";
         }
+        // $fields->dataFieldByName('FailedLoginCount')->setReadonly(false);
+        $fields->addFieldsToTab('Root.Security', [
+            DatetimeField::create('LockedOutUntil', 'Locked Out Until'),
+            NumericField::create('FailedLoginCount', 'Failed Login Count'),
+        ]);
     }
 }
