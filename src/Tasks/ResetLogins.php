@@ -32,19 +32,26 @@ class ResetLogins extends BuildTask
         ]);
         foreach ($members as $member) {
             $message = 'Resetting ' . $member->Email;
+            $save = false;
             DB::alteration_message($message, 'deleted');
             if ((int) $member->FailedLoginCount > 0.1) {
                 DB::alteration_message(' - resetting failed logins: ' . $member->FailedLoginCount, 'deleted');
                 $member->FailedLoginCount = 0;
+                $save = true;
             }
             if (strtotime($member->LockedOutUntil) > time()) {
                 DB::alteration_message(' - LOCKED! resetting unlock until: ' . $member->LockedOutUntil, 'deleted');
                 $member->LockedOutUntil = null;
+                $save = true;
             } elseif ($member->LockedOutUntil) {
                 DB::alteration_message(' - already unlocked after: ' . $member->LockedOutUntil, 'changed');
             }
             if (! $forreal) {
                 DB::alteration_message(" - not saving changes (test run only)", 'deleted');
+                continue;
+            }
+            if (! $save) {
+                DB::alteration_message(' - nothing to change', 'changed');
                 continue;
             }
             DB::alteration_message(' - saving changes', 'added');
