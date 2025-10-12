@@ -5,6 +5,7 @@ namespace Sunnysideup\CmsNiceties\Tasks;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\ORM\DB;
 use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
 
 class ResetLogins extends BuildTask
 {
@@ -16,6 +17,10 @@ class ResetLogins extends BuildTask
 
     public function run($request)
     {
+        if (! Permission::check('ADMIN')) {
+            echo '<h2>You need to be an admin to run this task</h2>';
+            return;
+        }
         $forreal = (string) $request->getVar('forreal');
         if ($forreal !== '1') {
             echo '<h2>Test run only. To run for real add ?forreal=1 to the URL</h2>';
