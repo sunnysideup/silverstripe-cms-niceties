@@ -43,6 +43,9 @@ SilverStripe\ORM\FieldType\DBTime:
 SilverStripe\ORM\FieldType\DBDatetime:
   nice_format: 'j.n.Y H:i'
 
+SilverStripe\Security\Security:
+  login_login_recording: true
+
 SilverStripe\Control\Session:
   cookie_secure: true
   cookie_name_secure: 'PHPSESSID'
