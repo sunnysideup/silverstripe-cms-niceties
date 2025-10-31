@@ -32,3 +32,10 @@ SilverStripe\Admin\LeftAndMain:
           - SilverStripe-AssetAdmin-Controller-AssetAdmin
           - SilverStripe-SiteConfig-SiteConfigLeftAndMain
 
+    # more branding
+    extensions:
+      - Sunnysideup\CMSNiceties\Extensions\LeftAndMainExtension
+    brand_colours:
+        Light: '#e89898ff'
+        Dark: '#260a0aff'
+        Font: '#285e48ff'
