@@ -51,7 +51,7 @@
     }
   }
   > .current.children {
-    background-color: #004e7f !important;
+    background-color: var(--secondary) !important;
     color: #fff !important;
     > a {
       .text,
