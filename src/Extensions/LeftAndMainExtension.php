@@ -29,18 +29,22 @@ class LeftAndMainExtension extends Extension
 
     public function updateClientConfig($clientConfig)
     {
+        /**
+         * @var LeftAndMain
+         */
+        $owner = $this->getOwner();
         $brandColourProviders = ClassInfo::implementorsOf(BrandColourProvider::class);
-        if($brandColourProviders) {
-            foreach($brandColourProviders as $provider) {
+        if ($brandColourProviders) {
+            foreach ($brandColourProviders as $provider) {
                 $providerInstance = new $provider();
                 $brandColours = $providerInstance->getBrandColours();
-                if($brandColours) {
+                if ($brandColours) {
                     $clientConfig['brand_colours'] = $brandColours;
                     break;
                 }
             }
         } else {
-            $clientConfig['brand_colours'] = $this->owner->config()->get('brand_colours');
+            $clientConfig['brand_colours'] = $owner->config()->get('brand_colours');
         }
         $light = $clientConfig['brand_colours']['Light'] ?? '';
         $dark = $clientConfig['brand_colours']['Dark'] ?? '';
@@ -92,7 +96,13 @@ class LeftAndMainExtension extends Extension
                 {
                     color: ' . $dark . ';
                 }
-
+                #cms-menu .cms-menu__list > .link.children > a:hover * {
+                    color: ' . $font . '!important;
+                }
+                #cms-menu .cms-menu__list>.current.children ul.group .current a,
+                #cms-menu .cms-menu__list>.link.children ul.group .current a {
+                    text-decoration: underline;
+                }
 
                 ',
                 'LeftAndMainExtensionCMSNiceties'
