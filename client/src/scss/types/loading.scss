@@ -19,9 +19,9 @@
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="82.4" height="82.4" viewBox="0 0 82.4 82.4"><circle fill="%23fff" cx="41.2" cy="41.2" r="41.2"/><circle fill="%23f7cd55" cx="48.2" cy="41.2" r="15.8"/></svg>')
     center center no-repeat !important;
   background-size: contain !important;
-  width: 50px !important;
-  height: 50px !important;
-  animation: spin 1.6s linear ease-in !important;
+  width: 120px !important;
+  height: 120px !important;
+  animation: spin 1.6s ease infinite !important;
   svg {
     display: none;
   }
