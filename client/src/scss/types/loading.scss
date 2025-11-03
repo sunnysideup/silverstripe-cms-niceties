@@ -26,10 +26,12 @@
     display: none;
   }
 }
-.cms-content-loading-spinner {
-  .spinner {
-    width: 45px !important;
-    height: 45px !important;
+.cms-loading-container {
+  .cms-content-loading-spinner {
+    .spinner {
+      width: 45px !important;
+      height: 45px !important;
+    }
   }
 }
 @keyframes spin {
