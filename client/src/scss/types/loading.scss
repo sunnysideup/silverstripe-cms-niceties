@@ -7,22 +7,23 @@
     opacity 0.2s ease,
     visibility 0.2s ease;
   .cms-content-loading-spinner {
-    .spinner {
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="82.4" height="82.4" viewBox="0 0 82.4 82.4"><circle fill="%23fff" cx="41.2" cy="41.2" r="41.2"/><circle fill="%23f7cd55" cx="48.2" cy="41.2" r="15.8"/></svg>')
-        center center no-repeat;
-      background-size: contain;
-      width: 120px;
-      height: 120px;
-      animation: spin 1.6s linear infinite;
-      svg {
-        display: none;
-      }
-    }
   }
   &[style*="display: none"] {
     opacity: 0;
     visibility: hidden;
     display: flex !important; /* keep it rendered so the fade can play */
+  }
+}
+
+.spinner {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="82.4" height="82.4" viewBox="0 0 82.4 82.4"><circle fill="%23fff" cx="41.2" cy="41.2" r="41.2"/><circle fill="%23f7cd55" cx="48.2" cy="41.2" r="15.8"/></svg>')
+    center center no-repeat !important;
+  background-size: contain !important;
+  width: 120px !important;
+  height: 120px !important;
+  animation: spin 1.6s linear infinite !important;
+  svg {
+    display: none;
   }
 }
 
