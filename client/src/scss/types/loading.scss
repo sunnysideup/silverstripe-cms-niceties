@@ -1,11 +1,11 @@
 .ss-loading-screen {
-  background-color: #bababa !important;
+  background-color: #f7cd55 !important;
   color: #fff !important;
   opacity: 1;
   visibility: visible;
   transition:
-    opacity 0.2s ease,
-    visibility 0.2s ease;
+    opacity 0.2s linear,
+    visibility 0.2s linear;
   .cms-content-loading-spinner {
   }
   &[style*="display: none"] {
