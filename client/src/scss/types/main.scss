@@ -36,14 +36,14 @@
 }
 
 .breadcrumbs-wrapper .crumb.last {
-  color: var(--indigo, #6610f2) !important;
+  color: white !important;
 }
 
 .cms-content-header,
 .toolbar.toolbar--north,
 #Form_fileEditForm .nav-tabs,
 #Form_fileSelectForm .nav-tabs {
-  background-color: #6610f215 !important;
+  background-color: linear-gradient(to right, #6610f215 60%, #6710f28b 90%) !important;
   margin-top: 0 !important;
   * {
     color: #222 !important;
