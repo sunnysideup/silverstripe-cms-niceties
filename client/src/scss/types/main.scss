@@ -52,6 +52,7 @@
   a.active {
     background-color: #6610f277 !important;
     color: #fff !important;
+    border-color: var(--indigo, #6610f2) !important;
     * {
       color: #fff !important;
     }
@@ -59,6 +60,15 @@
       border-color: var(--indigo, #6610f2) !important;
     }
   }
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link.active:active,
+.nav-tabs .nav-link.active:focus,
+.nav-tabs .nav-link.active:hover {
+  background-color: #6610f277 !important;
+  color: #fff !important;
+  border-color: var(--indigo, #6610f2) !important;
 }
 
 form#Form_ItemEditForm .cms-content-header {
