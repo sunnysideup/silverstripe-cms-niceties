@@ -22,6 +22,10 @@
   width: 120px !important;
   height: 120px !important;
   animation: spin 1.6s ease infinite !important;
+  position: fixed !important;
+  top: 0 !important;
+  right: 6vw !important;
+  margin-top: -18px;
   svg {
     display: none;
   }
@@ -29,8 +33,11 @@
 .cms-loading-container {
   .cms-content-loading-spinner {
     .spinner {
-      width: 45px !important;
-      height: 45px !important;
+      height: 36px !important;
+      top: 7px !important;
+      width: 36px !important;
+      margin-top: 0;
+      right: 28px !important;
     }
   }
 }

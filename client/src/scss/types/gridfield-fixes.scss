@@ -9,12 +9,20 @@ table.grid-field__table {
   width: 100%;
   border-collapse: collapse;
   position: relative !important;
-  thead th {
-    // position: sticky !important;
-    // top: 0;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    border-bottom: 1px solid #dbe0e9 !important;
+  thead {
+    th {
+      // position: sticky !important;
+      // top: 0;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      border-bottom: 1px solid #dbe0e9 !important;
+      span.non-sortable {
+        line-height: 18px !important;
+      }
+    }
+    .pagination-records-number {
+      display: none;
+    }
   }
   td.gridfield-icon {
     font-size: 0px;
@@ -141,7 +149,9 @@ table.grid-field__table {
     .sortablerowsheading {
       padding-top: 0.5rem !important;
       padding-bottom: 0.5rem !important;
-      background-color: rgba(219, 224, 233, 0.3) !important;
+      input.checkbox {
+        vertical-align: middle;
+      }
     }
 
     .sortablerowsheading * {
@@ -160,7 +170,7 @@ table.grid-field__table {
 }
 
 fieldset.grid-field.ss-gridfield {
-  box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 4px; //#f1f3f6
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px; //#f1f3f6
   border: 1px solid rgb(218.7079545455, 224.0352272727, 232.6920454545);
   > span.description {
     display: block;
@@ -168,4 +178,19 @@ fieldset.grid-field.ss-gridfield {
     margin-bottom: 1rem;
     font-style: normal;
   }
+}
+
+.add-existing-autocompleter {
+  input.text {
+    height: 17px !important;
+    min-height: 17px !important;
+    box-sizing: revert !important;
+  }
+  button {
+    padding: 6px 9px 5px 9px !important;
+  }
+}
+
+.sortablerowsheading {
+  background-color: transparent !important;
 }

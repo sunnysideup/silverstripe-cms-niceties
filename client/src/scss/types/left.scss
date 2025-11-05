@@ -4,7 +4,6 @@
     position: relative;
     opacity: 0.95 !important;
     > a {
-      background-color: #004e7f11 !important;
       border-top: 1px solid #004e7f55;
       &:hover {
         opacity: 1 !important;
@@ -40,9 +39,11 @@
       }
       .current {
         a {
-          background-color: #004e7f33;
           font-weight: bold;
-          color: #222;
+          color: var(--indigo, #6610f2) !important;
+          .menu__icon {
+            color: var(--indigo, #6610f2) !important;
+          }
         }
       }
     }
@@ -50,14 +51,24 @@
       background-color: #004e7f22;
     }
   }
+  > .current > a {
+    > .menu__icon {
+      color: #fff !important;
+    }
+    .opened {
+      .menu__icon {
+        color: var(--indigo, #6610f2) !important;
+      }
+    }
+  }
   > .current.children {
-    background-color: #005a93 !important;
     color: #fff !important;
+    background-color: #6710f250 !important;
     > a {
       .text,
       .toggle-children {
         font-weight: bold;
-        color: #fff;
+        color: #fff !important;
       }
     }
   }

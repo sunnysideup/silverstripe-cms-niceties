@@ -1,18 +1,9 @@
-.cms-content-view {
-  form#Form_EditForm {
-    .ui-tabs {
-      .ui-tabs-nav {
-        float: none;
-        border-bottom: 1px solid var(--grey, #566b8d);
-      }
-    }
-  }
-}
-
 :not(.pages-controller-cms-content) .cms-content-header.north {
   background-color: #fff;
   flex-direction: row-reverse;
   padding-left: 1rem;
+  border-color: var(--indigo, #6610f2) !important;
+  background-color: #6610f215 !important;
   .breadcrumbs-wrapper {
     margin-right: 1.5rem;
   }
@@ -49,7 +40,7 @@
   }
   .ui-state-active,
   a.active {
-    background-color: #6610f277 !important;
+    background-color: #6710f250 !important;
     color: #fff !important;
     border-color: var(--indigo, #6610f2) !important;
     * {
@@ -65,7 +56,7 @@
 .nav-tabs .nav-link.active:active,
 .nav-tabs .nav-link.active:focus,
 .nav-tabs .nav-link.active:hover {
-  color: #fff !important;
+  color: var(--indigo, #6610f2);
   border-color: var(--indigo, #6610f2) !important;
 }
 
@@ -79,6 +70,7 @@ form#Form_ItemEditForm .cms-content-header-info {
   border-bottom: 1px solid #ced5e1;
   margin: -0.5rem -1.5rem 1.5rem !important;
   padding: 0.5rem 1.5rem !important;
+  border-color: var(--indigo, #6610f2) !important;
 }
 
 form#Form_ItemEditForm {
