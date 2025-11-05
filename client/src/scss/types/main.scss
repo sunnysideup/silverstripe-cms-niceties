@@ -43,7 +43,6 @@
 .toolbar.toolbar--north,
 #Form_fileEditForm .nav-tabs,
 #Form_fileSelectForm .nav-tabs {
-  background-color: #6610f215 !important;
   margin-top: 0 !important;
   * {
     color: #222 !important;
@@ -66,7 +65,6 @@
 .nav-tabs .nav-link.active:active,
 .nav-tabs .nav-link.active:focus,
 .nav-tabs .nav-link.active:hover {
-  background-color: #6610f277 !important;
   color: #fff !important;
   border-color: var(--indigo, #6610f2) !important;
 }
