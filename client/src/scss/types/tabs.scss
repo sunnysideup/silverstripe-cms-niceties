@@ -49,6 +49,9 @@
 
 .cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li {
   margin-left: 0.6154rem;
+  a:hover {
+    border-color: var(--indigo, #6610f2) !important;
+  }
 }
 
 .cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li a {

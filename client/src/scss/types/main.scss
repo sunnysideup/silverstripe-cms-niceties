@@ -1,8 +1,12 @@
+.cms .cms-content {
+  background-color: #fff !important;
+}
+
 :not(.pages-controller-cms-content) .cms-content-header.north {
   background-color: #fff;
   flex-direction: row-reverse;
   padding-left: 1rem;
-  border-color: var(--indigo, #6610f2) !important;
+  border-color: #7472ce !important;
   background-color: #6610f215 !important;
   .breadcrumbs-wrapper {
     margin-right: 1.5rem;
@@ -63,6 +67,7 @@
 form#Form_ItemEditForm .cms-content-header {
   margin-top: 0 !important;
   background-color: var(--light) !important;
+  border-color: rgba(103, 16, 242, 0.314) !important;
 }
 
 form#Form_ItemEditForm .cms-content-header-info {
