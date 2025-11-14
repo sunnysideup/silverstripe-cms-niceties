@@ -98,7 +98,8 @@
 @keyframes softReveal {
   0% {
     opacity: 0;
-    transform: translateY(10px);
+    // transform: translateY(10px);
+    // filter: blur(2px);
   }
   60% {
     opacity: 0.5;
