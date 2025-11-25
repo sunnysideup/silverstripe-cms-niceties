@@ -76,3 +76,36 @@
   height: 10px;
   text-indent: -9999px;
 }
+.panel {
+  .tab-pane {
+    /* These help the animation look smoother */
+    will-change: opacity, transform, filter;
+    transition:
+      opacity 270ms ease-out,
+      filter 270ms ease-out,
+      transform 270ms ease-out;
+  }
+
+  .tab-pane[aria-hidden="true"] {
+    display: none;
+  }
+
+  .tab-pane[aria-hidden="false"] {
+    animation: softReveal 270ms ease-out both;
+  }
+}
+
+@keyframes softReveal {
+  0% {
+    opacity: 0;
+    // transform: translateY(10px);
+    // filter: blur(2px);
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
