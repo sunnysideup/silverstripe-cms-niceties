@@ -44,11 +44,10 @@
   }
   .ui-state-active,
   a.active {
-    background-color: #6710f250 !important;
-    color: #fff !important;
+    color: var(--indigo, #6610f2) !important;
     border-color: var(--indigo, #6610f2) !important;
     * {
-      color: #fff !important;
+      color: var(--indigo, #6610f2) !important;
     }
     a {
       border-color: var(--indigo, #6610f2) !important;
