@@ -7,7 +7,7 @@
   flex-wrap: nowrap;
   flex-direction: row-reverse;
   .toolbar__back-button {
-    border: 1px solid var(--light, #f4f4f4);
+    border: none !important;
   }
 }
 .cms-content-header .cms-content-header-info:hover {
@@ -16,6 +16,26 @@
     align-items: center;
     flex-wrap: nowrap;
     flex-direction: row-reverse;
+  }
+}
+
+.cms-content-view {
+  form#Form_EditForm {
+    .ui-tabs {
+      .ui-tabs-nav {
+        float: none;
+        border-bottom: 1px solid var(--grey, #566b8d);
+      }
+    }
+  }
+}
+
+.ui-tabs {
+  .ui-tabs-tab {
+    border-radius: 4px 4px 0 0 !important;
+    a {
+      border-radius: 4px 4px 0 0 !important;
+    }
   }
 }
 
@@ -29,15 +49,19 @@
 
 .cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li {
   margin-left: 0.6154rem;
+  a:hover {
+    border-color: var(--indigo, #6610f2) !important;
+  }
 }
 
 .cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li a {
   border-bottom: 0.15385rem solid transparent;
 }
 
-.validationerror .panel--padded .ui-tabs-nav .tab-attention, .validationerror .toolbar--north .ui-tabs-nav .tab-attention {
+.validationerror .panel--padded .ui-tabs-nav .tab-attention,
+.validationerror .toolbar--north .ui-tabs-nav .tab-attention {
   border-radius: 0;
-  color: var(--red)!important;
+  color: var(--red) !important;
   display: block;
   margin-left: 0;
   margin-top: 0;
@@ -47,8 +71,41 @@
   text-align: center;
   border: 0;
   width: 100%;
-  background-color: var(--red)!important;
+  background-color: var(--red) !important;
   bottom: 0;
   height: 10px;
   text-indent: -9999px;
+}
+.panel {
+  .tab-pane {
+    /* These help the animation look smoother */
+    will-change: opacity, transform, filter;
+    transition:
+      opacity 270ms ease-out,
+      filter 270ms ease-out,
+      transform 270ms ease-out;
+  }
+
+  .tab-pane[aria-hidden="true"] {
+    display: none;
+  }
+
+  .tab-pane[aria-hidden="false"] {
+    animation: softReveal 270ms ease-out both;
+  }
+}
+
+@keyframes softReveal {
+  0% {
+    opacity: 0;
+    // transform: translateY(10px);
+    // filter: blur(2px);
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

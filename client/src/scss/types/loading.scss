@@ -1,0 +1,51 @@
+.ss-loading-screen {
+  background-color: #f3f2ef !important;
+  color: #fff !important;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.3s linear,
+    visibility 0.3s linear;
+  .cms-content-loading-spinner {
+  }
+  &[style*="display: none"] {
+    opacity: 0;
+    visibility: hidden;
+    display: flex !important; /* keep it rendered so the fade can play */
+  }
+}
+
+.spinner {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="82.4" height="82.4" viewBox="0 0 82.4 82.4"><circle fill="%23fff" cx="41.2" cy="41.2" r="41.2"/><circle fill="%23f7cd55" cx="48.2" cy="41.2" r="15.8"/></svg>')
+    center center no-repeat !important;
+  background-size: contain !important;
+  width: 120px !important;
+  height: 120px !important;
+  animation: spin 1.6s ease infinite !important;
+  position: fixed !important;
+  top: 0 !important;
+  right: 6vw !important;
+  margin-top: -18px;
+  svg {
+    display: none;
+  }
+}
+.cms-loading-container {
+  .cms-content-loading-spinner {
+    .spinner {
+      height: 36px !important;
+      top: 7px !important;
+      width: 36px !important;
+      margin-top: 0;
+      right: 28px !important;
+    }
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
