@@ -1,3 +1,20 @@
+// .spinner {
+//   /* HTML: <div class="loader"></div> */
+//   width: 60px;
+//   aspect-ratio: 4;
+//   background: radial-gradient(circle closest-side, #000 90%, #0000) 0 / calc(100% / 3) 100% space;
+//   clip-path: inset(0 100% 0 0);
+//   animation: loaderInside 1.5s steps(4) infinite;
+//   @keyframes loaderInside {
+//     to {
+//       clip-path: inset(0 -34% 0 0);
+//     }
+//   }
+//   svg {
+//     display: none;
+//   }
+// }
+
 .ss-loading-screen {
   background-color: #f3f2ef !important;
   color: #fff !important;
@@ -7,6 +24,21 @@
     opacity 0.3s linear,
     visibility 0.3s linear;
   .cms-content-loading-spinner {
+    .spinner {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="82.4" height="82.4" viewBox="0 0 82.4 82.4"><circle fill="%23fff" cx="41.2" cy="41.2" r="41.2"/><circle fill="%23f7cd55" cx="48.2" cy="41.2" r="15.8"/></svg>')
+        center center no-repeat !important;
+      background-size: contain !important;
+      width: 120px !important;
+      height: 120px !important;
+      animation: spin 1.6s ease infinite !important;
+      position: fixed !important;
+      top: 0 !important;
+      right: 6vw !important;
+      margin-top: -18px;
+      svg {
+        display: none;
+      }
+    }
   }
   &[style*="display: none"] {
     opacity: 0;
@@ -15,32 +47,17 @@
   }
 }
 
-.spinner {
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="82.4" height="82.4" viewBox="0 0 82.4 82.4"><circle fill="%23fff" cx="41.2" cy="41.2" r="41.2"/><circle fill="%23f7cd55" cx="48.2" cy="41.2" r="15.8"/></svg>')
-    center center no-repeat !important;
-  background-size: contain !important;
-  width: 120px !important;
-  height: 120px !important;
-  animation: spin 1.6s ease infinite !important;
-  position: fixed !important;
-  top: 0 !important;
-  right: 6vw !important;
-  margin-top: -18px;
-  svg {
-    display: none;
-  }
-}
 .cms-loading-container {
   .cms-content-loading-spinner {
     .spinner {
-      height: 36px !important;
-      top: 7px !important;
-      width: 36px !important;
+      height: 90px !important;
+      width: 90px !important;
       margin-top: 0;
-      right: 28px !important;
+      background-color: transparent !important;
     }
   }
 }
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
