@@ -1,0 +1,7 @@
+---
+Only:
+  envvarset: "SS_FAST_DEV_BUILD"
+---
+SilverStripe\ORM\Connect\MySQLSchemaManager:
+  check_and_repair_on_build: false
+  fix_table_case_on_build: false
