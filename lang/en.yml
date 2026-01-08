@@ -1,0 +1,3 @@
+en:
+  SilverStripe\Admin\Forms\LinkFormFactory:
+    INSERT_LINK: "Save"
