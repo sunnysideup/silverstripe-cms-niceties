@@ -48,7 +48,7 @@ class ModelAdminExtension extends Extension
                             // This is just a precaution to ensure we got a GridField from dataFieldByName() which you should have
                             if (! $config->getComponentByType(GridFieldSortableRows::class)) {
                                 $obj = $owner->modelClass::singleton();
-                                if ($obj->hasExtension(Versioned::class)) {
+                                if ($obj->hasExtension(Versioned::class) && $this->hasLiveVersionForObject($obj)) {
                                     $sorter = (new GridFieldSortableRows($sortField))
                                         ->setUpdateVersionedStage(Versioned::LIVE);
                                 } else {
@@ -115,5 +115,14 @@ class ModelAdminExtension extends Extension
             }
         }
         return false;
+    }
+
+    protected function hasLiveVersionForObject($obj): bool
+    {
+        $extensions = $obj->getExtensionInstances();
+        if (isset($extensions[Versioned::class . '.versioned'])) {
+            return false;
+        }
+        return true;
     }
 }
