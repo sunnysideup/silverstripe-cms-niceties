@@ -1,0 +1,5 @@
+---
+Name: userformsfix
+---
+SilverStripe\UserForms\Model\UserDefinedForm:
+  upgrade_on_build: false
