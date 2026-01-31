@@ -8,4 +8,4 @@ SilverStripe\Core\Injector\Injector:
   SilverStripe\Control\Middleware\CanonicalURLMiddleware:
     properties:
       enabledEnvs:
-        - dev
+        - test
