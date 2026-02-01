@@ -65,4 +65,3 @@ SilverStripe\Dev\TaskRunner:
   css:
     0: 'sunnysideup/cms-niceties: client/dist/css/app_task-runner.css'
 ---
-
