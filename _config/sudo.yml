@@ -1,0 +1,11 @@
+---
+Name: cms-niceties-sudo-mode
+Only:
+  envorconstant: SS_DISABLE_SUDO_MODE
+---
+SilverStripe\Security\Member:
+  require_sudo_mode: false
+SilverStripe\Security\Group:
+  require_sudo_mode: false
+SilverStripe\Security\Permission:
+  require_sudo_mode: false
