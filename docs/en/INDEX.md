@@ -206,7 +206,6 @@ Sunnysideup\CMSNiceties\Extensions\LeftAndMainExtension:
 
 ```
 
-
 # Nicer Summary in GridField
 
 ```yml
@@ -216,4 +215,10 @@ MyDataObject:
     - Sunnysideup\CMSNiceties\Extensions\CMSNicetiesRecordSummaryExtension
 ```
 
-And then in DataObject:
+# Sudo Mode
+
+```.env 
+
+SS_DISABLE_SUDO_MODE=true
+
+```
