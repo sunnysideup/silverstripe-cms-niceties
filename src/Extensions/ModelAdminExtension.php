@@ -3,8 +3,6 @@
 namespace Sunnysideup\CMSNiceties\Extensions;
 
 use SilverStripe\Admin\ModelAdmin;
-use SilverStripe\Control\Director;
-use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Extension;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\GridField\GridField;
@@ -67,10 +65,8 @@ class ModelAdminExtension extends Extension
             }
         }
 
-
         return $form;
     }
-
 
     /**
      * Sanitise a model class' name for inclusion in a link
@@ -83,7 +79,7 @@ class ModelAdminExtension extends Extension
     protected function updateList(&$list)
     {
         $owner = $this->getOwner();
-        if ($this->IsIncludedInExtension() && !Permission::check($owner->config()->get('assume_to_allow_all'))) {
+        if ($this->IsIncludedInExtension() && ! Permission::check($owner->config()->get('assume_to_allow_all'))) {
             $count = $list->count();
             $limit = $owner->config()->get('max_records_to_check_for_can_view');
             $ids = [0 => 0];
@@ -115,6 +111,6 @@ class ModelAdminExtension extends Extension
     protected function hasLiveVersionForObject($obj): bool
     {
         $extensions = $obj->getExtensionInstances();
-        return !isset($extensions[Versioned::class . '.versioned']);
+        return ! isset($extensions[Versioned::class . '.versioned']);
     }
 }

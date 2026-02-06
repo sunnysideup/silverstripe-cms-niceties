@@ -2,12 +2,11 @@
 
 namespace Sunnysideup\CMSNiceties\Extensions;
 
-use Sunnysideup\CMSNiceties\Interfaces\BrandColourProvider;
-
 use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Extension;
 use SilverStripe\View\Requirements;
+use Sunnysideup\CMSNiceties\Interfaces\BrandColourProvider;
 
 /**
  * Class \Sunnysideup\CMSNiceties\Extensions\LeftAndMainExtension.

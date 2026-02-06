@@ -11,7 +11,6 @@ use SilverStripe\Core\Extension;
  */
 class CMSNicetiesFormFieldExtension extends Extension
 {
-
     public function AddToDescription(string $description)
     {
         $owner = $this->getOwner();

@@ -5,7 +5,6 @@ namespace Sunnysideup\CMSNiceties\Extensions;
 use SilverStripe\Core\Extension;
 use SilverStripe\ORM\FieldType\DBField;
 
-
 /**
  * Class \Sunnysideup\CMSNiceties\Extensions\CMSNicetiesRecordSummaryExtension
  *
@@ -13,7 +12,6 @@ use SilverStripe\ORM\FieldType\DBField;
  */
 class CMSNicetiesRecordSummaryExtension extends Extension
 {
-
     private static $casting = [
         'RecordSummary' => 'HTMLFragment',
     ];

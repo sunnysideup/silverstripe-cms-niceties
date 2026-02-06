@@ -3,10 +3,9 @@
 namespace Sunnysideup\CMSNiceties\Extensions;
 
 use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Extension;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Core\Extension;
-use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\NumericField;
 
 /**
@@ -33,9 +32,9 @@ class CMSNicetiesMemberExtension extends Extension
     public function updateCMSFields(FieldList $fields)
     {
         $owner = $this->getOwner();
-        if (!$owner->exists()) {
+        if (! $owner->exists()) {
             //ugly-ish but works. Defaults and populateDefaults don't.
-            $owner->Locale = "en_GB";
+            $owner->Locale = 'en_GB';
         }
         if ($fields->fieldByName('Root.Main.LoginToken') || $fields->dataFieldByName('LoginToken')) {
             $fields->removeByName('LoginToken');

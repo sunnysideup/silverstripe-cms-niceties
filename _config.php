@@ -1,6 +1,5 @@
 <?php
 
-use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\Control\Director;
 
 if (! Director::isDev()) {

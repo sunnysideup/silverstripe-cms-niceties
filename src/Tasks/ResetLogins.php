@@ -45,7 +45,7 @@ class ResetLogins extends BuildTask
                     DB::alteration_message(' - already unlocked after: ' . $member->LockedOutUntil, 'changed');
                 }
                 if ($forreal === '' || $forreal === '0') {
-                    DB::alteration_message(" - not saving changes (test run only)", 'deleted');
+                    DB::alteration_message(' - not saving changes (test run only)', 'deleted');
                     continue;
                 }
                 if (! $save) {
