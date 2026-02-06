@@ -9,8 +9,6 @@ interface BrandColourProvider
      * 'Light' => '#333333',
      * 'Dark' => '#222222',
      * 'Font' => '#111111',
-     *
-     * @return array
      */
     public function getBrandColours(): array;
 }

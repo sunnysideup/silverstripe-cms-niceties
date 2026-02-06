@@ -74,9 +74,6 @@ class ModelAdminExtension extends Extension
 
     /**
      * Sanitise a model class' name for inclusion in a link
-     *
-     * @param string $class
-     * @return string
      */
     protected function sanitiseClassNameHelper(string $class): string
     {
@@ -86,21 +83,19 @@ class ModelAdminExtension extends Extension
     protected function updateList(&$list)
     {
         $owner = $this->getOwner();
-        if ($this->IsIncludedInExtension()) {
-            if (!Permission::check($owner->config()->get('assume_to_allow_all'))) {
-                $count = $list->count();
-                $limit = $owner->config()->get('max_records_to_check_for_can_view');
-                $ids = [0 => 0];
-                if ($count > $limit) {
-                    $list = $list->limit($limit);
-                }
-                foreach ($list as $record) {
-                    if ($record->canView()) {
-                        $ids[] = $record->ID;
-                    }
-                }
-                $list = $list->filter(['ID' => $ids]);
+        if ($this->IsIncludedInExtension() && !Permission::check($owner->config()->get('assume_to_allow_all'))) {
+            $count = $list->count();
+            $limit = $owner->config()->get('max_records_to_check_for_can_view');
+            $ids = [0 => 0];
+            if ($count > $limit) {
+                $list = $list->limit($limit);
             }
+            foreach ($list as $record) {
+                if ($record->canView()) {
+                    $ids[] = $record->ID;
+                }
+            }
+            $list = $list->filter(['ID' => $ids]);
         }
     }
 
@@ -120,9 +115,6 @@ class ModelAdminExtension extends Extension
     protected function hasLiveVersionForObject($obj): bool
     {
         $extensions = $obj->getExtensionInstances();
-        if (isset($extensions[Versioned::class . '.versioned'])) {
-            return false;
-        }
-        return true;
+        return !isset($extensions[Versioned::class . '.versioned']);
     }
 }
