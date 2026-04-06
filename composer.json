@@ -17,7 +17,7 @@
     "sunnysideup/cms-dark-theme": "5.x-dev"
   },
   "require-dev": {
-    "sunnysideup/sswebpack_engine_only": "dev-master"
+    "sunnysideup/sswebpack_engine_only": "5.x-dev"
   },
   "suggest": {
     "symbiote/silverstripe-grouped-cms-menu": "^4",
