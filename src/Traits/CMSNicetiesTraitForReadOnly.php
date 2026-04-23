@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\CMSNiceties\Traits;
 
+use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\FieldList;
 
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
@@ -11,7 +12,7 @@ trait CMSNicetiesTraitForReadOnly
     protected function makeReadonOnlyForCMSFields(FieldList $fields, string $fieldName)
     {
         $field = $fields->dataFieldByName($fieldName);
-        if ($field) {
+        if ($field instanceof FormField) {
             $fields->replaceField(
                 $fieldName,
                 $field->performReadonlyTransformation()

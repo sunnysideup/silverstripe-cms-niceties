@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\CMSNiceties\Traits;
 
+use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Versioned\Versioned;
@@ -29,7 +30,7 @@ trait CMSNicetiesTraitForTabs
             // non-associative array..
             if ((int) $tabName === $tabName) {
                 $tabName = $title;
-                $items = preg_split('#(?=[A-Z])#', $tabName);
+                $items = preg_split('#(?=[A-Z])#', (string) $tabName);
                 $title = is_array($items) ? trim(implode(' ', $items)) : $tabName;
             }
 
@@ -37,12 +38,12 @@ trait CMSNicetiesTraitForTabs
 
             // fixd existing existing tab
             $tab = $fields->fieldByName('Root.' . $tabName);
-            if (! $tab) {
+            if (!$tab instanceof FormField) {
                 $tab = $fields->fieldByName('Root.' . $tabNamePlus);
             }
 
-            if (! $tab) {
-                $tab = new Tab($tabNamePlus, $tabName);
+            if (!$tab instanceof FormField) {
+                $tab = Tab::create($tabNamePlus, $tabName);
             }
 
             $fields->removeByName(['Root.' . $tabName]);
@@ -82,7 +83,7 @@ trait CMSNicetiesTraitForTabs
                     'Root',
                     $name
                 );
-                if (! $tab) {
+                if (!$tab instanceof FormField) {
                     $tab = Tab::create($name, $title);
                 }
 

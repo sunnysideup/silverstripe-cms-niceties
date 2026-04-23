@@ -15,7 +15,7 @@ use Sunnysideup\CMSNiceties\Interfaces\BrandColourProvider;
  */
 class LeftAndMainExtension extends Extension
 {
-    public function init()
+    public function onInit()
     {
         Requirements::add_i18n_javascript('sunnysideup/cms-niceties: client/lang');
     }
@@ -45,6 +45,7 @@ class LeftAndMainExtension extends Extension
         } else {
             $clientConfig['brand_colours'] = $owner->config()->get('brand_colours');
         }
+
         $light = $clientConfig['brand_colours']['Light'] ?? '';
         $dark = $clientConfig['brand_colours']['Dark'] ?? '';
         $font = $clientConfig['brand_colours']['Font'] ?? '';

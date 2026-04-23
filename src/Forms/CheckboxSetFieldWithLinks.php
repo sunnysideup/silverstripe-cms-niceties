@@ -2,8 +2,9 @@
 
 namespace Sunnysideup\CMSNiceties\Forms;
 
+use Override;
+use SilverStripe\Model\List\ArrayList;
 use SilverStripe\Forms\CheckboxSetField;
-use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\FieldType\DBField;
 
 class CheckboxSetFieldWithLinks extends CheckboxSetField
@@ -14,6 +15,7 @@ class CheckboxSetFieldWithLinks extends CheckboxSetField
 
     protected $linksPerOption = [];
 
+    #[Override]
     public function getTemplate()
     {
         return self::class;
@@ -48,6 +50,7 @@ class CheckboxSetFieldWithLinks extends CheckboxSetField
      *
      * @return ArrayList
      */
+    #[Override]
     public function getOptions()
     {
         $options = parent::getOptions();
@@ -83,11 +86,13 @@ class CheckboxSetFieldWithLinks extends CheckboxSetField
         return implode(', ', $this->linksPerOption);
     }
 
+    #[Override]
     public function Type()
     {
         return 'optionset checkboxset checkboxsetwithlinks';
     }
 
+    #[Override]
     public function getDescription()
     {
         $this->getOptions();

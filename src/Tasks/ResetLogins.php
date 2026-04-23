@@ -2,61 +2,79 @@
 
 namespace Sunnysideup\CmsNiceties\Tasks;
 
-use SilverStripe\Control\Director;
 use SilverStripe\Dev\BuildTask;
-use SilverStripe\ORM\DB;
+use SilverStripe\PolyExecution\PolyOutput;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 
 class ResetLogins extends BuildTask
 {
-    protected $title = 'SECURITY RISK: Reset Logins';
+    protected string $title = 'SECURITY RISK: Reset Logins';
 
-    protected $description = 'CAREFUL: Reset all login attempts for all members.';
+    protected static string $description = 'CAREFUL: Reset all login attempts for all members.';
 
-    private static $segment = 'resetlogins';
+    protected static string $commandName = 'resetlogins';
 
-    public function run($request)
+    protected function execute(InputInterface $input, PolyOutput $output): int
     {
-        if (Director::is_cli() || Permission::check('ADMIN')) {
-
-            $forreal = (string) $request->getVar('forreal');
-            if ($forreal !== '1') {
-                echo '<h2>Test run only. To run for real add ?forreal=1 to the URL</h2>';
-            }
-            $members = Member::get()->filterAny([
-                'FailedLoginCount:GreaterThan' => 0,
-                'LockedOutUntil:GreaterThan' => '1970-01-01 00:00:00',
-            ]);
-            foreach ($members as $member) {
-                $message = 'Resetting ' . $member->Email;
-                $save = false;
-                DB::alteration_message($message, 'deleted');
-                if ((int) $member->FailedLoginCount > 0.1) {
-                    DB::alteration_message(' - resetting failed logins: ' . $member->FailedLoginCount, 'deleted');
-                    $member->FailedLoginCount = 0;
-                    $save = true;
-                }
-                if (strtotime($member->LockedOutUntil) > time()) {
-                    DB::alteration_message(' - LOCKED! resetting unlock until: ' . $member->LockedOutUntil, 'deleted');
-                    $member->LockedOutUntil = null;
-                    $save = true;
-                } elseif ($member->LockedOutUntil) {
-                    DB::alteration_message(' - already unlocked after: ' . $member->LockedOutUntil, 'changed');
-                }
-                if ($forreal === '' || $forreal === '0') {
-                    DB::alteration_message(' - not saving changes (test run only)', 'deleted');
-                    continue;
-                }
-                if (! $save) {
-                    DB::alteration_message(' - nothing to change', 'changed');
-                    continue;
-                }
-                DB::alteration_message(' - saving changes', 'added');
-                $member->write();
-            }
-        } else {
-            echo 'You must be an ADMIN to run this task.';
+        if (!Permission::check('ADMIN')) {
+            $output->writeln('<error>You must be an ADMIN to run this task.</error>');
+            return Command::FAILURE;
         }
+
+        $forreal = $input->getOption('forreal');
+        if (!$forreal) {
+            $output->writeln('<comment>Test run only. To run for real add --forreal option</comment>');
+        }
+
+        $members = Member::get()->filterAny([
+            'FailedLoginCount:GreaterThan' => 0,
+            'LockedOutUntil:GreaterThan' => '1970-01-01 00:00:00',
+        ]);
+        
+        foreach ($members as $member) {
+            $message = 'Resetting ' . $member->Email;
+            $save = false;
+            $output->writeln($message);
+            
+            if ((int) $member->FailedLoginCount > 0.1) {
+                $output->writeln(' - resetting failed logins: ' . $member->FailedLoginCount);
+                $member->FailedLoginCount = 0;
+                $save = true;
+            }
+
+            if (strtotime($member->LockedOutUntil) > time()) {
+                $output->writeln(' - <error>LOCKED!</error> resetting unlock until: ' . $member->LockedOutUntil);
+                $member->LockedOutUntil = null;
+                $save = true;
+            } elseif ($member->LockedOutUntil) {
+                $output->writeln(' - <comment>already unlocked after: ' . $member->LockedOutUntil . '</comment>');
+            }
+
+            if (!$forreal) {
+                $output->writeln(' - <comment>not saving changes (test run only)</comment>');
+                continue;
+            }
+
+            if (!$save) {
+                $output->writeln(' - <comment>nothing to change</comment>');
+                continue;
+            }
+
+            $output->writeln(' - <info>saving changes</info>');
+            $member->write();
+        }
+
+        return Command::SUCCESS;
+    }
+
+    public function getOptions(): array
+    {
+        return [
+            new InputOption('forreal', 'r', InputOption::VALUE_NONE, 'Actually save changes (otherwise runs in test mode)'),
+        ];
     }
 }
