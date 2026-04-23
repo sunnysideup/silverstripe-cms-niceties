@@ -52,8 +52,10 @@ class ModelAdminExtension extends Extension
                                 } else {
                                     $sorter = new GridFieldSortableRows($sortField);
                                 }
+
                                 $config->addComponent($sorter);
                             }
+
                             break;
                         }
                     }
@@ -86,11 +88,13 @@ class ModelAdminExtension extends Extension
             if ($count > $limit) {
                 $list = $list->limit($limit);
             }
+
             foreach ($list as $record) {
                 if ($record->canView()) {
                     $ids[] = $record->ID;
                 }
             }
+
             $list = $list->filter(['ID' => $ids]);
         }
     }
@@ -99,12 +103,13 @@ class ModelAdminExtension extends Extension
     {
         $owner = $this->getOwner();
         $excludedModelAdmins = $owner->config()->get('excluded_modeladmins_from_ssu_extension');
-        if (! in_array(get_class($owner), $excludedModelAdmins, true)) {
+        if (! in_array($owner::class, $excludedModelAdmins, true)) {
             $excludedModels = $owner->config()->get('excluded_models_from_ssu_extension');
             if (! in_array($owner->modelClass, $excludedModels, true)) {
                 return true;
             }
         }
+
         return false;
     }
 

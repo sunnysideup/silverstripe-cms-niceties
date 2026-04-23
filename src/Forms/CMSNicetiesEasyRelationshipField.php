@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\CMSNiceties\Forms;
 
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\CompositeField;
@@ -45,20 +46,6 @@ use SilverStripe\Versioned\VersionedGridFieldDetailForm;
  */
 class CMSNicetiesEasyRelationshipField extends CompositeField
 {
-    /**
-     * the object calling this class, aka the class where we add the fields.
-     *
-     * @var object
-     */
-    protected $callingObject;
-
-    /**
-     * name of the relations e.g. Members as defined in has_many or many_many.
-     *
-     * @var string
-     */
-    protected $relationName = '';
-
     /**
      * name of the class that we are linking to.
      *
@@ -183,11 +170,14 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
      *
      * @return array
      */
-    public function __construct($callingObject, $relationName)
+    public function __construct(/**
+     * the object calling this class, aka the class where we add the fields.
+     */
+    protected $callingObject, /**
+     * name of the relations e.g. Members as defined in has_many or many_many.
+     */
+    protected $relationName)
     {
-        $this->callingObject = $callingObject;
-        $this->relationName = $relationName;
-
         parent::__construct();
         $this->checkIfFieldsHaveBeenBuilt();
     }
@@ -372,10 +362,10 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                         // $this->getGridFieldConfig->addComponent(new GridFieldArchiveAction());
                         // $this->getGridFieldConfig->addComponent(new GridFieldDeleteAction($unlink = false));
                     } else {
-                        $this->getGridFieldConfig->addComponent(new GridFieldDeleteAction($unlink = false));
+                        $this->getGridFieldConfig->addComponent(GridFieldDeleteAction::create($unlink = false));
                     }
                 } elseif ($this->hasUnlink) {
-                    $this->getGridFieldConfig->addComponent(new GridFieldDeleteAction($unlink = true));
+                    $this->getGridFieldConfig->addComponent(GridFieldDeleteAction::create($unlink = true));
                 }
 
                 if ($this->hasAdd) {
@@ -395,7 +385,7 @@ class CMSNicetiesEasyRelationshipField extends CompositeField
                 }
 
                 if ('' !== $this->sortField) {
-                    $classA = \UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows::class;
+                    $classA = GridFieldSortableRows::class;
                     if (class_exists($classA)) {
                         $this->getGridFieldConfig->addComponent($sorter = new $classA($this->sortField));
                         $sorter->setCustomRelationName($this->relationName);

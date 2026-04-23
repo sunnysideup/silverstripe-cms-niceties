@@ -29,7 +29,7 @@ trait CMSNicetiesTraitForTabs
             // non-associative array..
             if ((int) $tabName === $tabName) {
                 $tabName = $title;
-                $items = preg_split('#(?=[A-Z])#', $tabName);
+                $items = preg_split('#(?=[A-Z])#', (string) $tabName);
                 $title = is_array($items) ? trim(implode(' ', $items)) : $tabName;
             }
 
@@ -42,7 +42,7 @@ trait CMSNicetiesTraitForTabs
             }
 
             if (! $tab) {
-                $tab = new Tab($tabNamePlus, $tabName);
+                $tab = Tab::create($tabNamePlus, $tabName);
             }
 
             $fields->removeByName(['Root.' . $tabName]);

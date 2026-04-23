@@ -17,7 +17,7 @@ class BasicFixes implements Flushable
             DB::get_schema()->hasTable('Member') &&
             ! Environment::getEnv('SS_EK_SPREEK_AFRIKAANS')
         ) {
-            DB::query('UPDATE Member SET Member.Locale = \'en_US\' WHERE Member.Locale = \'af_ZA\'');
+            DB::query("UPDATE Member SET Member.Locale = 'en_US' WHERE Member.Locale = 'af_ZA'");
         }
     }
 

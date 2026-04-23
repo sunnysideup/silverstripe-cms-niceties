@@ -10,10 +10,6 @@ use SilverStripe\View\ViewableData;
 
 class CMSNicetiesLinkButton extends ReadonlyField
 {
-    protected $link = '';
-
-    protected $label = '';
-
     protected $targetBlank = false;
 
     /**
@@ -23,14 +19,12 @@ class CMSNicetiesLinkButton extends ReadonlyField
      * @param null|string|ViewableData $label the human-readable field label
      * @param mixed                    $link  the value of the field
      */
-    public function __construct($name, $label = null, $link = null, ?bool $targetBlank = false)
+    public function __construct($name, protected $label = null, protected $link = null, ?bool $targetBlank = false)
     {
         $title = '🚀';
-        $this->link = $link;
-        $this->label = $label;
         $this->targetBlank = $targetBlank;
 
-        parent::__construct($name, $title, $link);
+        parent::__construct($name, $title, $this->link);
     }
 
     public function Value()

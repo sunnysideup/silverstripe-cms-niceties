@@ -45,6 +45,7 @@ class LeftAndMainExtension extends Extension
         } else {
             $clientConfig['brand_colours'] = $owner->config()->get('brand_colours');
         }
+
         $light = $clientConfig['brand_colours']['Light'] ?? '';
         $dark = $clientConfig['brand_colours']['Dark'] ?? '';
         $font = $clientConfig['brand_colours']['Font'] ?? '';
