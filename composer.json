@@ -14,10 +14,10 @@
   ],
   "require": {
     "silverstripe/cms": "^6.0",
-    "sunnysideup/cms-dark-theme": "^1.3"
+    "sunnysideup/cms-dark-theme": "dev-main"
   },
   "require-dev": {
-    "sunnysideup/sswebpack_engine_only": "^5.0-dev"
+    "sunnysideup/sswebpack_engine_only": "dev-main"
   },
   "suggest": {
     "symbiote/silverstripe-grouped-cms-menu": "^4",
