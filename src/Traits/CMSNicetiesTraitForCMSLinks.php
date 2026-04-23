@@ -16,6 +16,7 @@ trait CMSNicetiesTraitForCMSLinks
         if ($this instanceof SiteTree) {
             return parent::CMSEditLink();
         }
+
         return CMSEditLinkAPI::find_edit_link_for_object($this);
     }
 

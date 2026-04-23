@@ -2,7 +2,7 @@
 
 namespace Sunnysideup\CMSNiceties\Traits;
 
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\Model\List\ArrayList;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 

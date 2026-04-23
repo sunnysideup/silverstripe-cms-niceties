@@ -13,11 +13,11 @@
     "GridField"
   ],
   "require": {
-    "silverstripe/cms": "^4.0 || ^5.0",
-    "sunnysideup/cms-dark-theme": "5.x-dev"
+    "silverstripe/cms": "^6.0",
+    "sunnysideup/cms-dark-theme": "^1.3"
   },
   "require-dev": {
-    "sunnysideup/sswebpack_engine_only": "5.x-dev"
+    "sunnysideup/sswebpack_engine_only": "^5.0-dev"
   },
   "suggest": {
     "symbiote/silverstripe-grouped-cms-menu": "^4",

@@ -36,12 +36,15 @@ class CMSNicetiesMemberExtension extends Extension
             //ugly-ish but works. Defaults and populateDefaults don't.
             $owner->Locale = 'en_GB';
         }
+
         if ($fields->fieldByName('Root.Main.LoginToken') || $fields->dataFieldByName('LoginToken')) {
             $fields->removeByName('LoginToken');
         }
+
         if ($fields->fieldByName('Root.Main.TokenExpiry') || $fields->dataFieldByName('TokenExpiry')) {
             $fields->removeByName('TokenExpiry');
         }
+
         $fields->addFieldsToTab('Root.Security', [
             DatetimeField::create('LockedOutUntil', 'Locked Out Until'),
             NumericField::create('FailedLoginCount', 'Failed Login Count'),

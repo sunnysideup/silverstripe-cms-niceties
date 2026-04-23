@@ -2,7 +2,7 @@
 
 namespace Sunnysideup\CMSNiceties\Traits;
 
-use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Core\Validation\ValidationResult;
 
 // use SilverStripe\Forms\GridField\GridFieldArchiveAction;
 
