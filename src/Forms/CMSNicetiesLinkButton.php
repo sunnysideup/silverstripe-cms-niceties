@@ -29,7 +29,7 @@ class CMSNicetiesLinkButton extends ReadonlyField
     }
 
     #[Override]
-    public function getValue()
+    public function getValue(): mixed
     {
         $target = '';
         if ($this->targetBlank) {
