@@ -47,10 +47,10 @@ class ModelAdminExtension extends Extension
                             if (! $config->getComponentByType(GridFieldSortableRows::class)) {
                                 $obj = $owner->modelClass::singleton();
                                 if ($obj->hasExtension(Versioned::class) && $this->hasLiveVersionForObject($obj)) {
-                                    $sorter = (new GridFieldSortableRows($sortField))
+                                    $sorter = (GridFieldSortableRows::create($sortField))
                                         ->setUpdateVersionedStage(Versioned::LIVE);
                                 } else {
-                                    $sorter = new GridFieldSortableRows($sortField);
+                                    $sorter = GridFieldSortableRows::create($sortField);
                                 }
 
                                 $config->addComponent($sorter);
@@ -61,7 +61,7 @@ class ModelAdminExtension extends Extension
                     }
 
                     if ($obj->hasExtension(Versioned::class) && $obj->hasStages() && class_exists(GridFieldSiteTreeState::class)) {
-                        $config->addComponent(new GridFieldSiteTreeState());
+                        $config->addComponent(GridFieldSiteTreeState::create());
                     }
                 }
             }

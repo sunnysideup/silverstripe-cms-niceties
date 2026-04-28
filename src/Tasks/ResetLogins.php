@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\CmsNiceties\Tasks;
 
+use Override;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\PolyExecution\PolyOutput;
 use SilverStripe\Security\Member;
@@ -71,6 +72,7 @@ class ResetLogins extends BuildTask
         return Command::SUCCESS;
     }
 
+    #[Override]
     public function getOptions(): array
     {
         return [
