@@ -1,201 +1,201 @@
-@import "../helpers/mixins";
+@include lg-screen {
+  .ss-gridfield-item img {
+    max-height: 50px;
+    max-width: 50px;
+  }
 
-.ss-gridfield-item img {
-  max-height: 50px;
-  max-width: 50px;
-}
-
-table.grid-field__table {
-  width: 100%;
-  border-collapse: collapse;
-  position: relative !important;
-  thead {
-    th {
-      // position: sticky !important;
-      // top: 0;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-      border-bottom: 1px solid #dbe0e9 !important;
-      span.non-sortable {
-        line-height: 18px !important;
+  table.grid-field__table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative !important;
+    thead {
+      th {
+        // position: sticky !important;
+        // top: 0;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: 1px solid #dbe0e9 !important;
+        span.non-sortable {
+          line-height: 18px !important;
+        }
+      }
+      .pagination-records-number {
+        display: none;
       }
     }
-    .pagination-records-number {
-      display: none;
+    td.gridfield-icon {
+      font-size: 0px;
+      width: 1em;
+      &:hover {
+        background-color: #f0f4f7;
+        position: absolute;
+        width: auto;
+        font-size: 1em;
+        z-index: 1;
+      }
     }
   }
-  td.gridfield-icon {
-    font-size: 0px;
-    width: 1em;
-    &:hover {
-      background-color: #f0f4f7;
-      position: absolute;
-      width: auto;
-      font-size: 1em;
-      z-index: 1;
+
+  /* Style the header */
+
+  .toolbar--content.ss-gridfield-buttonrow.ss-gridfield-buttonrow-before {
+    position: relative;
+    z-index: 999;
+    margin-left: 41px;
+    margin-top: -14px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .flexbox-area-grow {
+    overflow-x: hidden;
+  }
+
+  @include lg-screen {
+    .grid-field__table th,
+    .grid-field__table td {
+      padding: 0.6rem 1rem !important;
     }
-  }
-}
 
-/* Style the header */
-
-.toolbar--content.ss-gridfield-buttonrow.ss-gridfield-buttonrow-before {
-  position: relative;
-  z-index: 999;
-  margin-left: 41px;
-  margin-top: -14px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-bottom: 1rem;
-}
-
-.flexbox-area-grow {
-  overflow-x: hidden;
-}
-
-@include lg-screen {
-  .grid-field__table th,
-  .grid-field__table td {
-    padding: 0.6rem 1rem !important;
-  }
-
-  /**
+    /**
    * large gridfield
    */
-  fieldset.grid-field.ss-gridfield {
-    margin-bottom: 2rem;
-    padding-bottom: 10px !important;
-    padding: 0px !important;
-    border-radius: 0.2rem;
-    background-color: #f1f3f6 !important;
-    .toolbar--content {
-      margin-top: 0 !important;
-      margin-right: 0;
-      margin-left: 0;
-      background-color: transparent !important;
-    }
-
-    .toolbar--content::after {
-      display: table;
-      clear: both;
-      content: "";
-    }
-
-    h2 {
-      font-size: 1.67rem;
-      font-weight: bold;
-      float: left;
-      padding-top: 0 !important;
-      text-align: center !important;
-      color: var(--indigo, #6610f2) !important;
-      margin-top: -5px;
-      filter: grayscale(0.6);
-    }
-
-    .grid-field__title-row {
-      // background-color: rgba(219, 224, 233, 0.3) !important;
-    }
-    .btn-toolbar button,
-    button[name="showFilter"],
-    button[name="Close"] {
-      background-color: var(--secondary) !important;
-      color: #fff;
-      opacity: 0.77;
-      &:hover {
-        opacity: 1;
+    fieldset.grid-field.ss-gridfield {
+      margin-bottom: 2rem;
+      padding-bottom: 10px !important;
+      padding: 0px !important;
+      border-radius: 0.2rem;
+      background-color: #f1f3f6 !important;
+      .toolbar--content {
+        margin-top: 0 !important;
+        margin-right: 0;
+        margin-left: 0;
+        background-color: transparent !important;
       }
-    }
-    button[name="showFilter"],
-    button[name="Close"] {
-      margin-right: 0;
-    }
 
-    table {
-      min-width: 100% !important;
-      margin-right: 0 !important;
-      margin-left: 0 !important;
-    }
+      .toolbar--content::after {
+        display: table;
+        clear: both;
+        content: "";
+      }
 
-    .sortablerowsheading {
-      padding-top: 0.4rem !important;
-      padding-bottom: 0.4rem !important;
-      border-top: 1px solid #fff !important;
-    }
-
-    tfoot td {
-      line-height: 1 !important;
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-    }
-
-    .sortable-header th,
-    .sortablerowsheading {
-      line-height: 1 !important;
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-      border-top: 1px solid rgba(219, 224, 233, 0.7);
-      font-weight: bold;
-      * {
+      h2 {
+        font-size: 1.67rem;
         font-weight: bold;
+        float: left;
+        padding-top: 0 !important;
+        text-align: center !important;
+        color: var(--indigo, #6610f2) !important;
+        margin-top: -5px;
+        filter: grayscale(0.6);
       }
-      button:after {
-        vertical-align: middle;
+
+      .grid-field__title-row {
+        // background-color: rgba(219, 224, 233, 0.3) !important;
+      }
+      .btn-toolbar button,
+      button[name="showFilter"],
+      button[name="Close"] {
+        background-color: var(--secondary) !important;
+        color: #fff;
+        opacity: 0.77;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      button[name="showFilter"],
+      button[name="Close"] {
+        margin-right: 0;
+      }
+
+      table {
+        min-width: 100% !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+      }
+
+      .sortablerowsheading {
+        padding-top: 0.4rem !important;
+        padding-bottom: 0.4rem !important;
+        border-top: 1px solid #fff !important;
+      }
+
+      tfoot td {
+        line-height: 1 !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+      }
+
+      .sortable-header th,
+      .sortablerowsheading {
+        line-height: 1 !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        border-top: 1px solid rgba(219, 224, 233, 0.7);
+        font-weight: bold;
+        * {
+          font-weight: bold;
+        }
+        button:after {
+          vertical-align: middle;
+        }
+      }
+      .sortable-header th {
+        overflow: hidden;
+      }
+
+      .sortablerowsheading {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        input.checkbox {
+          vertical-align: middle;
+        }
+      }
+
+      .sortablerowsheading * {
+        color: rgb(86, 107, 141) !important;
       }
     }
-    .sortable-header th {
-      overflow: hidden;
+    // fix for user-defined forms.
+    .uf-field-editor .sticky-buttons {
+      top: 0 !important;
     }
+    // make it easier to use this field! see more ...
+  }
 
-    .sortablerowsheading {
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-      input.checkbox {
-        vertical-align: middle;
-      }
+  .cms-container--content-mode .grid-field .add-existing-autocompleter input.relation-search {
+    width: 37vw;
+  }
+
+  fieldset.grid-field.ss-gridfield {
+    box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px; //#f1f3f6
+    border: 1px solid rgb(218.7079545455, 224.0352272727, 232.6920454545);
+    > span.description {
+      display: block;
+      padding: 0 1rem;
+      margin-bottom: 1rem;
+      font-style: normal;
     }
+  }
 
-    .sortablerowsheading * {
-      color: rgb(86, 107, 141) !important;
+  .add-existing-autocompleter {
+    input.text {
+      height: 17px !important;
+      min-height: 17px !important;
+      box-sizing: revert !important;
+    }
+    button {
+      padding: 6px 9px 5px 9px !important;
     }
   }
-  // fix for user-defined forms.
-  .uf-field-editor .sticky-buttons {
-    top: 0 !important;
+
+  .sortablerowsheading {
+    background-color: transparent !important;
   }
-  // make it easier to use this field! see more ...
-}
 
-.cms-container--content-mode .grid-field .add-existing-autocompleter input.relation-search {
-  width: 37vw;
-}
-
-fieldset.grid-field.ss-gridfield {
-  box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px; //#f1f3f6
-  border: 1px solid rgb(218.7079545455, 224.0352272727, 232.6920454545);
-  > span.description {
-    display: block;
-    padding: 0 1rem;
-    margin-bottom: 1rem;
-    font-style: normal;
+  .ss-gridfield-add-new-multi-class {
+    padding-left: 1rem !important;
+    padding-bottom: 1rem !important;
   }
-}
-
-.add-existing-autocompleter {
-  input.text {
-    height: 17px !important;
-    min-height: 17px !important;
-    box-sizing: revert !important;
-  }
-  button {
-    padding: 6px 9px 5px 9px !important;
-  }
-}
-
-.sortablerowsheading {
-  background-color: transparent !important;
-}
-
-.ss-gridfield-add-new-multi-class {
-  padding-left: 1rem !important;
-  padding-bottom: 1rem !important;
 }

@@ -1,49 +1,51 @@
-.record-summary {
-  background-color: var(--yellow);
-  color: #000;
-  border-radius: 5px;
-  padding: 0.3rem 0.7rem;
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
-
-  .record-summary-id {
-    font-weight: bold;
-  }
-
-  .record-summary-dropdown {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    background-color: #000;
-    color: var(--yellow);
-    padding: 0.5rem;
+@include lg-screen {
+  .record-summary {
+    background-color: var(--yellow);
+    color: #000;
     border-radius: 5px;
-    margin-top: 0.3rem;
-    opacity: 0;
-    transform: scaleY(0);
-    transform-origin: top;
+    padding: 0.3rem 0.7rem;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
     transition:
-      opacity 0.3s ease,
-      transform 0.3s ease;
-    z-index: 10;
-    min-width: 170px;
+      background-color 0.3s,
+      color 0.3s;
 
-    .record-summary-more {
-      display: block;
-      font-size: 12px;
-      margin: 0;
-      line-height: 1;
+    .record-summary-id {
+      font-weight: bold;
     }
-  }
 
-  &:hover {
     .record-summary-dropdown {
-      opacity: 1;
-      transform: scaleY(1);
+      position: absolute;
+      left: 0;
+      top: 100%;
+      background-color: #000;
+      color: var(--yellow);
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-top: 0.3rem;
+      opacity: 0;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+      z-index: 10;
+      min-width: 170px;
+
+      .record-summary-more {
+        display: block;
+        font-size: 12px;
+        margin: 0;
+        line-height: 1;
+      }
+    }
+
+    &:hover {
+      .record-summary-dropdown {
+        opacity: 1;
+        transform: scaleY(1);
+      }
     }
   }
 }

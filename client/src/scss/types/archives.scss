@@ -1,3 +1,5 @@
-.ArchiveAdmin.flexbox-area-grow {
-  min-height: 80vh;
+@include lg-screen {
+  .ArchiveAdmin.flexbox-area-grow {
+    min-height: 80vh;
+  }
 }
