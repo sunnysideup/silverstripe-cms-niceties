@@ -52,13 +52,15 @@
       }
       &.opened {
         background-color: #004e7f22;
+        border: none !important;
       }
     }
     > .current > a {
       > .menu__icon {
-        color: #fff !important;
+        color: var(--indigo, #6610f2) !important;
       }
       .opened {
+        border: none !important;
         .menu__icon {
           color: var(--indigo, #6610f2) !important;
         }

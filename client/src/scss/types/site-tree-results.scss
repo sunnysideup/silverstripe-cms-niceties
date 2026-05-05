@@ -1,0 +1,31 @@
+@include lg-screen {
+  .cms-content-tools {
+    .cms-panel-content {
+      width: 100%;
+      .cms-list {
+        #Form_ListViewForm_Record {
+          .table.grid-field__table {
+            border: none !important;
+            margin: 0 !important;
+            border: none !important;
+            thead,
+            tfoot {
+              display: none;
+            }
+            tbody {
+              border: none !important;
+              td {
+                border: none !important;
+                border-bottom: 1px solid #dbe0e9 !important;
+                &.col-i18n_singular_name,
+                &.col-LastEdited {
+                  display: none !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
