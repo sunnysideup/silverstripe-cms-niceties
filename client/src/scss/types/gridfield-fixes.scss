@@ -79,7 +79,9 @@
         margin-left: 0;
         background-color: transparent !important;
       }
-
+      > .pagination-records-number {
+        display: none;
+      }
       .toolbar--content::after {
         display: table;
         clear: both;
@@ -209,4 +211,5 @@
     padding-left: 1rem !important;
     padding-bottom: 1rem !important;
   }
+
 }
