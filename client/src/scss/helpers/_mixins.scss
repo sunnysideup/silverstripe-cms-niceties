@@ -5,7 +5,12 @@
 }
 
 @mixin lg-screen() {
-  @media (min-width: 1100px) {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin xlg-screen() {
+  @media (min-width: 1600px) {
     @content;
   }
 }

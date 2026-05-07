@@ -97,8 +97,8 @@
   }
 
   /**
- * field description
- */
+  * field description
+  */
   .form__field-description,
   .form__field-extra-label {
     display: block !important;
@@ -122,5 +122,18 @@
     clear: both;
     padding-top: 1rem;
     display: block;
+  }
+}
+
+@include xlg-screen {
+  .cms-edit-form {
+    .form-group.field.htmleditor.stacked {
+      .form__field-label {
+        width: 16.66666667%;
+      }
+      .form__field-holder {
+        width: 58.33333333%;
+      }
+    }
   }
 }
