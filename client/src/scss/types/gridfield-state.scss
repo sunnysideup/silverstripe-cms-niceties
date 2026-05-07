@@ -3,7 +3,7 @@
     thead {
       th {
         &.main.col-State {
-          width: 23rem !important;
+          // width: 23rem !important;
           text-align: right !important;
         }
       }
@@ -12,14 +12,17 @@
       td.gridfield-icon.draft,
       td.gridfield-icon.published {
         text-align: right !important;
+        min-width: 7rem !important;
         &:hover {
           display: table-cell !important;
           position: relative;
+          min-width: 22rem !important;
         }
         span {
           margin-right: 5px;
           &:before {
             float: right;
+            margin-left: 1rem;
           }
         }
       }
