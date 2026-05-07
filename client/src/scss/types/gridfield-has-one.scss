@@ -1,5 +1,7 @@
 @include lg-screen {
-  .hasonebutton.grid-field {
-    padding: 1rem !important;
+  #Root {
+    fieldset.hasonebutton.grid-field.ss-gridfield {
+      padding: 1rem !important;
+    }
   }
 }
