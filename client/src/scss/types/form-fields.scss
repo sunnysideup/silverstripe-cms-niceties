@@ -126,13 +126,15 @@
 }
 
 @include xlg-screen {
-  .cms-edit-form {
-    .form-group.field.htmleditor.stacked {
-      .form__field-label {
-        width: 16.66666667%;
-      }
-      .form__field-holder {
-        width: 58.33333333%;
+  .cms-container--content-mode {
+    .cms-edit-form {
+      .form-group.field.htmleditor.stacked {
+        .form__field-label {
+          width: 16.66666667%;
+        }
+        .form__field-holder {
+          width: 58.33333333%;
+        }
       }
     }
   }
