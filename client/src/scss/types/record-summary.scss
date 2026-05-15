@@ -1,6 +1,6 @@
 @include lg-screen {
   .record-summary {
-    background-color: var(--yellow);
+    background-color: var(--bs-yellow, #ffc107) !important;
     color: #000;
     border-radius: 5px;
     padding: 0.3rem 0.7rem;
@@ -20,7 +20,7 @@
       left: 0;
       top: 100%;
       background-color: #000;
-      color: var(--yellow);
+      color: var(--bs-yellow, #ffc107);
       padding: 0.5rem;
       border-radius: 5px;
       margin-top: 0.3rem;

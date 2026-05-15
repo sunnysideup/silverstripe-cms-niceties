@@ -2,6 +2,12 @@
   .grid-field:first-child .grid-field__search-holder {
     margin-top: 0 !important;
   }
+  .search-holder.search-holder--cms {
+    z-index: 9999999 !important;
+  }
+  .grid-field:first-child .cms-content-filters {
+    margin: 0 !important;
+  }
 
   // // Model Admin Search
   // .search-box {

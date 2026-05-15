@@ -11,19 +11,23 @@
     tbody {
       td.gridfield-icon.draft,
       td.gridfield-icon.published {
+        // min-width: 7rem !important;
+        // &:hover {
         text-align: right !important;
-        min-width: 7rem !important;
-        &:hover {
-          display: table-cell !important;
-          position: relative;
-          min-width: 24rem !important;
-        }
+        right: 60px;
         span {
           margin-right: 5px;
           &:before {
             float: right;
             margin-left: 1rem;
           }
+        }
+        // }
+      }
+      td.gridfield-icon.published {
+        span,
+        span:before {
+          color: var(--bs-success, green) !important;
         }
       }
     }

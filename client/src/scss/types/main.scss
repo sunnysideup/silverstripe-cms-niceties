@@ -2,19 +2,31 @@
   .cms .cms-content {
     background-color: #fff !important;
   }
+  :not(.pages-controller-cms-content) .cms-content-header.vertical-align-items {
+    align-content: flex-start;
+  }
 
-  :not(.pages-controller-cms-content) .cms-content-header.north {
-    background-color: #fff;
-    flex-direction: row-reverse;
+  :not(.pages-controller-cms-content) .cms-content-header.north,
+  :not(.pages-controller-cms-content) .cms-content-header.vertical-align-items,
+  .AssetAdmin .toolbar.toolbar--north {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
     padding-left: 1rem;
     border-color: #7472ce !important;
-    background-color: #6610f215 !important;
+    // background-color: #6610f215 !important;
+    .breadcrumb__container {
+      h2 {
+        padding-top: 1rem !important;
+        color: var(--indigo, #6610f2) !important;
+      }
+    }
     .breadcrumbs-wrapper {
-      margin-right: 1.5rem;
+      margin-left: 0.6154rem;
     }
     .breadcrumbs-wrapper,
     .breadcrumbs-wrapper * {
-      text-align: right;
+      text-align: left;
     }
   }
 

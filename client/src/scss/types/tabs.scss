@@ -5,7 +5,6 @@
   .cms-content-header-info,
   .toolbar.toolbar--north {
     flex-wrap: nowrap;
-    flex-direction: row-reverse;
     .toolbar__back-button {
       border: none !important;
     }
@@ -40,11 +39,12 @@
   }
 
   .cms-content-header-tabs {
-    max-width: calc(100% - 250px);
+    padding-top: 0;
   }
 
   .cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary {
-    float: right;
+    // float: right;
+    margin-top: 0;
   }
 
   .cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li {
@@ -52,6 +52,17 @@
     a:hover {
       border-color: var(--indigo, #6610f2) !important;
     }
+    &:first-child {
+      a {
+        padding-left: 0 !important;
+      }
+    }
+  }
+  .ui-tabs .cms-content-header-tabs .ui-tabs-nav {
+    margin-top: 0;
+  }
+  .SingleRecordAdmin .ui-tabs-nav {
+    margin-top: -0.51rem !important;
   }
 
   .cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li a {
