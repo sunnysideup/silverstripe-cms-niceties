@@ -28,11 +28,6 @@
           left: 70%;
           z-index: 2;
           width: 30%;
-          &.opened {
-            .toggle-children-icon {
-              display: none !important;
-            }
-          }
         }
       }
       ul.group {
@@ -55,7 +50,7 @@
         border: none !important;
       }
     }
-    > .current > a {
+    > .current.children > a {
       > .menu__icon {
         color: #fff !important;
       }

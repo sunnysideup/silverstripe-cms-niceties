@@ -20,6 +20,7 @@
 
   .cms-content-view {
     form#Form_EditForm {
+      min-height: 100%;
       .ui-tabs {
         .ui-tabs-nav {
           float: none;
@@ -61,8 +62,9 @@
   .ui-tabs .cms-content-header-tabs .ui-tabs-nav {
     margin-top: 0;
   }
+  #settings-controller-cms-content .ui-tabs-nav,
   .SingleRecordAdmin .ui-tabs-nav {
-    margin-top: -0.51rem !important;
+    margin-top: -0.88rem !important;
   }
 
   .cms-content-header-tabs .ui-tabs-nav.cms-tabset-nav-primary li a {
