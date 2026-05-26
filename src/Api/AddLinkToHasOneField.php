@@ -8,8 +8,11 @@ use SilverStripe\ORM\FieldType\DBHTMLVarchar;
 
 class AddLinkToHasOneField
 {
-    public static function add_link(FormField $field, DataObject $object)
+    public static function add_link(?FormField $field = null, ?DataObject $object = null)
     {
+        if (!$field || !$object) {
+            return;
+        }
         $dbFieldNameWithID = $field->getName();
         $dbFieldName = substr((string) $dbFieldNameWithID, 0, -2);
         $options = $object->config()->get('has_one');
