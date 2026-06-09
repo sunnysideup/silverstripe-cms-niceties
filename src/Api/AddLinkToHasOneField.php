@@ -9,6 +9,7 @@ use SilverStripe\ORM\FieldType\DBHTMLVarchar;
 
 class AddLinkToHasOneField
 {
+    private const GET_CMS_API_CLASS_NAME = 'Sunnysideup\\CmsEditLinkField\\Api\\CMSEditLinkAPI';
     public static function add_link(?FormField $field = null, ?DataObject $object = null)
     {
         if (!$field || !$object) {
@@ -22,8 +23,10 @@ class AddLinkToHasOneField
         }
         $options = $object->config()->get('has_one');
         $className = $options[$dbFieldName] ?? '';
+        $linkAsHtml = '';
         if ($className && class_exists($className)) {
-            $hasApi = class_exists(\Sunnysideup\CmsEditLinkField\Api\CMSEditLinkAPI::class);
+            $apiClassName = self::GET_CMS_API_CLASS_NAME;
+            $hasApi = class_exists($apiClassName);
             $linkedObject = $object->{$dbFieldName}();
             $title = '';
             $link = '';
@@ -34,8 +37,8 @@ class AddLinkToHasOneField
                 //@TODO: add other methods... see Sunnysideup\CmsEditLinkField\Forms\Fields\CMSEditLinkField
                 if ($linkedObject->hasMethod('CMSEditLink')) {
                     $link = $linkedObject->CMSEditLink();
-                } elseif (class_exists(\Sunnysideup\CmsEditLinkField\Api\CMSEditLinkAPI::class)) {
-                    $link = \Sunnysideup\CmsEditLinkField\Api\CMSEditLinkAPI::find_edit_link_for_object($linkedObject);
+                } elseif ($hasApi) {
+                    $link = $apiClassName::find_edit_link_for_object($linkedObject);
                 }
             } elseif ($hasApi) {
                 if (! $linkedObject || !$linkedObject->exists()) {
@@ -43,19 +46,20 @@ class AddLinkToHasOneField
                 }
                 if ($linkedObject->canCreate()) {
                     $title = $linkedObject->i18n_singular_name();
-                    $link = \Sunnysideup\CmsEditLinkField\Api\CMSEditLinkAPI::find_add_link_for_object($linkedObject);
+                    $link = $apiClassName::find_add_link_for_object($linkedObject);
                     $action = 'add';
                 } else {
                     $title = $linkedObject->i18n_plural_name();
-                    $link = \Sunnysideup\CmsEditLinkField\Api\CMSEditLinkAPI::find_list_link_for_object($linkedObject);
+                    $link = $apiClassName::find_list_link_for_object($linkedObject);
                     $action = 'list';
                 }
             }
             if ($link) {
                 $linkAsHtml = '
-                        <a href="' . $link . '" style="text-decoration: none!important;">✎ '.$action.' ' . $title . '</a><br />';
-                $field->setDescription(DBHTMLVarchar::create_field(DBHTMLVarchar::class, $linkAsHtml));
+                        <a href="' . $link . '" style="text-decoration: none!important;" target="_blank" rel="noopener noreferrer">✎ '.$action.' ' . $title . '</a><br />';
             }
+            $field->setDescription(DBHTMLVarchar::create_field(DBHTMLVarchar::class, $linkAsHtml));
+
         }
     }
 
