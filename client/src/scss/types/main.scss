@@ -16,8 +16,9 @@
     border-color: #7472ce !important;
     // background-color: #6610f215 !important;
     .breadcrumb__container {
+      padding-top: 0.5rem !important;
       h2 {
-        padding-top: 1rem !important;
+        padding-top: 0rem !important;
         color: var(--indigo, #6610f2) !important;
       }
     }
