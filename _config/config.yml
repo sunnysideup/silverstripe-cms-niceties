@@ -48,7 +48,6 @@ SilverStripe\Security\Security:
 
 SilverStripe\Control\Session:
   cookie_secure: true
-  cookie_name_secure: 'PHPSESSID'
 
 SilverStripe\Security\Member:
   extensions:
