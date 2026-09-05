@@ -7,6 +7,7 @@ use SilverStripe\Core\Extension;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
+use SilverStripe\Security\Permission;
 
 /**
  * Class \Sunnysideup\CMSNiceties\Extensions\CMSNicetiesMemberExtension
@@ -44,11 +45,12 @@ class CMSNicetiesMemberExtension extends Extension
         if ($fields->fieldByName('Root.Main.TokenExpiry') || $fields->dataFieldByName('TokenExpiry')) {
             $fields->removeByName('TokenExpiry');
         }
-
-        $fields->addFieldsToTab('Root.Security', [
-            DatetimeField::create('LockedOutUntil', 'Locked Out Until'),
-            NumericField::create('FailedLoginCount', 'Failed Login Count'),
-        ]);
+        if (Permission::check('ADMIN')) {
+            $fields->addFieldsToTab('Root.Security', [
+                DatetimeField::create('LockedOutUntil', 'Locked Out Until'),
+                NumericField::create('FailedLoginCount', 'Failed Login Count'),
+            ]);
+        }
         // $fields->replaceField('FailedLoginCount', NumericField::create('FailedLoginCount', 'Failed Login Count'));
     }
 }
