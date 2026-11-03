@@ -25,6 +25,14 @@ class ResetLogins extends BuildTask
                 echo '<h2>Test run only. To run for real add ?forreal=1 to the URL</h2>';
             }
 
+            if ($forreal !== '' && $forreal !== '0') {
+                if (! Director::is_cli()) {
+                    echo 'This task can only be run on the command line.';
+
+                    return;
+                }
+            }
+
             $members = Member::get()->filterAny([
                 'FailedLoginCount:GreaterThan' => 0,
                 'LockedOutUntil:GreaterThan' => '1970-01-01 00:00:00',
