@@ -56,6 +56,10 @@ SilverStripe\Security\Member:
   lock_out_after_incorrect_logins: 15
   lock_out_delay_mins: 5
 
+SilverStripe\Security\Group:
+  extensions:
+    - Sunnysideup\CMSNiceties\Extensions\CMSNicetiesGroupExtension
+
 ---
 # this is added to first reset (above) and then add the new values
 Name: cms-niceties-hack
