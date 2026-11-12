@@ -183,7 +183,7 @@ class CMSNicetiesGroupExtension extends Extension
             return true;
         }
 
-        return Controller::has_curr() && Controller::curr() instanceof LeftAndMain;
+        return Controller::curr() instanceof LeftAndMain;
     }
 
     /**
