@@ -10,6 +10,7 @@ use SilverStripe\Security\Permission;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
+use SilverStripe\Control\Director;
 
 class ResetLogins extends BuildTask
 {
@@ -21,12 +22,18 @@ class ResetLogins extends BuildTask
 
     protected function execute(InputInterface $input, PolyOutput $output): int
     {
-        if (!Permission::check('ADMIN')) {
+        // the command line, or an ADMIN logged in to the CMS (a browser run can only be a test run).
+        if (! Director::is_cli() && ! Permission::check('ADMIN')) {
             $output->writeln('<error>You must be an ADMIN to run this task.</error>');
             return Command::FAILURE;
         }
 
         $forreal = $input->getOption('forreal');
+        if ($forreal && ! Director::is_cli()) {
+            $output->writeln('This task can only be run for real on the command line.');
+            return Command::FAILURE;
+        }
+
         if (!$forreal) {
             $output->writeln('<comment>Test run only. To run for real add --forreal option</comment>');
         }

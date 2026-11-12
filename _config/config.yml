@@ -48,7 +48,6 @@ SilverStripe\Security\Security:
 
 SilverStripe\Control\Session:
   cookie_secure: true
-  cookie_name_secure: 'PHPSESSID'
 
 SilverStripe\Security\Member:
   extensions:
@@ -56,6 +55,10 @@ SilverStripe\Security\Member:
 
   lock_out_after_incorrect_logins: 15
   lock_out_delay_mins: 5
+
+SilverStripe\Security\Group:
+  extensions:
+    - Sunnysideup\CMSNiceties\Extensions\CMSNicetiesGroupExtension
 
 ---
 # this is added to first reset (above) and then add the new values
