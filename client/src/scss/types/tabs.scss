@@ -90,12 +90,14 @@
   }
   .panel {
     .tab-pane {
-      /* These help the animation look smoother */
-      will-change: opacity, transform, filter;
-      transition:
-        opacity 270ms ease-out,
-        filter 270ms ease-out,
-        transform 270ms ease-out;
+      /**
+       * Do NOT use will-change / transform / filter here (or leave them behind
+       * after the animation through fill-mode "forwards"/"both").
+       * They turn the tab pane into the containing block for position: fixed
+       * descendants, which breaks the full-screen mode of the HTMLEditorField
+       * (the editor is then sized to the viewport, but offset by the tab pane's position).
+       */
+      transition: opacity 270ms ease-out;
     }
 
     .tab-pane[aria-hidden="true"] {
@@ -103,7 +105,7 @@
     }
 
     .tab-pane[aria-hidden="false"] {
-      animation: softReveal 270ms ease-out both;
+      animation: softReveal 270ms ease-out backwards;
     }
   }
 
@@ -118,7 +120,6 @@
     }
     100% {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 }
